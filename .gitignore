@@ -1,0 +1,15 @@
+# MkDocs build output (gh-deploy pushes this to the gh-pages branch for you)
+site/
+
+# Python virtual environment
+venv/
+
+# MkDocs cache (used by privacy/social plugins)
+.cache/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc

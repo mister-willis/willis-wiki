@@ -1,0 +1,66 @@
+site_name: Willis Wiki
+site_url: https://mister-willis.github.io/willis-wiki/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs        # top-level tabs per course/unit
+    - navigation.sections
+    - navigation.top         # "back to top" button
+    - search.highlight
+    - content.code.copy      # copy button on code blocks
+
+markdown_extensions:
+  - pymdownx.highlight:      # syntax highlighting
+      anchor_linenums: true
+  - pymdownx.superfences     # fenced code blocks
+  - pymdownx.inlinehilite
+  - admonition               # note/warning/tip callout boxes
+  - pymdownx.details         # collapsible sections
+  - attr_list
+  - footnotes
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - privacy:
+      links_attr_map:
+        target: _blank
+
+nav:
+  - Home: index.md
+  - Engineering:
+    - Supplies: 
+      - Fasteners: eng/supplies/fasteners.md
+      - Bearings: eng/supplies/bearings.md
+      - Shafts: eng/supplies/shafts.md
+      - Pipe: eng/supplies/pipe.md
+    - 3D Printing:
+      - Prusa Resources: eng/3dp/prusa.md
+    - Wind Power:
+      - KidWind: eng/wind/kidwind.md
+      - Collegiate Designs: eng/wind/collegiate.md
+      - Airfoils:
+        - Airfoil Simulator: eng/wind/airfoil simulator.md
+        - Airfoil Selection: eng/wind/select_an_airfoil.md
+        - Download an Airfoil: eng/wind/download_an_airfoil.md
+        - Fusion Airfoil Plugin: eng/wind/fusion_airfoil_plugin.md
+      - Gears: 
+        - Gear Box Videos: eng/wind/gears.md
+        - Fusion Spur Gear Plugin: eng/wind/fusion_spur_gear_plugin.md
+  - Misc:
+    - Norms:
+      - AI Acceptable Usage: misc/norms/ai_usage.md
+    - Cooking by the Book: misc/cooking_by_the_book.md
+    - Download YouTube: misc/download_youtube.md
