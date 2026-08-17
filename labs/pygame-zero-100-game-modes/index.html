@@ -1,0 +1,5302 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://willis.npa.school/labs/pygame-zero-100-game-modes/">
+      
+      
+        <link rel="prev" href="../pygame-zero-90-animation-health/">
+      
+      
+        <link rel="next" href="../pygame-zero-110-platforms/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Multiple Worlds and Game Over Reset - Willis Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#multiple-worlds-and-game-over-reset" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Willis Wiki" class="md-header__button md-logo" aria-label="Willis Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Willis Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Multiple Worlds and Game Over Reset
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../eng/supplies/fasteners/" class="md-tabs__link">
+          
+  
+  
+  Engineering
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../misc/norms/ai_usage/" class="md-tabs__link">
+          
+  
+  
+  Misc
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../digital-logic-10-binary-numbers/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Willis Wiki" class="md-nav__button md-logo" aria-label="Willis Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Willis Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Supplies
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Supplies
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/supplies/fasteners/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fasteners
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/supplies/bearings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bearings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/supplies/shafts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shafts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/supplies/pipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Printing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3D Printing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/3dp/prusa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prusa Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wind Power
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Wind Power
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/kidwind/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KidWind
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/collegiate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collegiate Designs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_3" id="__nav_2_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Airfoils
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Airfoils
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/airfoil%20simulator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Airfoil Simulator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/select_an_airfoil/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Airfoil Selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/download_an_airfoil/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download an Airfoil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/fusion_airfoil_plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusion Airfoil Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_4" id="__nav_2_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gears
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gears
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/gears/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gear Box Videos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/fusion_spur_gear_plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusion Spur Gear Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Misc
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Misc
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Norms
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Norms
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/norms/ai_usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Acceptable Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/cooking_by_the_book/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cooking by the Book
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/download_youtube/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download YouTube
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computer Science
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Computer Science
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital Logic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Digital Logic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digital-logic-10-binary-numbers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary Numbers Practice
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digital-logic-20-logic-gates-and-or/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First Circuits: AND and OR
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digital-logic-30-transistors-not-gate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transistors and the NOT Gate
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digital-logic-40-xor-half-adder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compound Gates: XOR and the Half Adder
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digital-logic-50-full-adder-4-bit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Useful Binary Computer
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learn Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Learn Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-10-first-program/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First Python Program
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-20-turtle-graphics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Turtle Power
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-30-loops-spiral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Turtle Spiral
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-40-input-conditionals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grade Calculator
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-50-functions-guessing-game/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guess the Number
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-60-lists-slot-machine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slot Machine
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-70-modulus-spirals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dice Roller and Turtle Spirals Revisited
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-80-rock-paper-scissors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rock Paper Scissors
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_3" id="__nav_4_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Structures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Structures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-structures-10-2d-list-practice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2D List Practice
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-structures-20-tic-tac-toe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2D Lists Tic-Tac-Toe
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-structures-30-dictionaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dictionaries
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-structures-40-analysis-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SpaghettiOs Analysis Report
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_4" id="__nav_4_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithms
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Algorithms
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-10-connect4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect4
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-20-connect4-check-win/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect4 Check Win Helper Functions
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-30-connect4-check-move/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect4 Check Move Hints
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-40-connect4-unit-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit Testing Your Connect4 Library
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-50-monty-hall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monty Hall Algorithm
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-60-algorithm-extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithm Extraction
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-70-search-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search Algorithms
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-80-sorting-introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sorting Introduction
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-90-recursion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recursion
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-100-merge-sort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Merge Sort
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-110-traveling-salesman/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Traveling Salesman
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_5" id="__nav_4_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EarSketch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EarSketch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-10-getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-20-customizing-your-song/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customizing Your Song
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-30-creating-a-beat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating a Beat
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-40-loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-50-effects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Effects
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-60-custom-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Functions
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-70-lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lists
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-80-function-return-boolean-logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Function Return and Boolean Logic
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-90-release-day/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Day
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_6" id="__nav_4_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reeborg
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reeborg
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reeborg-10-meet-reeborg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meet Reeborg!
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_7" id="__nav_4_1_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Games With Pygame Zero
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Games With Pygame Zero
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-10-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Set Up for Pygame Zero
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-20-nice-bike/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nice Bike!
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-30-alien-collisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    More Characters and Collisions
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-40-gravity-jumping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gravity, Jumping, and Bouncing
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-50-mouse-score/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Random Numbers, Mouse Clicks, and Keeping Score
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-60-projectiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projectiles with Lists and Custom Functions
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-70-rotation-walls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rotation, Tiles, and Solid Walls
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-80-enemies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dumb Enemies and Smart Enemies
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-90-animation-health/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiled Images, Animated Motion, and Health
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multiple Worlds and Game Over Reset
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multiple Worlds and Game Over Reset
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New Images
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-the-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview of the Game
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Making Functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keyboard-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keyboard Input
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obstacles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obstacles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#score" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Score
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#game-over-and-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Game Over and Reset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-characters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changing Characters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#something-you-should-see" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Something You Should See
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turn-it-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turn It In
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-110-platforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actor Positioning and Platforms
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_8" id="__nav_4_1_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tinkercad Codeblocks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tinkercad Codeblocks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codeblocks-10-bubble-wand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bubble Wand
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codeblocks-20-bubble-wand-part-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bubble Wand Part 2
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codeblocks-30-sk8board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sk8board Time!
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codeblocks-40-spinning-top/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spinning Top Battle
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_9" id="__nav_4_1_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Microcontrollers With Circuit Playground Express
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Microcontrollers With Circuit Playground Express
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpx-10-roulette-wheel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roulette Wheel
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpx-20-playing-a-tune/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generating Frequencies and Playing a Tune
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpx-30-lighting-effects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lighting Effects With Functions
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpx-40-input-device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Making an Input Device
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpx-50-acceleration-mouse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Acceleration as Input
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpx-60-tilt-sensor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tilt Sensor
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autodesk Fusion
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Autodesk Fusion
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fusion-10-toy-block/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toy Block
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New Images
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-the-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview of the Game
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Making Functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keyboard-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keyboard Input
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obstacles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obstacles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#score" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Score
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#game-over-and-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Game Over and Reset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-characters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changing Characters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#something-you-should-see" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Something You Should See
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turn-it-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turn It In
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="multiple-worlds-and-game-over-reset">Multiple Worlds and Game Over Reset</h1>
+<p>This is the big one: an <em>infinite runner</em> with a character-select screen, a
+running score, a Game Over screen, and a reset that puts everything back for
+the next round. The secret to keeping all of that manageable isn't more code —
+it's smaller functions.</p>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>In this lab you'll build an infinite runner and organize it into <strong>modes</strong> —
+<em>costume</em>, <em>play</em>, and <em>game over</em> — each with its own drawing and behavior.
+Along the way you'll animate a running character from a list of images,
+spawn obstacles on a timer, and write a <code>reset()</code> function that restarts the
+game cleanly.</p>
+<p><strong>Builds on:</strong> <a href="../pygame-zero-90-animation-health/"><em>Tiled Images, Animated Motion, and Health</em></a> — helper functions, lists of Actors, and <code>collidelist()</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Before you start</p>
+<p>Open Thonny and start a new program named <code>runner.py</code>. Save it in your
+<code>pygame-zero</code> folder, next to your <code>images</code> folder.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">You've got it when…</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The game opens on a costume screen where <span class="keys"><kbd class="key-space">Space</kbd></span> changes characters and <span class="keys"><kbd class="key-enter">Enter</kbd></span> starts the game.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The runner animates, jumps with <span class="keys"><kbd class="key-space">Space</kbd></span>, and dodges cacti that arrive on a timer.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Hitting an obstacle shows Game Over with the final score still visible.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Pressing <span class="keys"><kbd class="key-enter">Enter</kbd></span> from Game Over resets everything and returns to the costume screen.</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Collaboration &amp; AI</p>
+<p><strong>Work:</strong> On your own. Ask a neighbor for a hand if you're stuck, but the
+program you submit should be yours.</p>
+<p><strong>AI — AIAS Level 1, No AI:</strong> The whole point of this lab is learning to
+organize a bigger program yourself.
+<a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">What the levels mean.</a></p>
+</div>
+<hr />
+<h2 id="new-images">New Images</h2>
+<p>This lab requires a lot of new images — three full costumes plus a cactus. If
+you completed <a href="../pygame-zero-10-setup/"><em>Getting Set Up for Pygame Zero</em></a>,
+they are already in your <code>images</code> folder and you can skip these steps.</p>
+<ol>
+<li>
+<p>Download the zip file of images.</p>
+<p><a class="md-button" download="runner-images.zip" href="images/runner-images.zip">Download runner-images.zip</a></p>
+</li>
+<li>
+<p>Double-click the zip file to open it. It will create a new folder next to
+    the zip file with the same name.</p>
+</li>
+<li>
+<p>Move the images from the new folder into your game's <code>images</code> folder.</p>
+</li>
+</ol>
+<hr />
+<h2 id="overview-of-the-game">Overview of the Game</h2>
+<p>We're going to make an <em>infinite runner</em> type game. Dino Jump is an example
+of this type of game.</p>
+<p><img alt="Dino Jump, the classic infinite runner." src="images/dino-jump-example.png" width="397" /></p>
+<hr />
+<h2 id="making-functions">Making Functions</h2>
+<p>We're going to focus on breaking up our code into a number of small functions
+to organize our game. This will help us add new behaviors, such as showing
+different screens for selecting a character and resetting the game after a
+Game Over screen is shown.</p>
+<ol start="4">
+<li>
+<p>Let's start a new game with the code below.</p>
+<div class="highlight"><span class="filename">runner.py</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pgzrun</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">800</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">600</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">runner</span> <span class="o">=</span> <span class="n">Actor</span><span class="p">(</span><span class="s2">&quot;ninja0&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">runner</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">runner</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">400</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">():</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s2">&quot;skyblue&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">filled_rect</span><span class="p">(</span><span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">(</span><span class="mi">88</span><span class="p">,</span> <span class="mi">242</span><span class="p">,</span> <span class="mi">152</span><span class="p">))</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">pgzrun</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+</code></pre></div>
+<p>Try your program. Your screen should look like this.</p>
+<p><img alt="The ninja standing on green ground under a blue sky." src="images/runner-scene.png" width="420" /></p>
+</li>
+</ol>
+<hr />
+<h2 id="modes">Modes</h2>
+<p>When we're done, we want our game to have three modes:</p>
+<ul>
+<li><strong>costume</strong> — this mode will show a start screen where the player can
+  choose a character.</li>
+<li><strong>play</strong> — this mode will show the game itself.</li>
+<li><strong>game over</strong> — this mode will show a Game Over screen with an option to
+  reset.</li>
+</ul>
+<p>We'll need to keep track of which mode we're currently in, to know how to
+update and what to draw. Let's create a variable for this.</p>
+<ol start="5">
+<li>
+<p>Add the highlighted line. We'll call the normal game mode <em>play</em>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">runner</span> <span class="o">=</span> <span class="n">Actor</span><span class="p">(</span><span class="s2">&quot;ninja0&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">runner</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">runner</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">400</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="hll"><span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;play&quot;</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Now let's take the code from our <code>draw()</code> function and put it in a helper
+    function that will be used to draw the game when in <em>play</em> mode. We'll
+    name this function <code>draw_game()</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw_game</span><span class="p">():</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s2">&quot;skyblue&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">filled_rect</span><span class="p">(</span><span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">(</span><span class="mi">88</span><span class="p">,</span> <span class="mi">242</span><span class="p">,</span> <span class="mi">152</span><span class="p">))</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</code></pre></div>
+</li>
+<li>
+<p>Finally, we need to <strong>call</strong> our <code>draw_game()</code> function from the <code>draw()</code>
+    function, but only if we are in <em>play</em> mode. Replace the code in the
+    <code>draw()</code> function so it looks like this.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">():</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="n">draw_game</span><span class="p">()</span>
+</code></pre></div>
+<p>Try your program. Your screen should look like it did before.</p>
+</li>
+</ol>
+<hr />
+<h2 id="animation">Animation</h2>
+<p>Let's add a list of images to animate the character running. We'll also need
+to keep track of which image is currently shown, so we know which to move to
+on the next frame.</p>
+<ol start="8">
+<li>
+<p>Add the highlighted lines.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">runner</span> <span class="o">=</span> <span class="n">Actor</span><span class="p">(</span><span class="s2">&quot;ninja0&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">runner</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">runner</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">400</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;play&quot;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="hll"><span class="n">runner</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ninja0&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja1&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja2&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja3&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja4&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja5&quot;</span><span class="p">,</span>
+</span><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="hll">                 <span class="s2">&quot;ninja6&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja7&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja8&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja9&quot;</span><span class="p">]</span>
+</span><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="hll"><span class="n">runner</span><span class="o">.</span><span class="n">img_num</span> <span class="o">=</span> <span class="mi">0</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Add this function to change to the next image in the list.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">next_runner_image</span><span class="p">():</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="n">runner</span><span class="o">.</span><span class="n">img_num</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">runner</span><span class="o">.</span><span class="n">images</span><span class="p">)]</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">img_num</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Something new!</p>
+<p>Instead of writing out the line to add one like this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">runner</span><span class="o">.</span><span class="n">img_num</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">img_num</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div>
+<p>we'll use this shorter version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">runner</span><span class="o">.</span><span class="n">img_num</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<p>These two lines do exactly the same thing! The <code>+=</code> operator is built
+into Python because we do addition so often as programmers. You can
+also subtract one like this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">runner</span><span class="o">.</span><span class="n">img_num</span> <span class="o">-=</span> <span class="mi">1</span>
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>Call the <code>next_runner_image()</code> function from the <code>update()</code> function.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">():</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">next_runner_image</span><span class="p">()</span>
+</code></pre></div>
+<p>Try your program. Your character should be animated to move like it is
+running.</p>
+</li>
+</ol>
+<hr />
+<h2 id="keyboard-input">Keyboard Input</h2>
+<p>Now we'll make the character jump when <span class="keys"><kbd class="key-space">Space</kbd></span> is pressed. We'll use the
+built-in <code>on_key_down()</code> function to capture key presses.</p>
+<ol start="11">
+<li>
+<p>Define variables for the level of the ground and gravity. Add the
+    highlighted lines.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pgzrun</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">800</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">600</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="hll"><span class="n">GROUND</span> <span class="o">=</span> <span class="mi">400</span>
+</span><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="hll"><span class="n">GRAVITY</span> <span class="o">=</span> <span class="mi">1</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Define a variable on the runner to keep track of vertical speed. Add the
+    highlighted line.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">runner</span> <span class="o">=</span> <span class="n">Actor</span><span class="p">(</span><span class="s2">&quot;ninja0&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">runner</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">runner</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">400</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;play&quot;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">runner</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ninja0&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja1&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja2&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja3&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja4&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja5&quot;</span><span class="p">,</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>                 <span class="s2">&quot;ninja6&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja7&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja8&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja9&quot;</span><span class="p">]</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">runner</span><span class="o">.</span><span class="n">img_num</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="hll"><span class="n">runner</span><span class="o">.</span><span class="n">speed_y</span> <span class="o">=</span> <span class="mi">0</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Add the built-in <code>on_key_down()</code> function to listen for key presses. We
+    only want to jump if we're in <em>play</em> mode.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">on_key_down</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">keys</span><span class="o">.</span><span class="n">SPACE</span> <span class="ow">and</span> <span class="n">runner</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">GROUND</span><span class="p">:</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>            <span class="n">runner</span><span class="o">.</span><span class="n">speed_y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">15</span>
+</code></pre></div>
+</li>
+<li>
+<p>Add a helper function to handle gravity.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">apply_gravity</span><span class="p">():</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">runner</span><span class="o">.</span><span class="n">speed_y</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">speed_y</span> <span class="o">+=</span> <span class="n">GRAVITY</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">GROUND</span><span class="p">:</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>        <span class="n">runner</span><span class="o">.</span><span class="n">speed_y</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>        <span class="n">runner</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">GROUND</span>
+</code></pre></div>
+</li>
+<li>
+<p>Finally, call the <code>apply_gravity()</code> function from the <code>update()</code>
+    function, but only if we're in <em>play</em> mode. Add the highlighted lines.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">():</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="n">next_runner_image</span><span class="p">()</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="hll">    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+</span><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="hll">        <span class="n">apply_gravity</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Try your program. The character should jump when <span class="keys"><kbd class="key-space">Space</kbd></span> is pressed,
+then fall back to the ground.</p>
+</li>
+</ol>
+<hr />
+<h2 id="obstacles">Obstacles</h2>
+<p>Next we'll add obstacles to jump over, and a timeout to keep track of how
+often new obstacles appear on the screen.</p>
+<ol start="16">
+<li>
+<p>Add the highlighted lines to create a list to hold obstacles and a
+    timeout.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">runner</span> <span class="o">=</span> <span class="n">Actor</span><span class="p">(</span><span class="s2">&quot;ninja0&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">runner</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">runner</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">400</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;play&quot;</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">runner</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ninja0&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja1&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja2&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja3&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja4&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja5&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>                 <span class="s2">&quot;ninja6&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja7&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja8&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja9&quot;</span><span class="p">]</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">runner</span><span class="o">.</span><span class="n">img_num</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="n">runner</span><span class="o">.</span><span class="n">speed_y</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="hll"><span class="n">runner</span><span class="o">.</span><span class="n">obstacles_timeout</span> <span class="o">=</span> <span class="mi">0</span>
+</span><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="hll"><span class="n">obstacles</span> <span class="o">=</span> <span class="p">[]</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Create a helper function to handle creating obstacles and moving them
+    from right to left on the screen.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">do_obstacles</span><span class="p">():</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="c1"># obstacles</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">obstacles_timeout</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">obstacles_timeout</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>        <span class="n">c</span> <span class="o">=</span> <span class="n">Actor</span><span class="p">(</span><span class="s1">&#39;cactus&#39;</span><span class="p">)</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>        <span class="n">c</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">850</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>        <span class="n">c</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">430</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>        <span class="n">obstacles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>        <span class="n">runner</span><span class="o">.</span><span class="n">obstacles_timeout</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">obstacles</span><span class="o">.</span><span class="n">copy</span><span class="p">():</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>        <span class="n">o</span><span class="o">.</span><span class="n">x</span> <span class="o">-=</span> <span class="mi">8</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>        <span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>            <span class="n">obstacles</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Call the helper function from the <code>update()</code> function. It should only be
+    called when we're in <em>play</em> mode. Add the highlighted line.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">():</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="n">next_runner_image</span><span class="p">()</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>        <span class="n">apply_gravity</span><span class="p">()</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="hll">        <span class="n">do_obstacles</span><span class="p">()</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Finally, add code to draw each obstacle in our drawing helper function.
+    Add the highlighted lines.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw_game</span><span class="p">():</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s2">&quot;skyblue&quot;</span><span class="p">)</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">filled_rect</span><span class="p">(</span><span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">(</span><span class="mi">88</span><span class="p">,</span> <span class="mi">242</span><span class="p">,</span> <span class="mi">152</span><span class="p">))</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="hll">    <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">obstacles</span><span class="p">:</span>
+</span><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="hll">        <span class="n">o</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Try your program. You should see obstacles appear at the timeout interval
+and move across the screen.</p>
+<p><img alt="A cactus sliding toward the running ninja." src="images/obstacles.png" width="420" /></p>
+</li>
+</ol>
+<hr />
+<h2 id="score">Score</h2>
+<p>We'll keep score by counting each frame. The longer the player goes without
+hitting an obstacle, the higher the score.</p>
+<ol start="20">
+<li>
+<p>Create a variable to keep track of the score, starting from zero. Add the
+    highlighted line.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">runner</span> <span class="o">=</span> <span class="n">Actor</span><span class="p">(</span><span class="s2">&quot;ninja0&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">runner</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">runner</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">400</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;play&quot;</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">runner</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ninja0&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja1&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja2&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja3&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja4&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja5&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>                 <span class="s2">&quot;ninja6&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja7&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja8&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja9&quot;</span><span class="p">]</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="n">runner</span><span class="o">.</span><span class="n">img_num</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="n">runner</span><span class="o">.</span><span class="n">speed_y</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="n">runner</span><span class="o">.</span><span class="n">obstacles_timeout</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="hll"><span class="n">runner</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Add one to the score in the <code>update()</code> function for each frame, but only
+    if we're in the <em>play</em> mode. Add the highlighted line.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">():</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="n">next_runner_image</span><span class="p">()</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>        <span class="n">apply_gravity</span><span class="p">()</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>        <span class="n">do_obstacles</span><span class="p">()</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="hll">        <span class="n">runner</span><span class="o">.</span><span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Add a helper function to draw the score on the screen.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw_score</span><span class="p">():</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Score: </span><span class="si">{</span><span class="n">runner</span><span class="o">.</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Finally, call the helper function from the <code>draw()</code> function. Add the
+    highlighted line.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">():</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>        <span class="n">draw_game</span><span class="p">()</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="hll">        <span class="n">draw_score</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Try your program. The score should be constantly increasing, shown in the
+upper-left corner.</p>
+<p><img alt="The score climbing in the corner of the game." src="images/score.png" width="420" /></p>
+</li>
+</ol>
+<hr />
+<h2 id="game-over-and-reset">Game Over and Reset</h2>
+<p>When the character touches an obstacle, the game ends. We want to show a Game
+Over screen and provide an option to reset and start a new game.</p>
+<p>When the game ends, we'll move from the <em>play</em> mode to the <em>game over</em> mode.</p>
+<ol start="24">
+<li>
+<p>Create a helper function to check if the character has collided with an
+    obstacle. If so, change the mode to <em>game over</em>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">check_damage</span><span class="p">():</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">collidelist</span><span class="p">(</span><span class="n">obstacles</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>        <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;game over&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Call the helper function from the <code>update()</code> function. Add the
+    highlighted line.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">():</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="n">next_runner_image</span><span class="p">()</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>        <span class="n">apply_gravity</span><span class="p">()</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>        <span class="n">do_obstacles</span><span class="p">()</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>        <span class="n">runner</span><span class="o">.</span><span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="hll">        <span class="n">check_damage</span><span class="p">()</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Create a helper function to draw the screen when we're in the <em>game over</em>
+    mode.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw_game_over</span><span class="p">():</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;GAME OVER&quot;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="n">WIDTH</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>                     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Press Return to restart&quot;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="n">WIDTH</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">50</span><span class="p">),</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>                     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Call the helper function from the <code>draw()</code> function when we're in the
+    <em>game over</em> mode. Add the highlighted lines.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">():</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>        <span class="n">draw_game</span><span class="p">()</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>        <span class="n">draw_score</span><span class="p">()</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="hll">    <span class="k">elif</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;game over&quot;</span><span class="p">:</span>
+</span><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="hll">        <span class="n">draw_game_over</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Try your program. You should see the Game Over screen when the player
+collides with an obstacle.</p>
+<p><img alt="The black Game Over screen." src="images/game-over.png" width="420" /></p>
+<p>The game ends correctly, but we'd like to show the final score. This is
+why we wrapped the score-drawing code up in its own function — now we can
+call it from multiple modes (<em>play</em> and <em>game over</em>) without repeating
+code.</p>
+</li>
+<li>
+<p>Add the highlighted line.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">():</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>        <span class="n">draw_game</span><span class="p">()</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>        <span class="n">draw_score</span><span class="p">()</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="k">elif</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;game over&quot;</span><span class="p">:</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>        <span class="n">draw_game_over</span><span class="p">()</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="hll">        <span class="n">draw_score</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Try your program. Now the final score should remain visible on the Game
+Over screen.</p>
+<p><img alt="Game Over with the final score still showing." src="images/game-over-score.png" width="420" /></p>
+</li>
+</ol>
+<p>Now we need to add the code to restart the game when the player presses the
+Return key in <em>game over</em> mode. Let's create a function that "puts everything
+back" to the way it should be when a new game starts. This function will:</p>
+<ul>
+<li>Set the score back to zero.</li>
+<li>Set the runner's vertical speed back to zero.</li>
+<li>Clear the list of obstacles, and reset the timeout for new obstacles to
+  appear.</li>
+<li>Change the mode from <em>game over</em> back to <em>play</em>.</li>
+</ul>
+<ol start="29">
+<li>
+<p>Add the function below to your program.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">():</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">speed_y</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="n">obstacles</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">obstacles_timeout</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;play&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Next, let's call this helper function when <span class="keys"><kbd class="key-enter">Enter</kbd></span> is pressed, but only
+    if we're in the <em>game over</em> mode. Add the highlighted lines.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">on_key_down</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">keys</span><span class="o">.</span><span class="n">SPACE</span> <span class="ow">and</span> <span class="n">runner</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">GROUND</span><span class="p">:</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>            <span class="n">runner</span><span class="o">.</span><span class="n">speed_y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">15</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="hll">    <span class="k">elif</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;game over&quot;</span><span class="p">:</span>
+</span><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="hll">        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">keys</span><span class="o">.</span><span class="n">RETURN</span><span class="p">:</span>
+</span><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="hll">            <span class="n">reset</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Try your program. You should be able to start a new game from the Game
+Over screen by pressing <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="changing-characters">Changing Characters</h2>
+<p>That was a lot of work! But now we have a structure that lets us make other
+large modifications easily, such as adding additional modes. Let's add a mode
+for a screen that appears before the game starts, where the player chooses a
+costume.</p>
+<div class="admonition info">
+<p class="admonition-title">Important concept</p>
+<p>We're <em>not</em> going to create different Actors. We'll keep our single Actor
+named <code>runner</code>, but let the player choose which list of images that Actor
+wears. That's why we call the new mode <em>costume</em> — we're really just
+picking a costume for our Actor!</p>
+</div>
+<ol start="31">
+<li>
+<p>First, set the starting mode for our program to the new one we'll create
+    now. Make the highlighted update, changing the first mode from <em>play</em> to
+    <em>costume</em>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">runner</span> <span class="o">=</span> <span class="n">Actor</span><span class="p">(</span><span class="s2">&quot;ninja0&quot;</span><span class="p">)</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">runner</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="n">runner</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">400</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="hll"><span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;costume&quot;</span>
+</span><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="n">runner</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ninja0&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja1&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja2&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja3&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja4&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja5&quot;</span><span class="p">,</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>                 <span class="s2">&quot;ninja6&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja7&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja8&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja9&quot;</span><span class="p">]</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="n">runner</span><span class="o">.</span><span class="n">img_num</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="n">runner</span><span class="o">.</span><span class="n">speed_y</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="n">runner</span><span class="o">.</span><span class="n">obstacles_timeout</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="n">runner</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div>
+</li>
+<li>
+<p>Next, we'll create a new helper function to draw the <em>costume</em> screen.
+    Add this to your code.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw_costume</span><span class="p">():</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Press Space to select a player&quot;</span><span class="p">,</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>                     <span class="n">centerx</span><span class="o">=</span><span class="n">WIDTH</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Press Return to start&quot;</span><span class="p">,</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>                     <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="n">WIDTH</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Now update the <code>draw()</code> function to call the helper function when we're
+    in <em>costume</em> mode. Add the highlighted lines.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">():</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>        <span class="n">draw_game</span><span class="p">()</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>        <span class="n">draw_score</span><span class="p">()</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    <span class="k">elif</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;game over&quot;</span><span class="p">:</span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>        <span class="n">draw_game_over</span><span class="p">()</span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>        <span class="n">draw_score</span><span class="p">()</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="hll">    <span class="k">elif</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;costume&quot;</span><span class="p">:</span>
+</span><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="hll">        <span class="n">draw_costume</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Try your program. It should draw the <em>costume</em> screen to start, now.</p>
+<p><img alt="The costume-select screen with the runner on black." src="images/costume-screen.png" width="420" /></p>
+</li>
+<li>
+<p>Let's write a helper function to change to the next costume based on the
+    costume we're currently wearing. We'll use the <code>startswith()</code> function,
+    which is built into Python, to see what the Actor's current image name
+    starts with. Add this to your code.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">change_costume</span><span class="p">():</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;ninja&quot;</span><span class="p">):</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>        <span class="n">runner</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;dino0&quot;</span><span class="p">,</span> <span class="s2">&quot;dino1&quot;</span><span class="p">,</span> <span class="s2">&quot;dino2&quot;</span><span class="p">,</span> <span class="s2">&quot;dino3&quot;</span><span class="p">,</span> <span class="s2">&quot;dino4&quot;</span><span class="p">,</span> <span class="s2">&quot;dino5&quot;</span><span class="p">,</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>                         <span class="s2">&quot;dino6&quot;</span><span class="p">,</span> <span class="s2">&quot;dino7&quot;</span><span class="p">]</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    <span class="k">elif</span> <span class="n">runner</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;dino&quot;</span><span class="p">):</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>        <span class="n">runner</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;knight0&quot;</span><span class="p">,</span> <span class="s2">&quot;knight1&quot;</span><span class="p">,</span> <span class="s2">&quot;knight2&quot;</span><span class="p">,</span> <span class="s2">&quot;knight3&quot;</span><span class="p">,</span> <span class="s2">&quot;knight4&quot;</span><span class="p">,</span>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>                         <span class="s2">&quot;knight5&quot;</span><span class="p">,</span> <span class="s2">&quot;knight6&quot;</span><span class="p">,</span> <span class="s2">&quot;knight7&quot;</span><span class="p">,</span> <span class="s2">&quot;knight8&quot;</span><span class="p">,</span> <span class="s2">&quot;knight9&quot;</span><span class="p">]</span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>    <span class="k">elif</span> <span class="n">runner</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;knight&quot;</span><span class="p">):</span>
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>        <span class="n">runner</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ninja0&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja1&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja2&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja3&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja4&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja5&quot;</span><span class="p">,</span>
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>                         <span class="s2">&quot;ninja6&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja7&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja8&quot;</span><span class="p">,</span> <span class="s2">&quot;ninja9&quot;</span><span class="p">]</span>
+</code></pre></div>
+</li>
+<li>
+<p>Finally, we'll handle the keyboard keys for the new <em>costume</em> mode. We'll
+    call the helper function if <span class="keys"><kbd class="key-space">Space</kbd></span> is pressed, or start the game by
+    changing to <em>play</em> mode if <span class="keys"><kbd class="key-enter">Enter</kbd></span> is pressed. Add the highlighted
+    lines.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">on_key_down</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">keys</span><span class="o">.</span><span class="n">SPACE</span> <span class="ow">and</span> <span class="n">runner</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">GROUND</span><span class="p">:</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>            <span class="n">runner</span><span class="o">.</span><span class="n">speed_y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">15</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>    <span class="k">elif</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;game over&quot;</span><span class="p">:</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">keys</span><span class="o">.</span><span class="n">RETURN</span><span class="p">:</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>            <span class="n">reset</span><span class="p">()</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="hll">    <span class="k">elif</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;costume&quot;</span><span class="p">:</span>
+</span><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="hll">        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">keys</span><span class="o">.</span><span class="n">SPACE</span><span class="p">:</span>
+</span><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="hll">            <span class="n">change_costume</span><span class="p">()</span>
+</span><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="hll">        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="n">keys</span><span class="o">.</span><span class="n">RETURN</span><span class="p">:</span>
+</span><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="hll">            <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;play&quot;</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>One more thing: after a Game Over, the reset should send the player back
+    to the costume screen. Make the highlighted update in <code>reset()</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">():</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">speed_y</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>    <span class="n">obstacles</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>    <span class="n">runner</span><span class="o">.</span><span class="n">obstacles_timeout</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="hll">    <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;costume&quot;</span>
+</span></code></pre></div>
+</li>
+</ol>
+<hr />
+<h2 id="something-you-should-see">Something You Should See</h2>
+<p>We're done with the game — but let's have a look at our two main functions,
+<code>update()</code> and <code>draw()</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">():</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>    <span class="n">next_runner_image</span><span class="p">()</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>        <span class="n">apply_gravity</span><span class="p">()</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>        <span class="n">do_obstacles</span><span class="p">()</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>        <span class="n">runner</span><span class="o">.</span><span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>        <span class="n">check_damage</span><span class="p">()</span>
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">():</span>
+<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
+<a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>        <span class="n">draw_game</span><span class="p">()</span>
+<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>        <span class="n">draw_score</span><span class="p">()</span>
+<a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a>    <span class="k">elif</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;game over&quot;</span><span class="p">:</span>
+<a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a>        <span class="n">draw_game_over</span><span class="p">()</span>
+<a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a>        <span class="n">draw_score</span><span class="p">()</span>
+<a id="__codelineno-36-16" name="__codelineno-36-16" href="#__codelineno-36-16"></a>    <span class="k">elif</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;costume&quot;</span><span class="p">:</span>
+<a id="__codelineno-36-17" name="__codelineno-36-17" href="#__codelineno-36-17"></a>        <span class="n">draw_costume</span><span class="p">()</span>
+</code></pre></div>
+<p>Notice how small and tidy they are? Dividing our programs into many small
+functions lets us do bigger, more complex things. Consider how easy it would
+be to add a <em>fourth</em> mode to these two functions if we wanted it.</p>
+<p>Let's also look at our <code>draw_score()</code> function:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">draw_score</span><span class="p">():</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>    <span class="n">screen</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Score: </span><span class="si">{</span><span class="n">runner</span><span class="o">.</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+</code></pre></div>
+<p>Why did we make a whole function for a single line of code? Have another look
+at the <code>draw()</code> function above — we call <code>draw_score()</code> from <strong>two</strong> places.
+If you wanted to change the font or the color of the score, you would only
+need to update it in one place.</p>
+<div class="admonition success">
+<p class="admonition-title">The takeaway</p>
+<p>Functions are useful for:</p>
+<ul>
+<li>Simplifying complex code.</li>
+<li>Code reuse.</li>
+</ul>
+</div>
+<hr />
+<h2 id="challenges">Challenges</h2>
+<p>Try these on your own once the game works.</p>
+<ul>
+<li>Make the obstacles appear at random times, so they aren't always spaced out
+  the same.</li>
+<li>Make the runner appear somewhere in the middle of the screen in <em>costume</em>
+  mode, but in the correct location again during <em>play</em> mode.</li>
+<li>Create a list of different obstacles, including the cactus, and randomly
+  choose from it each time we add a new obstacle to the screen.</li>
+</ul>
+<hr />
+<h2 id="turn-it-in">Turn It In</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Submit your <code>runner.py</code> file in Google Classroom.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "content.code.copy", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

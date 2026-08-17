@@ -1,0 +1,5284 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://willis.npa.school/labs/fusion-10-toy-block/">
+      
+      
+        <link rel="prev" href="../cpx-60-tilt-sensor/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Toy Block - Willis Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#toy-block" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Willis Wiki" class="md-header__button md-logo" aria-label="Willis Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Willis Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Toy Block
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../eng/supplies/fasteners/" class="md-tabs__link">
+          
+  
+  
+  Engineering
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../misc/norms/ai_usage/" class="md-tabs__link">
+          
+  
+  
+  Misc
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../digital-logic-10-binary-numbers/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Willis Wiki" class="md-nav__button md-logo" aria-label="Willis Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Willis Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Supplies
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Supplies
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/supplies/fasteners/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fasteners
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/supplies/bearings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bearings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/supplies/shafts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shafts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/supplies/pipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Printing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3D Printing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/3dp/prusa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prusa Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wind Power
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Wind Power
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/kidwind/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KidWind
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/collegiate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collegiate Designs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_3" id="__nav_2_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Airfoils
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Airfoils
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/airfoil%20simulator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Airfoil Simulator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/select_an_airfoil/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Airfoil Selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/download_an_airfoil/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download an Airfoil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/fusion_airfoil_plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusion Airfoil Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_4" id="__nav_2_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gears
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gears
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/gears/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gear Box Videos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eng/wind/fusion_spur_gear_plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fusion Spur Gear Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Misc
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Misc
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Norms
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Norms
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/norms/ai_usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Acceptable Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/cooking_by_the_book/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cooking by the Book
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/download_youtube/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download YouTube
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computer Science
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Computer Science
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital Logic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Digital Logic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digital-logic-10-binary-numbers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary Numbers Practice
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digital-logic-20-logic-gates-and-or/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First Circuits: AND and OR
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digital-logic-30-transistors-not-gate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transistors and the NOT Gate
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digital-logic-40-xor-half-adder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compound Gates: XOR and the Half Adder
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digital-logic-50-full-adder-4-bit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Useful Binary Computer
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learn Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Learn Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-10-first-program/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First Python Program
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-20-turtle-graphics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Turtle Power
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-30-loops-spiral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Turtle Spiral
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-40-input-conditionals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grade Calculator
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-50-functions-guessing-game/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guess the Number
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-60-lists-slot-machine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slot Machine
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-70-modulus-spirals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dice Roller and Turtle Spirals Revisited
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn-python-80-rock-paper-scissors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rock Paper Scissors
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_3" id="__nav_4_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Structures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Structures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-structures-10-2d-list-practice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2D List Practice
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-structures-20-tic-tac-toe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2D Lists Tic-Tac-Toe
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-structures-30-dictionaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dictionaries
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-structures-40-analysis-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SpaghettiOs Analysis Report
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_4" id="__nav_4_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithms
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Algorithms
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-10-connect4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect4
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-20-connect4-check-win/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect4 Check Win Helper Functions
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-30-connect4-check-move/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect4 Check Move Hints
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-40-connect4-unit-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit Testing Your Connect4 Library
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-50-monty-hall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monty Hall Algorithm
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-60-algorithm-extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithm Extraction
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-70-search-algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search Algorithms
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-80-sorting-introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sorting Introduction
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-90-recursion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recursion
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-100-merge-sort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Merge Sort
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms-110-traveling-salesman/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Traveling Salesman
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_5" id="__nav_4_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EarSketch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EarSketch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-10-getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-20-customizing-your-song/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customizing Your Song
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-30-creating-a-beat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating a Beat
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-40-loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-50-effects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Effects
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-60-custom-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Functions
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-70-lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lists
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-80-function-return-boolean-logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Function Return and Boolean Logic
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earsketch-90-release-day/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Day
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_6" id="__nav_4_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reeborg
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reeborg
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reeborg-10-meet-reeborg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meet Reeborg!
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_7" id="__nav_4_1_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Games With Pygame Zero
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Games With Pygame Zero
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-10-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Set Up for Pygame Zero
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-20-nice-bike/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nice Bike!
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-30-alien-collisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    More Characters and Collisions
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-40-gravity-jumping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gravity, Jumping, and Bouncing
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-50-mouse-score/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Random Numbers, Mouse Clicks, and Keeping Score
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-60-projectiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projectiles with Lists and Custom Functions
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-70-rotation-walls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rotation, Tiles, and Solid Walls
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-80-enemies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dumb Enemies and Smart Enemies
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-90-animation-health/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiled Images, Animated Motion, and Health
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-100-game-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multiple Worlds and Game Over Reset
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygame-zero-110-platforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actor Positioning and Platforms
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_8" id="__nav_4_1_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tinkercad Codeblocks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tinkercad Codeblocks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codeblocks-10-bubble-wand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bubble Wand
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codeblocks-20-bubble-wand-part-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bubble Wand Part 2
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codeblocks-30-sk8board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sk8board Time!
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codeblocks-40-spinning-top/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spinning Top Battle
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_9" id="__nav_4_1_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Microcontrollers With Circuit Playground Express
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Microcontrollers With Circuit Playground Express
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpx-10-roulette-wheel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roulette Wheel
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpx-20-playing-a-tune/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generating Frequencies and Playing a Tune
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpx-30-lighting-effects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lighting Effects With Functions
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpx-40-input-device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Making an Input Device
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpx-50-acceleration-mouse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Acceleration as Input
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpx-60-tilt-sensor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tilt Sensor
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autodesk Fusion
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Autodesk Fusion
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toy Block
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toy Block
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tools-youll-meet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Tools You'll Meet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-a-part-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start a Part Design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sketch-the-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sketch the Base
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extrude-the-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extrude the Base
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#save-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Save Your Work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-the-first-stud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add the First Stud
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pattern-the-studs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern the Studs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hollow-the-bottom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hollow the Bottom
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-the-center-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add the Center Columns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fillet-the-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fillet the Edges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turn-it-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turn It In
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tools-youll-meet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Tools You'll Meet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-a-part-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start a Part Design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sketch-the-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sketch the Base
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extrude-the-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extrude the Base
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#save-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Save Your Work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-the-first-stud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add the First Stud
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pattern-the-studs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern the Studs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hollow-the-bottom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hollow the Bottom
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-the-center-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add the Center Columns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fillet-the-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fillet the Edges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turn-it-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turn It In
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="toy-block">Toy Block</h1>
+<p>This is a 2x4 toy block. Its manufacturer's lawyers would like everyone to
+call it exactly that, and we are happy to oblige. Today you'll model one in
+Autodesk Fusion, dimensionally accurate to the real thing, using the four
+tools that show up in 90% of all 3D designs.</p>
+<!-- SCREENSHOT: ![The finished toy block: eight studs on top, hollow underneath with three center columns.](images/finished-block.png){ width="480" } -->
+
+<hr />
+<h2 id="overview">Overview</h2>
+<p>Nearly every model you will ever make in Fusion follows the same rhythm:
+draw a flat <strong>sketch</strong>, pull it into a 3D <strong>body</strong>, and refine it. In this
+lab you'll follow that rhythm four times over to build a toy block — base,
+studs, hollow underside, and rounded edges — and every dimension will match
+the brick in your junk drawer at home.</p>
+<h2 id="the-tools-youll-meet">The Tools You'll Meet</h2>
+<p>This lab introduces the core toolbox. Skim the tables now; each tool is
+explained again at the step where you first use it.</p>
+<p><strong>Modeling tools:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it does</th>
+<th>Where to find it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Create Sketch</em></td>
+<td>Starts a 2D drawing on a flat plane or face</td>
+<td>Toolbar, or the <em>Create</em> menu</td>
+</tr>
+<tr>
+<td><em>2-Point Rectangle</em></td>
+<td>Sketches a rectangle from two corners</td>
+<td>Sketch toolbar</td>
+</tr>
+<tr>
+<td><em>Center Diameter Circle</em></td>
+<td>Sketches a circle from its center</td>
+<td>Sketch toolbar, or <span class="keys"><kbd class="key-c">C</kbd></span></td>
+</tr>
+<tr>
+<td><em>Line</em></td>
+<td>Sketches a line; doubles as a <strong>construction line</strong> in Construction mode</td>
+<td>Sketch toolbar; <span class="keys"><kbd class="key-x">X</kbd></span> toggles Construction</td>
+</tr>
+<tr>
+<td><em>Sketch Dimension</em></td>
+<td>Locks a size or distance with a number</td>
+<td>Sketch toolbar, or <span class="keys"><kbd class="key-d">D</kbd></span></td>
+</tr>
+<tr>
+<td><em>Offset Sketch</em></td>
+<td>Copies sketch geometry a set distance from the original</td>
+<td>Sketch toolbar</td>
+</tr>
+<tr>
+<td><em>Extrude</em></td>
+<td>Pulls a 2D profile into a 3D body</td>
+<td>Solid toolbar, <em>Create</em> menu, or <span class="keys"><kbd class="key-e">E</kbd></span></td>
+</tr>
+<tr>
+<td><em>Rectangular Pattern</em></td>
+<td>Repeats a feature in rows and columns</td>
+<td>Solid toolbar</td>
+</tr>
+<tr>
+<td><em>Shell</em></td>
+<td>Hollows out a solid body, leaving walls of a set thickness</td>
+<td>Modify ▸ Shell</td>
+</tr>
+<tr>
+<td><em>Fillet</em></td>
+<td>Rounds off a sharp edge</td>
+<td>Modify ▸ Fillet, or <span class="keys"><kbd class="key-f">F</kbd></span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interface features:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it's for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Browser</strong></td>
+<td>The design's table of contents: sketches, bodies, units, and visibility eyeballs</td>
+</tr>
+<tr>
+<td><strong>Origin planes</strong></td>
+<td>The three starting planes (XY, XZ, YZ) that align with the axes</td>
+</tr>
+<tr>
+<td><strong>ViewCube</strong> and <em>Home</em> icon</td>
+<td>Spin the view to a standard angle; <em>Home</em> resets to the 3D perspective</td>
+</tr>
+<tr>
+<td><strong>Parametric Timeline</strong></td>
+<td>Records every feature you create, in order, and lets you edit any of them later</td>
+</tr>
+<tr>
+<td><strong>Sketch Palette</strong></td>
+<td>Sketch options like <em>Construction</em> and <em>Look At</em></td>
+</tr>
+<tr>
+<td><strong>Data Panel</strong></td>
+<td>Your saved cloud files, organized into Projects and Folders</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Before you start</p>
+<p>Sign in to Autodesk Fusion with your Autodesk account. Your work saves
+to Autodesk's cloud, so you can pick it up from any computer in the lab.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">You've got it when…</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your block measures 31.8 x 15.8 x 9.6 millimeters, with eight
+      studs on top made from one extrude and one pattern.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The underside is hollowed to a 1.49 mm wall, with three columns
+      down the center.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The stud, block, and column edges are rounded with a 0.2 mm
+      fillet.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The design is saved to your Fusion project as <code>2x4 Toy Block</code>.</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Collaboration &amp; AI</p>
+<p><strong>Work:</strong> On your own. Ask a neighbor for a hand if you're stuck, but
+drive Fusion yourself.</p>
+<p><strong>AI — AIAS Level 1, No AI:</strong> This lab is about learning the tools by
+using them, so set AI aside this time.
+<a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">What the levels mean.</a></p>
+</div>
+<hr />
+<h2 id="start-a-part-design">Start a Part Design</h2>
+<p>Every new Fusion file begins with a choice about what you're making.</p>
+<ol>
+<li>
+<p>Open Fusion and create a new design. Fusion asks you to choose a
+    <strong>design intent</strong>. Choose <em>Part Design</em>.</p>
+<div class="admonition info">
+<p class="admonition-title">The three design intents</p>
+<p>A <strong>Part Design</strong> is a single manufacturable object — like today's
+toy block. An <strong>Assembly Design</strong> combines multiple parts into a
+larger object, the way individual blocks build a structure. A
+<strong>Hybrid Design</strong> is the classic Fusion style, where one file can
+hold both. We'll start with parts and work up to assemblies later.
+You can change your mind later by converting the Design Type in the
+Browser.</p>
+</div>
+</li>
+<li>
+<p>Reset Fusion to its default settings so your screen matches this lab.
+    Click your profile icon, click <em>Preferences</em>, and click the <em>Restore
+    Defaults</em> button in the lower left of the window.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If <em>Restore Defaults</em> is grayed out, you're already at the defaults
+and there's nothing to do.</p>
+</div>
+</li>
+<li>
+<p>While still in Preferences, set the default units. On the left side,
+    under <em>Default Units</em>, select <em>Design</em> and set the units to
+    <em>millimeter</em>. Click <em>Apply</em>, then close the window.</p>
+<div class="admonition info">
+<p class="admonition-title">Default units vs. this file's units</p>
+<p>The Preference sets the unit for every <strong>new</strong> design file. Any
+single file can be changed at any time: in the Browser, open the
+<em>Document Settings</em> folder and click <em>Change Active Units</em>. Leave
+everything in millimeters for this unit — all of our dimensions
+are metric.</p>
+</div>
+</li>
+</ol>
+<hr />
+<h2 id="sketch-the-base">Sketch the Base</h2>
+<p>Nearly all Fusion workflows start with a 2D sketch that you later pull into
+a 3D body. The block's footprint comes first.</p>
+<ol start="4">
+<li>
+<p>Click <em>Create Sketch</em> in the toolbar.</p>
+</li>
+<li>
+<p>Fusion asks you to pick one of the three <strong>origin planes</strong>. Select the
+    bottom XY plane — picture it as the floor the block sits on. Fusion
+    rotates your view to face the sketch straight on, and a <em>Sketch</em> tab
+    appears in the toolbar.</p>
+<div class="admonition info">
+<p class="admonition-title">Why the straight-on view?</p>
+<p>Sketching in a straight-on view is an industry best practice. It
+removes perspective distortion, so dimensions land where you intend
+and your cursor doesn't snap to geometry hiding in the background.</p>
+</div>
+</li>
+<li>
+<p>Select the <em>2-Point Rectangle</em> tool.</p>
+</li>
+<li>
+<p>Click the <strong>origin point</strong> — the dot at the center of the screen — to
+    place the rectangle's first corner.</p>
+<div class="admonition info">
+<p class="admonition-title">Why start at the origin?</p>
+<p>Starting at the origin anchors your design to a fixed point in
+space. An anchored sketch can't drift, and it's the first step
+toward a <strong>fully defined</strong> sketch — an idea we'll keep building on
+in the coming labs.</p>
+</div>
+</li>
+<li>
+<p>Drag your mouse out and watch the two dimension inputs appear. Press
+    <span class="keys"><kbd class="key-tab">Tab</kbd></span> until the width input is active and type <code>15.8</code>. Press <span class="keys"><kbd class="key-tab">Tab</kbd></span>
+    to lock it, type <code>31.8</code> for the length, and click in any quadrant to
+    place the rectangle. For this block, the direction doesn't matter.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Typed a wrong number? Double-click any dimension to reopen it,
+type the new value, and press <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
+</div>
+</li>
+<li>
+<p>Look at your sketch lines. They changed from blue to black. In Fusion,
+    black geometry is <strong>fully constrained</strong> — locked in place — while blue
+    geometry can still move.</p>
+</li>
+<li>
+<p>Click <em>Finish Sketch</em> in the top right. This is your exit door back to
+    the 3D world; Fusion needs to know you're done sketching before it
+    hands you the 3D tools.</p>
+<p>Your model should look like this.</p>
+<!-- SCREENSHOT: <img alt="The finished base sketch: a black 31.8 by 15.8 rectangle anchored at the origin." src="images/base-sketch.png" />{ width="480" } -->
+<div class="admonition info">
+<p class="admonition-title">The Browser is your table of contents</p>
+<p>A <em>Sketches</em> folder just appeared in the <strong>Browser</strong> on the left.
+The Browser lists everything in your design — sketches, bodies,
+and more — and the eyeball icons toggle visibility.</p>
+</div>
+</li>
+</ol>
+<hr />
+<h2 id="extrude-the-base">Extrude the Base</h2>
+<ol start="11">
+<li>
+<p>Activate <em>Extrude</em> — press <span class="keys"><kbd class="key-e">E</kbd></span>, or find it in the Solid toolbar or
+    the <em>Create</em> menu. The sketch has only one <strong>profile</strong> (an enclosed
+    area a 3D tool can grab), so Fusion selects it for you.</p>
+</li>
+<li>
+<p>Type <code>9.6</code> for the distance. The value lands in the Extrude dialog —
+    Fusion lets you type in the canvas or the dialog, whichever is handier.</p>
+</li>
+<li>
+<p>The flat, straight-on view is hiding the block's new thickness. Click
+    the <em>Home</em> icon next to the ViewCube to switch to a 3D perspective.</p>
+</li>
+<li>
+<p>Before confirming, take a minute to practice moving around. You will
+    do this hundreds of times per lab, so it's worth making it automatic.</p>
+<table>
+<thead>
+<tr>
+<th>To do this</th>
+<th>Do this</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zoom</td>
+<td>Roll the scroll wheel</td>
+</tr>
+<tr>
+<td>Pan</td>
+<td>Hold the scroll wheel down and move the mouse</td>
+</tr>
+<tr>
+<td>Orbit</td>
+<td>Hold <span class="keys"><kbd class="key-shift">Shift</kbd></span> and the scroll wheel together, then move</td>
+</tr>
+<tr>
+<td>Reset the view</td>
+<td>Click the <em>Home</em> icon</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Click <em>OK</em> to confirm the extrude. A <em>Bodies</em> folder appears in the
+    Browser.</p>
+<p>Your model should look like this.</p>
+<!-- SCREENSHOT: <img alt="A solid rectangular slab, 31.8 by 15.8 by 9.6 mm." src="images/base-extruded.png" />{ width="480" } -->
+<div class="admonition info">
+<p class="admonition-title">The Parametric Timeline is time travel</p>
+<p>Look at the bottom of the screen. The <strong>Parametric Timeline</strong>
+records every feature you create, in order. Double-click any item
+to edit it later — change this extrude's thickness next week and
+the rest of the model rebuilds to match. Right-click an item for
+more options, like <em>Delete</em>.</p>
+</div>
+</li>
+</ol>
+<hr />
+<h2 id="save-your-work">Save Your Work</h2>
+<ol start="16">
+<li>
+<p>Click the <em>Save</em> icon in the Application bar at the top left.</p>
+<div class="admonition info">
+<p class="admonition-title">Where your files live</p>
+<p>Fusion stores files on Autodesk's servers, not on your computer.
+That's why you sign in — your designs follow your account to any
+machine.</p>
+</div>
+</li>
+<li>
+<p>Name the design <code>2x4 Toy Block</code>.</p>
+</li>
+<li>
+<p>Set up a home for this unit's work. Click the caret next to the
+    <em>Location</em> field to expand the list, click <em>New Project</em>, and name it
+    <code>Fusion Labs</code>. Save every design from this unit in this project.</p>
+</li>
+<li>
+<p>Add a folder inside the project: double-click the <em>Fusion Labs</em>
+    project to open it, click <em>New Folder</em>, and name it <code>Skill Labs</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This trips up nearly everyone: you must <strong>double-click the folder
+to open it</strong> before saving, or the file lands outside the folder.
+The location bar should show the folder's name before you commit.</p>
+</div>
+</li>
+<li>
+<p>Click <em>Save</em>. The design tab now shows the file name and a version
+    number — more on versioning later in the unit.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The <strong>Data Panel</strong>, opened from the grid icon at the top left,
+shows all your saved files. You can also create projects and
+folders there and move files around.</p>
+</div>
+</li>
+</ol>
+<hr />
+<h2 id="add-the-first-stud">Add the First Stud</h2>
+<p>The eight studs on top start as a single circle. Pattern tools will do the
+other seven.</p>
+<ol start="21">
+<li>
+<p>Click <em>Create Sketch</em>, then click the top face of the block. With a 3D
+    body in place, you can sketch directly on any of its flat faces.</p>
+</li>
+<li>
+<p>Select the <em>Center Diameter Circle</em> tool or press <span class="keys"><kbd class="key-c">C</kbd></span>. Click once
+    anywhere on the top face to place the center — don't worry about the
+    position yet — then type <code>5</code> for the diameter and click again to place
+    the circle. Press <span class="keys"><kbd class="key-escape">Esc</kbd></span> to end the command.</p>
+</li>
+<li>
+<p>The circle isn't pinned down yet — click and drag it and it slides
+    around freely. Fusion uses <strong>constraints</strong> and <strong>sketch dimensions</strong>
+    to lock geometry in place. Activate the <em>Sketch Dimension</em> tool or
+    press <span class="keys"><kbd class="key-d">D</kbd></span>.</p>
+</li>
+<li>
+<p>Click the circle's center, then the top edge of the rectangle, and
+    drag to the side. A dimension appears. Click again to place it, type
+    <code>3.9</code>, and press <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>No need to type "mm" — you set millimeters as the default unit in
+step 3, and Fusion assumes it.</p>
+</div>
+</li>
+<li>
+<p>Repeat in the other direction: dimension from the circle's center to
+    the neighboring edge, also <code>3.9</code>.</p>
+</li>
+<li>
+<p>Try to drag the circle again. It shouldn't budge — the two dimensions
+    hold it in place.</p>
+<p>Your model should look like this.</p>
+<!-- SCREENSHOT: <img alt="The top face with one 5 mm circle dimensioned 3.9 mm from two edges." src="images/first-stud-sketch.png" />{ width="480" } -->
+</li>
+<li>
+<p>Press <span class="keys"><kbd class="key-e">E</kbd></span> for Extrude and select the circle's profile. This sketch
+    has more than one profile, so Fusion waits for you to pick. Type <code>1.7</code>
+    for the distance.</p>
+</li>
+<li>
+<p>Before clicking <em>OK</em>, check the <em>Operation</em> field: it should say
+    <em>Join</em>. Keep it. Join fuses the new cylinder and the block into one
+    body; <em>New Body</em> would leave a separate, disconnected cylinder
+    resting on top. Click <em>OK</em>.</p>
+<div class="admonition info">
+<p class="admonition-title">Why Join matters here</p>
+<p>The Shell tool you'll use shortly traces the <strong>outside contour</strong>
+of a body. Because the stud is joined, Shell treats it as part of
+that contour — which is exactly what leaves the hollow indent
+inside each stud, just like the real block.</p>
+</div>
+</li>
+</ol>
+<hr />
+<h2 id="pattern-the-studs">Pattern the Studs</h2>
+<p>One stud down, seven to go. You could sketch seven more circles, but the
+<em>Rectangular Pattern</em> tool does it in one move — and if the stud ever
+changes, the copies follow.</p>
+<ol start="29">
+<li>
+<p>Activate <em>Rectangular Pattern</em> from the Solid toolbar.</p>
+<div class="admonition warning">
+<p class="admonition-title">Pattern the feature, not the sketch</p>
+<p>Fusion also offers a <em>sketch</em> version of Rectangular Pattern.
+Avoid it. Patterning 3D features is far less taxing for Fusion
+than patterning sketch geometry, and simple sketches keep your
+model fast and easy to update. This is a best practice worth
+building early.</p>
+</div>
+</li>
+<li>
+<p>Set the <em>Object Type</em> to <em>Features</em>, then select your stud extrude in
+    the timeline at the bottom of the screen. The cylinder highlights blue
+    when you have it.</p>
+</li>
+<li>
+<p>Click the <em>Axes</em> selector, then click the block's <strong>length edge
+    first</strong>, followed by the width edge. Selecting the length first maps
+    it to <em>Axis 1</em> in the dialog, so your numbers will match the steps
+    below.</p>
+</li>
+<li>
+<p>Drag the two directional arrows on the model to rough the pattern in.
+    This visual check confirms the pattern heads across the block, not off
+    into space, before you commit exact numbers.</p>
+</li>
+<li>
+<p>Set Axis 1 to a distance of <code>24</code> and a quantity of <code>4</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Check the Distribution</p>
+<p>Make sure <em>Distribution</em> is set to <em>Extent</em>. Extent measures the
+<strong>total</strong> distance from the first stud to the last — not the gap
+between neighbors. If your preview scatters studs past the edge of
+the block, this setting is the usual suspect.</p>
+</div>
+</li>
+<li>
+<p>Set Axis 2 to a quantity of <code>2</code> and an Extent distance of <code>8</code> for the
+    second row.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If a pattern grows in the wrong direction, add or remove a minus
+sign on the distance.</p>
+</div>
+</li>
+<li>
+<p>Click <em>OK</em> when the preview shows two tidy rows of four.</p>
+<p>Your model should look like this.</p>
+<!-- SCREENSHOT: <img alt="The block with all eight studs patterned on top." src="images/studs-patterned.png" />{ width="480" } -->
+</li>
+</ol>
+<hr />
+<h2 id="hollow-the-bottom">Hollow the Bottom</h2>
+<ol start="36">
+<li>
+<p>Click and drag the <strong>ViewCube</strong> in the top right to turn the block
+    over. The ViewCube snaps to standard views; dragging gives you
+    anything in between.</p>
+</li>
+<li>
+<p>The block is still solid. Activate <em>Shell</em> from the Modify menu —
+    you're modifying an existing body, which is how Fusion organizes its
+    menus.</p>
+</li>
+<li>
+<p>Select <strong>only the bottom face</strong>, then set the <em>Inside Thickness</em> to
+    <code>1.49</code>. Click <em>OK</em>.</p>
+<p>Your model should look like this.</p>
+<!-- SCREENSHOT: <img alt="The underside hollowed out, showing 1.49 mm walls and indents inside the studs." src="images/shelled-bottom.png" />{ width="480" } -->
+<div class="admonition success">
+<p class="admonition-title">Checkpoint</p>
+<p>Look inside each stud: the Shell traced the joined studs as part
+of the outer contour and left an indent inside every one. That's
+the Join from step 28 paying off.</p>
+</div>
+</li>
+</ol>
+<hr />
+<h2 id="add-the-center-columns">Add the Center Columns</h2>
+<p>A real 2x4 has three columns under the roof that grip the studs of the
+block below. They're built from one circle, an offset, and another pattern.</p>
+<ol start="39">
+<li>
+<p>Right-click the bottom <strong>inside</strong> face and choose <em>Create Sketch</em> —
+    right-clicking a flat face is a second way to start a sketch. Check
+    the Browser and turn off the visibility of your earlier sketches if
+    they're in the way.</p>
+</li>
+<li>
+<p>Activate the <em>Line</em> tool, then turn on <em>Construction</em> in the Sketch
+    Palette (or press <span class="keys"><kbd class="key-x">X</kbd></span>). A <strong>construction line</strong> draws dashed and is
+    for reference only — it helps you line things up without adding a
+    profile that Extrude would try to grab later.</p>
+</li>
+<li>
+<p>Hover over one of the recessed circles inside a stud until a circle
+    glyph appears — that's Fusion offering to snap to the center. Click
+    it, draw the line across the block to the center of the opposite
+    circle, and click. Press <span class="keys"><kbd class="key-escape">Esc</kbd></span> to end the Line command.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Snapping to existing geometry only works in a straight-on view.
+If your view has drifted, click <em>Look At</em> in the Sketch Palette to
+face the sketch directly.</p>
+</div>
+</li>
+<li>
+<p>Press <span class="keys"><kbd class="key-c">C</kbd></span> for a circle, and turn Construction back <strong>off</strong> (press
+    <span class="keys"><kbd class="key-x">X</kbd></span>). Hover along your construction line until the triangle glyph
+    appears at its <strong>midpoint</strong>, click to place the center, and type <code>6.3</code>
+    for the diameter.</p>
+</li>
+<li>
+<p>Now make the column hollow. Activate the <em>Offset Sketch</em> tool, select
+    the circle, and type <code>1</code> for the offset distance. Use the <em>Flip</em>
+    button until the new circle lands <strong>inside</strong> the original.</p>
+<div class="admonition info">
+<p class="admonition-title">Offset vs. Shell</p>
+<p>Offset is the other road to a hollow shape: it copies geometry a
+set distance away, giving you two profiles — a ring — to extrude
+directly. Shell hollows a finished body; Offset builds the hollow
+into the sketch. You'll use both, and today you're using each
+where it works best.</p>
+</div>
+</li>
+<li>
+<p>Press <span class="keys"><kbd class="key-e">E</kbd></span>, select the ring profile between the two circles, and
+    extrude <code>8.1</code>. Click <em>OK</em>.</p>
+</li>
+<li>
+<p>Activate <em>Rectangular Pattern</em> again. It remembers the <em>Features</em>
+    object type from last time. Select your newest extrude in the
+    timeline, click the <em>Axes</em> selector, and select the block's <strong>long
+    edge</strong>. Set the quantity to <code>3</code> and the distance to <code>16</code>, then click
+    <em>OK</em>.</p>
+<p>Your model should look like this.</p>
+<!-- SCREENSHOT: <img alt="The underside with three hollow columns down the centerline." src="images/columns-patterned.png" />{ width="480" } -->
+</li>
+</ol>
+<hr />
+<h2 id="fillet-the-edges">Fillet the Edges</h2>
+<p>The shape is done; the edges are not. Real blocks are molded with slightly
+rounded edges, and the <strong>fillet</strong> is the tool that rounds them.</p>
+<ol start="46">
+<li>
+<p>Activate <em>Fillet</em> from the Modify menu or press <span class="keys"><kbd class="key-f">F</kbd></span>.</p>
+<div class="admonition info">
+<p class="admonition-title">Pronunciation matters</p>
+<p>In CAD it's <em>FILL-it</em>, not <em>fill-AY</em>. The fish gets the French
+pronunciation; the edge does not.</p>
+</div>
+</li>
+<li>
+<p>Take a minute to select every edge that needs rounding: the top edge
+    of all eight studs, the outer edges of the block, and the base edges
+    of the three bottom columns.</p>
+<div class="admonition warning">
+<p class="admonition-title">Edges, not faces</p>
+<p>Click carefully on the <strong>edge</strong>, not the flat face beside it.
+Selecting a face fillets every edge attached to that face — which
+usually includes edges you didn't want.</p>
+</div>
+</li>
+<li>
+<p>Set the fillet radius to <code>0.2</code> and click <em>OK</em>.</p>
+</li>
+<li>
+<p>Save your design — same <em>Save</em> icon as before. Fusion stores this as
+    a new version of the same file.</p>
+<p>Your model should look like this.</p>
+<!-- SCREENSHOT: <img alt="The finished, filleted toy block from a three-quarter view." src="images/finished-fillet.png" />{ width="480" } -->
+</li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">Checkpoint</p>
+<p>Base, studs, shell, columns, fillets — one block, five features, and
+every tool you'll lean on for the rest of this unit. Nice work.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Why 31.8 and not 32?</p>
+<p>The numbers in this lab aren't random. The real brick lives on an
+8-millimeter grid — a 2x4 spans 16 by 32 mm of grid — with 0.1 mm
+shaved from each side so neighboring blocks don't bind. That's how you
+get 31.8 x 15.8, and it's a taste of a design decision you'll make in
+your own parts: nominal size minus clearance.</p>
+</div>
+<hr />
+<h2 id="challenges">Challenges</h2>
+<p>Try these on your own once your block is done.</p>
+<ul>
+<li><strong>Time travel.</strong> Double-click the base extrude in the timeline and
+  change <code>9.6</code> to <code>19.2</code>. Watch the whole block — studs, shell, columns,
+  and fillets — rebuild to double height. Change it back when you're done.</li>
+<li><strong>The 2x2.</strong> Model a 2x2 block from scratch, no instructions. Every
+  dimension you need can be worked out from this lab and the 8 mm grid.</li>
+<li><strong>Reality check.</strong> Borrow the calipers, measure a real block, and
+  compare it to your model's dimensions. Note what you find in your
+  project notebook.</li>
+</ul>
+<hr />
+<h2 id="turn-it-in">Turn It In</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your design saved as <code>2x4 Toy Block</code> in the <em>Fusion Labs</em> project.
+      It's on Autodesk's cloud, so saving <strong>is</strong> submitting — I can see it
+      from the class hub.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> A screenshot of your finished block pasted into your project
+      notebook, with a sentence on which tool gave you the most trouble
+      and why.</li>
+</ul>
+<hr />
+<p><em>Credit: Adapted from <a href="https://www.youtube.com/watch?v=4G2E_DqQteM" target="_blank" rel="noopener">Day 1 of Learn Autodesk Fusion in 30 Days (2026
+Edition)</a> by Kevin Kennedy,
+Product Design Online.</em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "content.code.copy", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

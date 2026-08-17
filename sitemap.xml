@@ -1,239 +1,499 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/eng/3dp/prusa/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/eng/3dp/prusa/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/eng/supplies/bearings/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/eng/supplies/bearings/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/eng/supplies/fasteners/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/eng/supplies/fasteners/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/eng/supplies/pipe/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/eng/supplies/pipe/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/eng/supplies/shafts/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/eng/supplies/shafts/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/eng/wind/airfoil%20simulator/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/eng/wind/airfoil%20simulator/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/eng/wind/collegiate/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/eng/wind/collegiate/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/eng/wind/download_an_airfoil/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/eng/wind/download_an_airfoil/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/eng/wind/fusion_airfoil_plugin/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/eng/wind/fusion_airfoil_plugin/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/eng/wind/fusion_spur_gear_plugin/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/eng/wind/fusion_spur_gear_plugin/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/eng/wind/gears/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/eng/wind/gears/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/eng/wind/kidwind/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/eng/wind/kidwind/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/eng/wind/select_an_airfoil/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/eng/wind/select_an_airfoil/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/ai_acceptable_usage/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/algorithms-10-connect4/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/cooking_by_the_book/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/algorithms-100-merge-sort/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/download_youtube/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/algorithms-110-traveling-salesman/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/000%20Bell%20Work%20Rubric/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/algorithms-20-connect4-check-win/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20001/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/algorithms-30-connect4-check-move/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20002/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/algorithms-40-connect4-unit-testing/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20003/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/algorithms-50-monty-hall/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20004/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/algorithms-60-algorithm-extraction/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20005/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/algorithms-70-search-algorithms/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20006/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/algorithms-80-sorting-introduction/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20007/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/algorithms-90-recursion/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20008/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/codeblocks-10-bubble-wand/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20009/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/codeblocks-20-bubble-wand-part-2/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20010/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/codeblocks-30-sk8board/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20011/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/codeblocks-40-spinning-top/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20012/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/cpx-10-roulette-wheel/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20013/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/cpx-20-playing-a-tune/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20014/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/cpx-30-lighting-effects/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20015/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/cpx-40-input-device/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20016/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/cpx-50-acceleration-mouse/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20017/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/cpx-60-tilt-sensor/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20018/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/data-structures-10-2d-list-practice/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20019/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/data-structures-20-tic-tac-toe/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20020/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/data-structures-30-dictionaries/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20021/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/data-structures-40-analysis-report/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20022/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/digital-logic-10-binary-numbers/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20023/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/digital-logic-20-logic-gates-and-or/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20024/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/digital-logic-30-transistors-not-gate/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20025/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/digital-logic-40-xor-half-adder/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20026/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/digital-logic-50-full-adder-4-bit/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20027/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/earsketch-10-getting-started/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20028/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/earsketch-20-customizing-your-song/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20029/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/earsketch-30-creating-a-beat/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20030/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/earsketch-40-loops/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20031/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/earsketch-50-effects/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20032/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/earsketch-60-custom-functions/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20033/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/earsketch-70-lists/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20034/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/earsketch-80-function-return-boolean-logic/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/bellwork/Bell%20Work%20035/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/earsketch-90-release-day/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/misc/norms/ai_usage/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/fusion-10-toy-block/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/sandbox/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/learn-python-10-first-program/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/sandbox/pygame-zero-10-nice-bike/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/learn-python-20-turtle-graphics/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/sandbox/pygame-zero-10-nice-bike/lesson-plan/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/learn-python-30-loops-spiral/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/sandbox/reeborg-10-meet-reeborg/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/learn-python-40-input-conditionals/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
     <url>
-         <loc>https://mister-willis.github.io/willis-wiki/sandbox/reeborg-10-meet-reeborg/lesson-plan/</loc>
-         <lastmod>2026-08-05</lastmod>
+         <loc>https://willis.npa.school/labs/learn-python-50-functions-guessing-game/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/learn-python-60-lists-slot-machine/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/learn-python-70-modulus-spirals/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/learn-python-80-rock-paper-scissors/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/pygame-zero-10-setup/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/pygame-zero-100-game-modes/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/pygame-zero-110-platforms/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/pygame-zero-20-nice-bike/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/pygame-zero-30-alien-collisions/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/pygame-zero-40-gravity-jumping/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/pygame-zero-50-mouse-score/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/pygame-zero-60-projectiles/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/pygame-zero-70-rotation-walls/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/pygame-zero-80-enemies/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/pygame-zero-90-animation-health/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/reeborg-10-meet-reeborg/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/reeborg-20-functions/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/reeborg-30-library-conditionals/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/reeborg-40-loops/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/reeborg-50-if-else-while/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/labs/reeborg-60-maze/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/ai_acceptable_usage/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/cooking_by_the_book/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/download_youtube/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/000%20Bell%20Work%20Rubric/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20001/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20002/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20003/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20004/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20005/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20006/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20007/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20008/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20009/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20010/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20011/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20012/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20013/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20014/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20015/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20016/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20017/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20018/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20019/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20020/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20021/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20022/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20023/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20024/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20025/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20026/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20027/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20028/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20029/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20030/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20031/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20032/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20033/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20034/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/bellwork/Bell%20Work%20035/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/misc/norms/ai_usage/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/sandbox/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/sandbox/pygame-zero-10-nice-bike/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/sandbox/pygame-zero-10-nice-bike/lesson-plan/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/sandbox/reeborg-10-meet-reeborg/</loc>
+         <lastmod>2026-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://willis.npa.school/sandbox/reeborg-10-meet-reeborg/lesson-plan/</loc>
+         <lastmod>2026-08-17</lastmod>
     </url>
 </urlset>
