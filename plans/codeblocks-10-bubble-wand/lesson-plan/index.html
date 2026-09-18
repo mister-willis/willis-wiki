@@ -4381,41 +4381,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../labs/codeblocks-20-bubble-wand-part-2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Bubble Wand Part 2
-  
-
-    
-  </span>
-  
-  
-    
-  
-  
-    <span class="md-status md-status--published"></span>
-  
-
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../labs/codeblocks-30-sk8board/" class="md-nav__link">
         
   
@@ -5209,10 +5174,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pacing-two-51-minute-periods" class="md-nav__link">
+  <a href="#pacing-four-51-minute-periods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pacing — Two 51-Minute Periods
+        Pacing — Four 51-Minute Periods
       
     </span>
   </a>
@@ -5274,37 +5239,68 @@
 Teacher plan; published on the wiki but kept out of the nav and the search
 index (search: exclude in the front matter). Linked from Planbook.
 Planbook needs two fields: the lesson description and the standards. Both are
-isolated in "Planbook Fields" below — copy-paste them, or attach a PDF export
-of this whole file. Do not renumber or rename this file; the assignment's front
-matter points at it.
+isolated in "Planbook Fields" below — one lesson entry per day, all four
+pointing at the same assignment. Do not renumber or rename this file; the
+assignment's front matter points at it.
+
+This plan replaced the two-lab split (Bubble Wand / Bubble Wand Part 2) in
+September 2026. The lab is one 64-step document with "Day N starts here"
+boxes at steps 16, 29, and 47; the day breaks below match those boxes.
 -->
 
 <h2 id="planbook-fields">Planbook Fields</h2>
-<p><strong>Lesson (Day 1):</strong></p>
+<p><strong>Lesson (Day 1 — Shapes and holes, steps 1–15):</strong></p>
 <blockquote>
 <p>Direct instruction with slides: CAD by code — in Tinkercad Codeblocks a
-program draws the 3D model, and pressing Play runs it. Students create the
-project, build the wand's blower ring from cylinders and a tube, then create
-five named variables and rewire every shape parameter to use them instead of
-plain numbers. Progress is checked against the lab's "your screen should look
-like this" screenshots.</p>
+program draws the 3D model, and pressing Play runs it. Students create and
+name the project, then build the wand's ring from a hole cylinder, a solid
+cylinder, and a hole tube, grouped into one shape. Progress is checked
+against the lab's block figures and "your screen should look like this"
+previews.</p>
 </blockquote>
-<p><strong>Lesson (Day 2):</strong></p>
+<p><strong>Lesson (Day 2 — Variables, steps 16–28):</strong></p>
 <blockquote>
-<p>Brief recap: what the variables bought us. Students label each section of
-code with comment blocks, then build the handle (cylinder, rotate, move with
-a math-block equation) and the torus base, and finish with the whole wand in
-one color. Scored 0–4 on the rubric printed in the assignment; the design
-stays in the Tinkercad account for Part Two.</p>
+<p>Students create four named number variables (<code>InnerRadius</code>, <code>Thickness</code>,
+<code>OuterRadius</code>, <code>Overflow</code>), gather the Set blocks at the top of the
+program, and rewire every shape parameter to use a variable instead of a
+plain number (hole heights become <code>Thickness + 1</code>). The wand looks
+identical afterward, which is the point of the closing discussion. Each
+section is labeled with a comment block.</p>
 </blockquote>
-<p><strong>Standards:</strong> AZ CS 6.AP.V.1, 6.AP.PD.5, 6.AP.M.1</p>
+<p><strong>Lesson (Day 3 — Math blocks, steps 29–46):</strong></p>
+<blockquote>
+<p>Brief direct instruction on order of operations with blocks: two math
+blocks that read the same and compute differently. Students build the
+handle (cylinder, rotate, move) and the torus base, with every position
+equation a single two-slot math block; the middle steps get their own
+variables (<code>Length</code>, <code>HalfLength</code>, <code>HandleEnd</code>). Finish with the whole
+wand in one color.</p>
+</blockquote>
+<p><strong>Lesson (Day 4 — Loops and printing, steps 47–64):</strong></p>
+<blockquote>
+<p>Direct instruction with slides on loops: the <em>Count with</em> block repeats a
+box and a rotation to draw a ring of ridges no one would place by hand.
+Students name the ridge sizes as variables, add the ridge loop, trim the
+centers with a hole cylinder sized by <code>CutRadius</code> and <code>CutHeight</code>, thicken
+the entire wand by changing <code>Thickness</code> once, and export the design as an
+<code>.STL</code> submitted in Google Classroom. Scored 0–4 on the rubric printed in
+the assignment.</p>
+</blockquote>
+<p><strong>Standards:</strong> AZ CS 6.AP.V.1, 6.AP.M.1, 6.AP.PD.5, 6.AP.C.1, 6.AP.PD.3</p>
 <h2 id="learning-objectives">Learning Objectives</h2>
 <p>Students will be able to:</p>
 <ul>
 <li>Build a 3D model from code blocks and run the program with <em>Play</em>.</li>
 <li>Create named number variables and use them as shape parameters.</li>
-<li>Combine variables with math blocks to compute a size or position.</li>
+<li>Combine variables with math blocks to compute a size or position, one
+  operation per block, with the operands of <code>-</code> and <code>/</code> in the right order.</li>
+<li>Explain why a math block inside a math block is computed first, and avoid
+  it by naming the middle step.</li>
 <li>Label each section of a program with a comment that says what it builds.</li>
+<li>Use a counting loop to repeat a shape with a changing rotation, and explain
+  what the loop variable <code>i</code> is and where its values come from.</li>
+<li>Rebuild an entire design by changing one variable's value.</li>
+<li>Export a Tinkercad design as an <code>.STL</code> file for 3D printing.</li>
 </ul>
 <h2 id="standards-alignment">Standards Alignment</h2>
 <table>
@@ -5319,46 +5315,79 @@ stays in the Tinkercad account for Part Two.</p>
 <tr>
 <td>6.AP.V.1</td>
 <td>Identify variables that represent data types and perform operations on their values.</td>
-<td>The heart of the lab: five named variables (<code>InnerRadius</code>, <code>Thickness</code>, <code>OuterRadius</code>, <code>Overflow</code>, <code>Length</code>) replace every plain number, and math blocks operate on them (<code>OuterRadius + Overflow</code>, <code>Length / 2</code>). The no-spaces naming rule is the standard's naming-conventions point.</td>
-</tr>
-<tr>
-<td>6.AP.PD.5</td>
-<td>Document programs to make them easier to follow, test, and debug.</td>
-<td>Steps 29–31 and 45 require a comment block naming what each section builds — documentation is a graded checklist item, not a suggestion.</td>
+<td>The heart of the lab: twelve named variables replace every plain number, and math blocks operate on them (<code>OuterRadius + Overflow</code>, <code>Length / 2</code>, <code>InnerRadius - RidgeWidth</code>). The no-spaces naming rule is the standard's naming-conventions point, and the Day 4 payoff (change <code>Thickness</code> once, everything rebuilds) is the operation-on-values idea made visible.</td>
 </tr>
 <tr>
 <td>6.AP.M.1</td>
 <td>Decompose problems into parts to facilitate design and review.</td>
-<td>The wand is built as three commented sections — blower, handle, base — each written and tested separately before the next begins.</td>
+<td>The wand is built as three commented sections, ring, handle, and base, each written and tested separately before the next begins, and the ridges are added to the ring section without touching the others.</td>
+</tr>
+<tr>
+<td>6.AP.PD.5</td>
+<td>Document programs to make them easier to follow, test, and debug.</td>
+<td>Steps 27–28, 31, and 41 require a comment block naming what each section builds; documentation is a graded checklist item, not a suggestion.</td>
+</tr>
+<tr>
+<td>6.AP.C.1</td>
+<td>Design programs that combine control structures, including nested loops and compound conditionals.</td>
+<td>Partial: the ridge loop is a single <em>Count with</em> loop containing a box and a rotation driven by <code>i</code>, a real counting control structure, but nothing nested or conditional yet.</td>
+</tr>
+<tr>
+<td>6.AP.PD.3</td>
+<td>Test programs using a range of inputs and identify expected outputs.</td>
+<td>Partial: students change the loop step (10 → 12) and <code>Thickness</code> (1 → 2), predict the result, and verify against the lab's expected screenshots, a small but genuine input-range test.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="materials-setup">Materials &amp; Setup</h2>
 <ul>
-<li><code>slides.pptx</code> (this folder) loaded and tested.</li>
-<li>Tinkercad class accounts — verify every student can sign in <strong>before</strong> Day 1;
-  a login problem eats the whole period for that kid.</li>
+<li><code>slides.pptx</code> (this folder) for Days 1–3 and <code>slides-loops.pptx</code> for Day 4,
+  loaded and tested. The Day 1–3 deck predates the no-nested-math rewrite
+  and still shows the old handle equation on its build-plan slide; skip or
+  fix that slide before teaching.</li>
+<li>Tinkercad class accounts. Verify every student can sign in <strong>before</strong>
+  Day 1; a login problem eats the whole period for that kid.</li>
+<li>Google Classroom assignment open on Day 4 to receive the <code>.STL</code> files.</li>
 <li>Notebooks.</li>
-<li>The lab is two days of the same design; Tinkercad saves automatically, so
-  there is nothing to collect between days.</li>
+<li>The lab is four days in the same design. Tinkercad saves automatically, so
+  there is nothing to collect between days; the "Day N starts here" boxes in
+  the lab show each day's expected starting state, and the plan's look-fors
+  below say what a screen should show by each day's end.</li>
 </ul>
 <h2 id="slides-direct-instruction">Slides &amp; Direct Instruction</h2>
-<p>The deck (8 slides, speaker notes on each) runs: title → drawing by hand vs.
-programming the drawing → the three shape blocks and the <em>Play</em> button → a dark
-big-number beat (five named numbers control the whole wand) → variables as
-names for numbers → "your turn" prediction pair → the Day 2 build plan
-(comments, handle, base) → mission slide. Day 1 stops after the prediction
-slide; the build-plan slide opens Day 2. Questions worth asking:</p>
+<p>The Day 1–3 deck (8 slides, speaker notes on each) runs: title → drawing by
+hand vs. programming the drawing → the three shape blocks and the <em>Play</em>
+button → a dark big-number beat (five named numbers control the whole wand)
+→ variables as names for numbers → "your turn" prediction pair → the build
+plan (comments, handle, base) → mission slide. Day 1 stops after the <em>Play</em>
+demo; Day 2 opens with the variables and prediction slides; Day 3 opens with
+the build-plan slide and the lab's order-of-operations box on the projector.</p>
+<p>The Day 4 deck (8 slides) runs: title → the tedious job (fifteen ridges by
+hand vs. one loop) → anatomy of the <em>Count with</em> block → a dark big-number
+beat (one box block, a full ring of ridges) → predict-the-loop practice pair
+→ the one-change rebuild (<code>Thickness</code> 1 → 2) → what an <code>.STL</code> is and how to
+export → mission slide.</p>
+<p>Questions worth asking:</p>
 <ul>
 <li>"If I want the ring twice as thick, how many blocks do I have to touch?"
-  (before variables: several; after: one — that's the sales pitch)</li>
+  (Day 1, before variables: several; Day 2, after: one. That's the sales
+  pitch.)</li>
+<li>"Why won't Tinkercad accept <code>Inner Radius</code> as a name?" (no spaces; the
+  computer would read it as two things)</li>
 <li>"The computer ignores comments completely. So who are they for?" (future
   you, and anyone helping you debug)</li>
-<li>"Why won't Tinkercad accept <code>Inner Radius</code> as a name?" (no spaces — the
-  computer would read it as two things)</li>
+<li>"These two blocks say the same words. Which one is 25 and which is 20?"
+  (the inside block runs first; you can only tell by the outlines, which is
+  why we give the middle step a name instead)</li>
+<li>"Who creates the variable <code>i</code>? What's in it on the third trip through the
+  loop?" (the loop makes it; the third trip is 20 when counting by 10)</li>
+<li>"Why does the loop stop at 179 and not 359?" (each box crosses the whole
+  ring; by 180 degrees you've drawn both sides)</li>
+<li>"If we count by 12 instead of 10, do we get more ridges or fewer?" (fewer:
+  bigger steps, fewer stops)</li>
 </ul>
-<h2 id="pacing-two-51-minute-periods">Pacing — Two 51-Minute Periods</h2>
-<p><strong>Day 1</strong></p>
+<h2 id="pacing-four-51-minute-periods">Pacing — Four 51-Minute Periods</h2>
+<p><strong>Day 1 — Shapes and holes (steps 1–15)</strong></p>
 <table>
 <thead>
 <tr>
@@ -5371,54 +5400,123 @@ slide; the build-plan slide opens Day 2. Questions worth asking:</p>
 <tr>
 <td style="text-align: center;">0–4</td>
 <td>Settle + do-now</td>
-<td>On the board: "You need 15 identical windows on a Minecraft build. What's the worst way to do it? The best?" Ties yesterday's world to today's: let the machine repeat itself.</td>
+<td>On the board: "You need 15 identical windows on a Minecraft build. What's the worst way to do it? The best?" Plant the seed for Day 4: let the machine repeat itself.</td>
 </tr>
 <tr>
-<td style="text-align: center;">4–18</td>
+<td style="text-align: center;">4–16</td>
 <td>Slides</td>
-<td>Slides 1–6; do the Play-button demo live in Tinkercad — drop a cylinder, run it, break it, fix it. Narrate misclicks cheerfully.</td>
+<td>Slides 1–3; do the <em>Play</em>-button demo live in Tinkercad: drop a cylinder, run it, break it, fix it. Narrate misclicks cheerfully.</td>
 </tr>
 <tr>
-<td style="text-align: center;">18–46</td>
+<td style="text-align: center;">16–44</td>
 <td>Lab</td>
-<td>Steps 1–28: project setup, blower ring, then variables. The screenshots are the answer key — train them to compare before raising a hand.</td>
-</tr>
-<tr>
-<td style="text-align: center;">46–51</td>
-<td>Wrap</td>
-<td>Cold-close: "The wand looks exactly the same as it did before the variables. What did we actually gain?" Collect answers, confirm nothing. Preview: tomorrow the wand grows a handle.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Day 2</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Minutes</th>
-<th>Segment</th>
-<th>What happens</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">0–4</td>
-<td>Settle + do-now</td>
-<td>"Write one sentence: what does a variable do for your program?" Compare with a neighbor.</td>
-</tr>
-<tr>
-<td style="text-align: center;">4–12</td>
-<td>Slides</td>
-<td>Slide 7 (the Day 2 build plan): comments, then handle, then base — three sections, three comments.</td>
-</tr>
-<tr>
-<td style="text-align: center;">12–44</td>
-<td>Lab</td>
-<td>Steps 29–52. The handle's <code>InnerRadius + Length / 2</code> equation is the hard part of the day — circulate there.</td>
+<td>Steps 1–15: sign in, create, rename, then the ring. Sign-in and project setup take longer than they look; budget for it. The block figures are the answer key, so train them to compare before raising a hand. Step 14 is the concept: holes don't cut until <em>Group Selection</em>.</td>
 </tr>
 <tr>
 <td style="text-align: center;">44–51</td>
 <td>Wrap</td>
-<td>Checkpoint check: blower, handle, base, one color. Cold-close: one student explains what the <em>Move</em> block's equation computes. Preview: "Next lab, one loop draws fifteen ridges — and then we print it."</td>
+<td>Screen check against the step 15 preview. Cold-close: "I want a bigger wand. How many numbers would you have to change?" (several, and they all have to agree). Preview: tomorrow, one number.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Day 2 — Variables (steps 16–28)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Minutes</th>
+<th>Segment</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0–4</td>
+<td>Settle + do-now</td>
+<td>Open <em>Bubble Wand</em>, press <em>Play</em>, compare with the "Day 2 starts here" picture. Anyone who isn't there finishes Day 1 first.</td>
+</tr>
+<tr>
+<td style="text-align: center;">4–16</td>
+<td>Slides</td>
+<td>Slides 4–6: five named numbers control the whole wand, variables as names for numbers, the prediction pair.</td>
+</tr>
+<tr>
+<td style="text-align: center;">16–44</td>
+<td>Lab</td>
+<td>Steps 16–28: create four variables, gather the <em>Set</em> blocks at the top, rewire every parameter, then the two comments. Rotation check: no plain number left in a shape parameter, and every <em>Set</em> block above the ring.</td>
+</tr>
+<tr>
+<td style="text-align: center;">44–51</td>
+<td>Wrap</td>
+<td>Cold-close: "The wand looks exactly the same as it did yesterday. What did we actually gain?" Collect answers, confirm nothing yet. Preview: tomorrow the wand grows a handle, and the math gets interesting.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Day 3 — Math blocks (steps 29–46)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Minutes</th>
+<th>Segment</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0–4</td>
+<td>Settle + do-now</td>
+<td>"Write one sentence: what does a variable do for your program?" Compare with a neighbor. Screen check against the "Day 3 starts here" box.</td>
+</tr>
+<tr>
+<td style="text-align: center;">4–14</td>
+<td>The nesting talk</td>
+<td>Slide 7 (build plan: handle, then base, each with a comment). Then the lab's order-of-operations box on the projector: two blocks that both read <code>InnerRadius + Length / 2</code>; ask for the two answers (25 and 20) before revealing. The rule: the inside block goes first, so we don't nest; the middle step gets a variable.</td>
+</tr>
+<tr>
+<td style="text-align: center;">14–44</td>
+<td>Lab</td>
+<td>Steps 29–46. <code>HalfLength</code> and <code>HandleEnd</code> are the new idea; the check during rotation is that every math block holds exactly two things. Rotate-before-move on the handle is where hands go up.</td>
+</tr>
+<tr>
+<td style="text-align: center;">44–51</td>
+<td>Wrap</td>
+<td>Checkpoint check: ring, handle, base, one color. Cold-close: one student explains what the <em>Move</em> block's equation computes. Preview: "Tomorrow, one loop draws fifteen ridges, and then we print it."</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Day 4 — Loops and printing (steps 47–64)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Minutes</th>
+<th>Segment</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0–4</td>
+<td>Settle + do-now</td>
+<td>On the board: "Your wand needs 15 evenly spaced ridges. Estimate: how long to place them by hand? How many mistakes?" Screen check against the "Day 4 starts here" box.</td>
+</tr>
+<tr>
+<td style="text-align: center;">4–16</td>
+<td>Slides</td>
+<td>Day 4 deck, slides 1–6; work the loop-prediction slide together before releasing. It's the whole concept check.</td>
+</tr>
+<tr>
+<td style="text-align: center;">16–40</td>
+<td>Lab</td>
+<td>Steps 47–61: ridge variables and loop, center trim, thickness change. Step 57's <code>InnerRadius - RidgeWidth</code> is the day's order-of-operations moment; ask what happens if the two are swapped before anyone builds it. Step 58 is where hands go up: the hole comes <em>after</em> the loop and before <em>Group Selection</em>.</td>
+</tr>
+<tr>
+<td style="text-align: center;">40–47</td>
+<td>Export + submit</td>
+<td>Steps 62–64: <em>Share</em> → <code>.STL</code> → Google Classroom. Watch for downloads-folder confusion. Students who finish early customize with the tip at step 61.</td>
+</tr>
+<tr>
+<td style="text-align: center;">47–51</td>
+<td>Wrap</td>
+<td>Cold-close: "What did the variable <code>Thickness</code> just save you?" Preview: "Next design has trucks, axles, and wheels that snap on, and the training wheels come off."</td>
 </tr>
 </tbody>
 </table>
@@ -5432,72 +5530,108 @@ slide; the build-plan slide opens Day 2. Questions worth asking:</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">B.2</td>
-<td>The step ladder climbs from drag-a-cylinder to building nested math equations — challenging but attainable, with the lab's screenshots as the self-check at every rung.</td>
+<td style="text-align: center;">1</td>
+<td>Do-nows and cold-closes each day have students predicting before pressing <em>Play</em>: the two answers to the nesting question, the ridge count for a new step value.</td>
 </tr>
 <tr>
-<td style="text-align: center;">B.4</td>
-<td>The Day 1 cold-close ("the model looks identical — what did we gain?") demands analysis of an invisible improvement, not a visible one.</td>
+<td style="text-align: center;">3</td>
+<td>Day 3's nesting talk and Day 4's "why stop at 179?" have students reasoning about blocks and geometry together, with the outlines and the preview as evidence.</td>
 </tr>
 <tr>
-<td style="text-align: center;">B.5</td>
-<td>From step 4 on, students drive the lab doc themselves; the teacher demos once and gets out of the way.</td>
+<td style="text-align: center;">5</td>
+<td>The lab's block figures and "your screen should look like this" previews are the self-check at every rung; the "Day N starts here" boxes are the organizer for where to begin.</td>
 </tr>
 <tr>
-<td style="text-align: center;">C.3</td>
-<td>The screenshots after each <em>Play</em> step let stuck students self-rescue; neighbors are the stated second resort before a hand goes up.</td>
+<td style="text-align: center;">7</td>
+<td>Four days building an original 3D artifact in a browser-based CAD tool, ending in a file that goes to a real printer.</td>
 </tr>
 <tr>
-<td style="text-align: center;">D.2</td>
-<td>Variables named for real dimensions (<code>InnerRadius</code>, <code>Length</code>) mirror how real CAD work parameterizes parts — say so when introducing them.</td>
+<td style="text-align: center;">9</td>
+<td>Day 2's cold-close ("the model looks identical, what did we gain?") demands analysis of an invisible improvement; Day 4's step change (10 → 12) is a prediction, not a recipe.</td>
 </tr>
 <tr>
-<td style="text-align: center;">E.1</td>
-<td>Rotating notebook check-ins during lab time, per the course's standing system.</td>
+<td style="text-align: center;">10</td>
+<td>Variables named for real dimensions mirror how CAD work parameterizes parts, and the <code>.STL</code> has stakes because it prints. Say both out loud.</td>
 </tr>
 <tr>
-<td style="text-align: center;">E.3</td>
-<td>Both days' do-nows and cold-closes have learners verbalizing the concept (what a variable buys you), not just clicking blocks.</td>
+<td style="text-align: center;">11</td>
+<td>The step ladder climbs from drag-a-cylinder to a loop rotating a box by <code>i</code>, with a bounded fix for every predictable stumble (below).</td>
 </tr>
 <tr>
-<td style="text-align: center;">E.4</td>
-<td>The 0–4 rubric is printed in the assignment; ask one student mid-rotation what separates a 4 from a 3 (no stray plain numbers).</td>
+<td style="text-align: center;">12</td>
+<td>From step 4 on, students drive the lab doc themselves; the teacher demos once a day and gets out of the way.</td>
 </tr>
 <tr>
-<td style="text-align: center;">F.3</td>
-<td>Transitions are on the clock table; slides-to-lab handoff is one sentence — "understand your mission for today?"</td>
+<td style="text-align: center;">16</td>
+<td>Neighbors are the stated second resort before a hand goes up; the preview screenshots let stuck students self-rescue.</td>
 </tr>
 <tr>
-<td style="text-align: center;">G.2</td>
-<td>Two periods of building an original 3D artifact in a browser-based CAD tool.</td>
+<td style="text-align: center;">18</td>
+<td>Transitions are on the clock tables; the slides-to-lab handoff each day is one sentence, "understand your mission for today?"</td>
+</tr>
+<tr>
+<td style="text-align: center;">22</td>
+<td>The 0–4 rubric is printed in the assignment; ask one student mid-rotation what separates a 4 from a 3 (no stray plain numbers, no nested math).</td>
+</tr>
+<tr>
+<td style="text-align: center;">24</td>
+<td>Each day's cold-close has a learner verbalizing the concept in their own words: what a variable buys you, what the <em>Move</em> equation computes, what <code>Thickness</code> just saved them.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="common-student-errors">Common Student Errors</h2>
 <ul>
-<li>Naming a variable with a space (<code>Inner Radius</code>) — Tinkercad refuses it; the
-  lab's warning box covers it, but expect it anyway.</li>
-<li>Editing the number inside a <em>Set</em> block's copy on the shape instead of
-  dragging the variable in — the model works today and breaks in Part Two.</li>
-<li>Forgetting to press <em>Play</em> after a change, then reporting "it didn't work" —
-  the program only runs when told to.</li>
-<li>Rotate before Move confusion on the handle: doing the <em>Move</em> first rotates
-  the handle around the wrong point. Order of blocks is order of operations.</li>
-<li>Math blocks nested backward (<code>Length / 2 + InnerRadius</code> built as one flat
-  block) — have them rebuild from the two-block pictures in steps 40–42.</li>
+<li><strong>Naming a variable with a space</strong> (<code>Inner Radius</code>). Tinkercad refuses it;
+  the lab's warning box covers it, but expect it anyway.</li>
+<li><strong>Editing the number on the shape instead of dragging the variable in.</strong>
+  The model works today and breaks on Day 4 when <code>Thickness</code> changes and one
+  piece stays skinny. That's the rubric's 3, not a 4.</li>
+<li><strong>Forgetting to press <em>Play</em></strong> after a change, then reporting "it didn't
+  work." The program only runs when told to.</li>
+<li><strong>Rotate before Move confusion on the handle.</strong> Doing the <em>Move</em> first
+  rotates the handle around the wrong point. Order of blocks is order of
+  operations.</li>
+<li><strong>A math block dropped inside another anyway</strong> (a student who builds
+  <code>InnerRadius + Length / 2</code> or <code>Thickness / 2</code> straight from memory). Have
+  them read the outlines aloud, then pull the inner block out into its own
+  <em>Set</em> variable; the lab's rule is one operation per block, and the rubric
+  checks it.</li>
+<li><strong>A getter in the wrong slot</strong> (<code>RidgeWidth - InnerRadius</code> instead of
+  <code>InnerRadius - RidgeWidth</code>). Harmless for <code>+</code> and <code>*</code>, wrong for <code>-</code> and
+  <code>/</code>: a negative cut radius, so the trim does nothing and the ridge stubs
+  stay. The lab's warning box names it; the fix is swapping the two slots.</li>
+<li><strong>The <em>Rotate</em> block outside the loop.</strong> One ridge, rotated many times,
+  instead of many ridges. The preview exposes it instantly.</li>
+<li><strong>Forgetting to drag <code>i</code> into the <em>Rotate</em> block's <em>by</em> slot.</strong> Every box
+  lands in the same spot and looks like one thick ridge.</li>
+<li><strong>The hole cylinder or <em>Group Selection</em> inside the loop.</strong> The trim runs
+  every pass and eats the wand.</li>
+<li><strong>Exporting before pressing <em>Play</em> one last time.</strong> The <code>.STL</code> captures
+  the last drawn model, not the blocks.</li>
 </ul>
 <h2 id="assessment-evidence">Assessment &amp; Evidence</h2>
 <ul>
-<li><strong>Deliverable:</strong> nothing uploaded — the finished Part One wand lives in the
-  student's Tinkercad account (see Turn It In), checked on screen during
-  rotations.</li>
-<li><strong>Score:</strong> 0–4 holistic rubric printed in the assignment ("How It's Graded").
-  A 4 requires all three parts drawn from code, every size traced to the five
-  variables, a comment on each section, and one color.</li>
-<li><strong>Look-fors during check-ins:</strong> <em>Set</em> blocks gathered at the top under a
-  Variables comment; no orphan plain numbers in shape parameters; student can
-  change <code>Thickness</code> on request and predict what will happen before pressing
+<li><strong>Deliverable:</strong> the wand's <code>.STL</code> file submitted in Google Classroom on
+  Day 4 (mirrors Turn It In). Days 1–3 are checked on screen during
+  rotations; nothing is collected.</li>
+<li><strong>Score:</strong> 0–4 holistic rubric printed in the assignment ("How It's
+  Graded"). A 4 requires the complete ridged wand from code, every size
+  traced to a variable with no nesting, a comment on each section, one
+  color, and a <code>Thickness</code> change that rebuilds everything.</li>
+<li><strong>Look-fors by day:</strong><ul>
+<li><em>Day 1:</em> the four ring blocks in order, hole cylinder first, <em>Group
+  Selection</em> last, and the step 15 preview on screen.</li>
+<li><em>Day 2:</em> <em>Set</em> blocks gathered at the top under a <code>Variables</code> comment;
+  no orphan plain numbers in shape parameters; a <code>The ring</code> comment.</li>
+<li><em>Day 3:</em> every math block holds exactly two things; <code>HalfLength</code> and
+  <code>HandleEnd</code> set in the Variables section; the student can change
+  <code>Thickness</code> on request and predict what will happen before pressing
   <em>Play</em>.</li>
+<li><em>Day 4:</em> box and rotate nested inside the <em>Count with</em> block; <code>i</code>
+  visibly in the rotation; the hole and <em>Group Selection</em> after the loop;
+  the student can predict the ridge count for a new step value.</li>
+</ul>
+</li>
 </ul>
 
 
