@@ -5177,6 +5177,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-up-your-lab-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set Up Your Lab Folder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#connect-the-axle-to-the-base" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5453,6 +5464,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-up-your-lab-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set Up Your Lab Folder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#connect-the-axle-to-the-base" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5552,7 +5574,7 @@ to build. A <strong>slider-crank</strong> turns a spinning wheel into a straight
 back-and-forth push, or the reverse: in a car, the piston is the slider,
 and it shoves the crank around a few thousand times a minute. Ours has
 six parts, no fuel, and a top speed of however fast you can drag a mouse.</p>
-<p><img alt="The finished slider-crank assembly: a crank on a base, joined to a slider between two guide rails by a connecting rod." src="images/step-031.png" width="560" /></p>
+<p><img alt="The finished slider-crank assembly: a crank on a base, joined to a slider between two guide rails by a connecting rod." src="images/step-038.png" width="560" /></p>
 <hr />
 <h2 id="overview">Overview</h2>
 <p>Every design you've made so far has been one part. Real products are
@@ -5563,24 +5585,18 @@ move relative to each other. You'll put six premade parts together into
 a working slider-crank using three kinds of joint (rigid, revolute, and
 slider), then operate it by dragging the crank.</p>
 <p><strong>Builds on:</strong> <a href="../fusion-40-expired-patent/"><em>Expired Patent Project</em></a>
-— the Data Panel, saving to your <em>Fusion Labs</em> project, and moving
-around a model with the ViewCube.</p>
+— the Data Panel, saving designs, and moving around a model with the
+ViewCube.</p>
 <div class="admonition note">
 <p class="admonition-title">Before you start</p>
-<p>Your assembly needs its own copy of the parts.</p>
-<ul>
-<li>In the Data Panel, open the shared <em>Assembly Tutorial</em> project and
-  its <em>Parts</em> folder. It holds six parts: Axle, Base, Connecting Rod,
-  Crank, Pin, and Slider.</li>
-<li>Create a folder named <code>Parts</code> in your <em>Fusion Labs</em> project, and copy
-  all six parts into it (right-click a part and choose <em>Copy</em>).</li>
-<li>In your <em>Fusion Labs</em> project, create a new <em>Assembly Design</em> and save
-  it right away as <code>Slider Crank</code>.</li>
-</ul>
+<p>Sign in to Autodesk Fusion and open the Data Panel. You'll start by
+making folders, not models.</p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">You've got it when…</p>
 <ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your <code>Slider Crank</code> lab folder holds a <code>Parts</code> folder with the six
+      parts, and your <code>Slider Crank</code> assembly sits beside it.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your <code>Slider Crank</code> design holds all seven components (six parts,
       with two copies of the Pin), and only the Base is grounded.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The Browser lists seven joints by name: Axle-Base, Crank-Axle,
@@ -5598,74 +5614,126 @@ having you use them, so set AI aside.
 <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">What the levels mean.</a></p>
 </div>
 <hr />
+<h2 id="set-up-your-lab-folder">Set Up Your Lab Folder</h2>
+<p>The six parts you'll assemble are already modeled and waiting in <em>Class
+Files</em>. Your assembly needs its own copies, organized in a folder of its
+own, before you build anything.</p>
+<ol>
+<li>
+<p>In the Data Panel, open your Fusion student folder and create a new
+    folder named <code>Slider Crank</code>. This is your lab folder; everything for
+    this lab goes in it.</p>
+</li>
+<li>
+<p>Open your <code>Slider Crank</code> folder and create a folder inside it named
+    <code>Parts</code>.</p>
+</li>
+<li>
+<p>Browse to <em>Class Files</em> ▸ <code>tutorials</code> ▸ <code>Assembly Tutorial</code> ▸ <code>Parts</code>.
+    It holds six parts: Axle, Base, Connecting Rod, Crank, Pin, and Slider.</p>
+</li>
+<li>
+<p>Right-click the Axle, choose <em>Copy</em>, and select your own <code>Slider Crank</code>
+    ▸ <code>Parts</code> folder as the destination.</p>
+</li>
+<li>
+<p>Repeat step 4 for the other five parts. Open your <code>Parts</code> folder and
+    confirm all six are there.</p>
+</li>
+<li>
+<p>Create a new <em>Assembly Design</em>.</p>
+</li>
+<li>
+<p>Save it right away as <code>Slider Crank</code>, in your <code>Slider Crank</code> lab folder
+    and <strong>not</strong> in <code>Parts</code>. Your lab folder should look like this.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Slider Crank/          your lab folder
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Parts/             the six parts you copied
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    Slider Crank       your assembly
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">One folder per project, assemblies above their parts</p>
+<p>This is how engineers keep a project findable. Every project gets a
+folder of its own, so nothing from one project wanders into another.
+Inside it, the assembly sits one level above a folder of the
+individual parts it's built from, like a Lego instruction booklet
+sitting on top of the bag of bricks it calls for. Like the booklet,
+the assembly doesn't hold the parts; it refers to the part files and
+says where each one goes. Keeping those files in a folder right
+beside it means the project stays together when you open it next
+month, share it, or add a part. Do this for every project from here
+on, not just this one.</p>
+</div>
+</li>
+</ol>
+<hr />
 <h2 id="connect-the-axle-to-the-base">Connect the Axle to the Base</h2>
 <p>The first joint is the simplest: two parts locked together so they can't
 move at all. It's also where you'll learn the routine every other joint
 follows.</p>
-<ol>
+<ol start="8">
 <li>
 <p>Find the Base in your <em>Parts</em> folder. Right-click it and select
     <em>Insert into Current Design</em>, or simply drag it into your <code>Slider
     Crank</code> design.</p>
-<p><img alt="The Parts folder in the Data Panel with the right-click menu open on the Base and Insert into Current Design highlighted." src="images/step-001.png" width="360" /></p>
+<p><img alt="The Parts folder in the Data Panel with the right-click menu open on the Base and Insert into Current Design highlighted." src="images/step-008.png" width="360" /></p>
 </li>
 <li>
 <p>Leave the Base at the default initial position. Notice that <em>Ground To
     Parent</em> is checked for the first inserted part by default. A
     <strong>grounded</strong> component is locked in place, and the other parts will
     move relative to it. Click <em>OK</em>.</p>
-<p><img alt="The Base in the design with the Initial Position panel open and Ground To Parent checked." src="images/step-002.png" width="560" /></p>
+<p><img alt="The Base in the design with the Initial Position panel open and Ground To Parent checked." src="images/step-009.png" width="560" /></p>
 </li>
 <li>
 <p>Notice that the Base in the Browser shows a small anchor icon,
     indicating that it is grounded to the parent. You can right-click a
     component in the Browser to turn grounding on or off. An assembly needs
     at least one grounded component; in this case, we want to leave it on.</p>
-<p><img alt="The Base:1 entry in the Browser with an anchor on its component icon." src="images/step-003.png" width="320" /></p>
+<p><img alt="The Base:1 entry in the Browser with an anchor on its component icon." src="images/step-010.png" width="320" /></p>
 </li>
 <li>
 <p>Find the Axle in the <em>Parts</em> folder and add it to the design. Be sure
     the checkbox for <em>Ground To Parent</em> is <strong>not</strong> checked, leaving this
     part free to move. Click <em>OK</em>.</p>
-<p><img alt="The Axle inserted on top of the Base, with Ground To Parent unchecked in the Initial Position panel." src="images/step-004.png" width="560" /></p>
+<p><img alt="The Axle inserted on top of the Base, with Ground To Parent unchecked in the Initial Position panel." src="images/step-011.png" width="560" /></p>
 </li>
 <li>
 <p>Notice that the Axle does <strong>not</strong> have an anchor icon in the Browser,
     because it is not grounded and is free to move. If yours is grounded,
     right-click it and unground it now.</p>
-<p><img alt="The Browser showing Base:1 with an anchor and Axle:1 without one." src="images/step-005.png" width="360" /></p>
+<p><img alt="The Browser showing Base:1 with an anchor and Axle:1 without one." src="images/step-012.png" width="360" /></p>
 </li>
 <li>
 <p>Drag the Axle to one side so it is away from the Base. Place it
     anywhere that lets you see both parts separately.</p>
-<p><img alt="The Axle sitting on the grid beside the Base." src="images/step-006.png" width="560" /></p>
+<p><img alt="The Axle sitting on the grid beside the Base." src="images/step-013.png" width="560" /></p>
 </li>
 <li>
 <p>Select <em>Relationships ▸ Joint</em>, or press <span class="keys"><kbd class="key-j">J</kbd></span>.</p>
-<p><img alt="The Relationships menu open with Joint highlighted and its J shortcut shown." src="images/step-007.png" width="280" /></p>
+<p><img alt="The Relationships menu open with Joint highlighted and its J shortcut shown." src="images/step-014.png" width="280" /></p>
 </li>
 <li>
 <p>Select the circular bottom edge of the Axle. The part turns partially
     transparent when you click the edge, to show that the first component
     has been selected.</p>
-<p><img alt="The bottom edge of the Axle highlighted with the joint origin marker at its center." src="images/step-008.png" width="200" /></p>
+<p><img alt="The bottom edge of the Axle highlighted with the joint origin marker at its center." src="images/step-015.png" width="200" /></p>
 </li>
 <li>
 <p>Orbit your view so you can see the bottom of the Base. Select the
     circular edge of the hole in the Base. Fusion joins the parts together
     at the edges you selected.</p>
-<p><img alt="The underside of the Base with the edge of its hole selected." src="images/step-009.png" width="480" /></p>
+<p><img alt="The underside of the Base with the edge of its hole selected." src="images/step-016.png" width="480" /></p>
 </li>
 <li>
 <p>Click the <em>Home</em> button above the ViewCube to return to the view from
     above.</p>
-<p><img alt="The Home button above the ViewCube." src="images/step-010.png" width="160" /></p>
+<p><img alt="The Home button above the ViewCube." src="images/step-017.png" width="160" /></p>
 </li>
 <li>
 <p>Select the <em>Motion</em> tab and set the <em>Type</em> to <em>Rigid</em>. Press the
     <em>Preview Motion</em> play button. Fusion shakes the joined parts to show
     that they are rigidly connected. Click <em>OK</em>.</p>
-<p><img alt="The Joint panel's Motion tab with Type set to Rigid and the Preview Motion button." src="images/step-011.png" width="320" /></p>
+<p><img alt="The Joint panel's Motion tab with Type set to Rigid and the Preview Motion button." src="images/step-018.png" width="320" /></p>
 <div class="admonition info">
 <p class="admonition-title">Rigid joints</p>
 <p>A <strong>rigid joint</strong> allows no motion at all; the two parts behave as
@@ -5679,13 +5747,13 @@ bolted, or welded together, like our Axle in its hole.</p>
 </li>
 <li>
 <p>Expand the <em>Relationships</em> and <em>Joints</em> folders in the Browser.</p>
-<p><img alt="The Browser with the Relationships and Joints folders expanded, showing a joint named Rigid 1." src="images/step-013.png" width="400" /></p>
+<p><img alt="The Browser with the Relationships and Joints folders expanded, showing a joint named Rigid 1." src="images/step-020.png" width="400" /></p>
 </li>
 <li>
 <p>Double-click the joint's label and rename it <strong>Axle-Base</strong>, then click
     the eyeball icon next to it to turn off the joint icon display in the
     design.</p>
-<p><img alt="The joint renamed Axle-Base in the Browser with its eyeball icon turned off." src="images/step-014.png" width="360" /></p>
+<p><img alt="The joint renamed Axle-Base in the Browser with its eyeball icon turned off." src="images/step-021.png" width="360" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>It's a best practice to rename each joint as you create it. Seven
@@ -5701,14 +5769,14 @@ seven joints named for the parts they connect are a parts list.</p>
 <p>The steps in the following sections use different joints and move a
 little faster. Look back at the previous section if you need a reminder of
 how to do a specific step.</p>
-<ol start="15">
+<ol start="22">
 <li>
 <p>Find the Crank in the <em>Parts</em> folder and add it to the design, making
     sure that <em>Ground To Parent</em> is <strong>not</strong> checked.</p>
 </li>
 <li>
 <p>Click the eyeball icon next to the Base to hide it temporarily.</p>
-<p><img alt="Base:1 in the Browser with its eyeball icon turned off." src="images/step-016.png" width="320" /></p>
+<p><img alt="Base:1 in the Browser with its eyeball icon turned off." src="images/step-023.png" width="320" /></p>
 </li>
 <li>
 <p>Select <em>Relationships ▸ Joint</em> or press <span class="keys"><kbd class="key-j">J</kbd></span>.</p>
@@ -5716,15 +5784,15 @@ how to do a specific step.</p>
 <li>
 <p>Select the upper edge of the center hole in the Crank, then the edge
     underneath the head of the Axle.</p>
-<p><img alt="The Crank with the upper edge of its center hole selected." src="images/step-018a.png" width="400" /></p>
-<p><img alt="The Axle with the edge under its head selected." src="images/step-018b.png" width="240" /></p>
+<p><img alt="The Crank with the upper edge of its center hole selected." src="images/step-025a.png" width="400" /></p>
+<p><img alt="The Axle with the edge under its head selected." src="images/step-025b.png" width="240" /></p>
 </li>
 <li>
 <p>On the <em>Motion</em> tab, set the <em>Type</em> to <em>Revolute</em>. Click the <em>Preview
     Motion</em> play button to watch the Crank revolve about the Axle. We could
     also set limits on the rotation here, but we want the Crank free to
     turn all the way around. Click <em>OK</em>.</p>
-<p><img alt="The Joint panel's Motion tab with Type set to Revolute, rotating about the Z axis, and the joint motion limits unchecked." src="images/step-019.png" width="320" /></p>
+<p><img alt="The Joint panel's Motion tab with Type set to Revolute, rotating about the Z axis, and the joint motion limits unchecked." src="images/step-026.png" width="320" /></p>
 <div class="admonition info">
 <p class="admonition-title">Revolute joints</p>
 <p>A <strong>revolute joint</strong> allows rotation about one axis and nothing
@@ -5747,7 +5815,7 @@ it around. Your model should look like this.</p>
 30 mm, which leaves a little clearance. Instead of joining a hole to a
 hole, this joint lines up the middle of an edge on the Slider with the
 middle of an edge on a rail.</p>
-<ol start="22">
+<ol start="29">
 <li>
 <p>Find the Slider in the <em>Parts</em> folder and add it to the design, making
     sure that <em>Ground To Parent</em> is <strong>not</strong> checked.</p>
@@ -5763,18 +5831,18 @@ middle of an edge on a rail.</p>
     until the target snaps to the midpoint, then click to set it as the
     Component 1 <strong>snap point</strong>, the exact spot on a part where a joint
     attaches.</p>
-<p><img alt="The Slider with the joint target snapped to the midpoint of its near-side lower edge." src="images/step-025.png" width="480" /></p>
+<p><img alt="The Slider with the joint target snapped to the midpoint of its near-side lower edge." src="images/step-032.png" width="480" /></p>
 </li>
 <li>
 <p>Show the Base and select the midpoint of the far rail's lower inside
     edge as the Component 2 snap point.</p>
-<p><img alt="The Base with the midpoint of the far rail's lower inside edge selected." src="images/step-026.png" width="560" /></p>
+<p><img alt="The Base with the midpoint of the far rail's lower inside edge selected." src="images/step-033.png" width="560" /></p>
 </li>
 <li>
 <p>On the <em>Motion</em> tab, change the <em>Type</em> to <em>Slider</em>. If the Slider's
     direction arrow doesn't point along the rails, change the axis with the
     <em>Slide</em> setting.</p>
-<p><img alt="The Slider joined to the far rail, with the direction arrow pointing along the rails." src="images/step-027.png" width="560" /></p>
+<p><img alt="The Slider joined to the far rail, with the direction arrow pointing along the rails." src="images/step-034.png" width="560" /></p>
 <div class="admonition info">
 <p class="admonition-title">Slider joints</p>
 <p>A <strong>slider joint</strong> allows movement in a straight line along one
@@ -5784,7 +5852,7 @@ axis, like a drawer on its runners.</p>
 <li>
 <p>The Slider is on the wrong side of the far rail. Return to the
     <em>Position</em> tab on the <em>Joint</em> panel and click the <em>Flip</em> button.</p>
-<p><img alt="The Joint panel's Position tab with the Flip button highlighted." src="images/step-028.png" width="280" /></p>
+<p><img alt="The Joint panel's Position tab with the Flip button highlighted." src="images/step-035.png" width="280" /></p>
 </li>
 <li>
 <p>Click <em>OK</em>. Rename the joint <strong>Slider-Base</strong> and hide it.</p>
@@ -5798,14 +5866,14 @@ but the connecting rod will handle that in the next section.</p>
 <h2 id="connect-the-connecting-rod">Connect the Connecting Rod</h2>
 <p>These last two steps each bundle a few joints you already know how to
 make. Two Pins go in first, then the rod rides on them.</p>
-<ol start="30">
+<ol start="37">
 <li>
 <p>Add two copies of the Pin to your design, and create rigid joints to
     insert one in the Crank's outer hole and one in the Slider's hole, so
     that the bottom of each Pin is even with the bottom of the part it's
     inserted in. Name the joints <strong>Pin-Crank</strong> and <strong>Pin-Slider</strong> and hide
     them.</p>
-<p><img alt="A Pin standing in the Crank's outer hole and another in the Slider's hole." src="images/step-030.png" width="560" /></p>
+<p><img alt="A Pin standing in the Crank's outer hole and another in the Slider's hole." src="images/step-037.png" width="560" /></p>
 <details class="tip">
 <summary>Stuck? Open for a hint.</summary>
 <p>Hide the Base as needed. Connecting a Pin to the Crank or the
@@ -5820,7 +5888,7 @@ copy becomes its own component (Pin:1 and Pin:2).</p>
     the edge of each hole on the rod's top side to the underside of the
     head on each Pin. Name the joints <strong>Rod-Crank</strong> and <strong>Rod-Slider</strong> and
     hide them.</p>
-<p><img alt="The Connecting Rod riding on both Pins, linking the Crank to the Slider." src="images/step-031.png" width="560" /></p>
+<p><img alt="The Connecting Rod riding on both Pins, linking the Crank to the Slider." src="images/step-038.png" width="560" /></p>
 </li>
 </ol>
 <div class="admonition success">
@@ -5844,7 +5912,8 @@ rails.</p>
 <hr />
 <h2 id="turn-it-in">Turn It In</h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your <code>Slider Crank</code> design saved in your <em>Fusion Labs</em> project. It's
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your <code>Slider Crank</code> assembly saved in your <code>Slider Crank</code> lab folder,
+      in your Fusion student folder, with the <code>Parts</code> folder beside it. It's
       on Autodesk's cloud, so saving <strong>is</strong> submitting.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> A notebook entry titled <strong>Assemblies and Joints</strong> with a screenshot
       of your finished assembly and its seven named joints visible in the
@@ -5863,11 +5932,11 @@ rails.</p>
 <tbody>
 <tr>
 <td style="text-align: center;"><strong>4 — Excellent</strong></td>
-<td>All seven components are in the assembly with only the Base grounded; all seven joints use the right type and are named for the parts they connect; the mechanism runs when the crank is dragged; the notebook entry has the screenshot.</td>
+<td>The lab folder holds the assembly with its <code>Parts</code> folder beside it; all seven components are in the assembly with only the Base grounded; all seven joints use the right type and are named for the parts they connect; the mechanism runs when the crank is dragged; the notebook entry has the screenshot.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>3 — Above Average</strong></td>
-<td>The mechanism runs, with a slip: an unnamed joint, a Pin that sits proud of its hole, or a screenshot that doesn't show the Browser.</td>
+<td>The mechanism runs, with a slip: an unnamed joint, the assembly saved inside <code>Parts</code> instead of beside it, a Pin that sits proud of its hole, or a screenshot that doesn't show the Browser.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>2 — Average</strong></td>
@@ -5879,7 +5948,7 @@ rails.</p>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>0 — Failing</strong></td>
-<td>No <code>Slider Crank</code> design in your Fusion Labs project and nothing in the notebook.</td>
+<td>No <code>Slider Crank</code> assembly in your student folder and nothing in the notebook.</td>
 </tr>
 </tbody>
 </table>
