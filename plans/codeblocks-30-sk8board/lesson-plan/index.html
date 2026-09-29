@@ -5498,6 +5498,11 @@ Planbook needs two fields: the lesson description and the standards. Both are
 isolated in "Planbook Fields" below — copy-paste them, or attach a PDF export
 of this whole file. Do not renumber or rename this file; the assignment's front
 matter points at it.
+
+Revised 2026: the original "read the whole-assembly screenshots" approach
+confused students into duplicating blocks. The lab now adds a few blocks at a
+time, each step's figure shows ONLY the new blocks, and a "Your model should
+look like this." check follows every small cluster.
 -->
 
 <h2 id="planbook-fields">Planbook Fields</h2>
@@ -5506,26 +5511,27 @@ matter points at it.
 <p>Direct instruction with slides: skateboard anatomy (deck, kick, truck, axle,
 wheelbase), the six variables that will drive the design, and the <em>Copy</em>
 block — build a sub-assembly once, copy and rotate it into place. Students
-start a new Codeblocks project, create the six dimension variables, and build
-both axle-and-truck assemblies by reading the block screenshots without
-step-by-step hand-holding.</p>
+start a new Codeblocks project, create the six dimension variables, and
+build both axle-and-truck assemblies in small steps, checking the model
+against a preview image after every few blocks (lab steps 1–30).</p>
 </blockquote>
 <p><strong>Lesson (Day 2):</strong></p>
 <blockquote>
 <p>Brief recap: what the Copy block saved us on Day 1. Students build the deck
 with a kick at each end (copying and rotating the nose kick to make the
-tail), add four snap-on wheels that print as separate pieces, and export the
-board as an <code>.STL</code> submitted in Google Classroom. Scored 0–4 on the rubric
-printed in the assignment.</p>
+tail), add four snap-on wheels with a Count-with loop, and export the board
+as an <code>.STL</code> submitted in Google Classroom (lab steps 31–51). Scored 0–4 on
+the rubric printed in the assignment.</p>
 </blockquote>
 <p><strong>Standards:</strong> AZ CS 6.AP.V.1, 6.AP.M.1, 6.AP.M.2</p>
 <h2 id="learning-objectives">Learning Objectives</h2>
 <p>Students will be able to:</p>
 <ul>
-<li>Read a block screenshot and reproduce the program it shows.</li>
+<li>Reproduce a block program from per-step figures, distinguishing <em>new</em>
+  blocks from changes to blocks already placed.</li>
 <li>Define variables named for real dimensions and use them across a design.</li>
 <li>Use the <em>Copy</em> block to reuse a built sub-assembly instead of rebuilding it.</li>
-<li>Decompose a multi-part model into assemblies built and tested separately.</li>
+<li>Decompose a multi-part model into assemblies built and checked separately.</li>
 </ul>
 <h2 id="standards-alignment">Standards Alignment</h2>
 <table>
@@ -5545,7 +5551,7 @@ printed in the assignment.</p>
 <tr>
 <td>6.AP.M.1</td>
 <td>Decompose problems into parts to facilitate design, implementation, and review.</td>
-<td>The board is built as separate assemblies — axles and trucks, deck, wheels — each finished and checked against its preview screenshot before the next starts.</td>
+<td>The board is built as separate assemblies — wheel-end, axle and truck, deck, kicks, wheels — each a few blocks at a time with a model check at every boundary before the next starts.</td>
 </tr>
 <tr>
 <td>6.AP.M.2</td>
@@ -5556,7 +5562,9 @@ printed in the assignment.</p>
 </table>
 <h2 id="materials-setup">Materials &amp; Setup</h2>
 <ul>
-<li><code>slides.pptx</code> (this folder) loaded and tested.</li>
+<li><code>slides.pptx</code> (this folder) — the anatomy, vocabulary, and Copy-block
+  opening still carries Day 1; the deck's step-by-step walkthrough slides are
+  now redundant with the lab itself and can be skipped.</li>
 <li>Tinkercad accounts working (verified back in lab 10); this is a <strong>new</strong>
   project, not a continuation.</li>
 <li>Google Classroom assignment open for the <code>.STL</code>.</li>
@@ -5565,16 +5573,17 @@ printed in the assignment.</p>
   screen for the anatomy talk.</li>
 </ul>
 <h2 id="slides-direct-instruction">Slides &amp; Direct Instruction</h2>
-<p>The deck (8 slides, speaker notes on each) runs: title → the training wheels
-come off (reading screenshots is the skill) → skateboard anatomy vocabulary →
-a dark "build one, copy the rest" beat → the six variables and what each
-controls → predict-the-change practice pair → Day 2 build plan (deck, kicks,
-wheels, export) → mission slide. Day 1 stops after the practice slide; the
-build-plan slide opens Day 2. Questions worth asking:</p>
+<p>Use the deck's opening arc: title → skateboard anatomy vocabulary → the
+"build one, copy the rest" beat → the six variables and what each controls →
+predict-the-change practice pair. Skip any slide that walks through build
+steps — the lab now does that at finer grain than the deck ever did. Day 2
+opens with the build-plan slide (deck, kicks, wheels, export). Questions
+worth asking:</p>
 <ul>
-<li>"The lab shows you a picture of blocks instead of telling you each step.
-  What do you have to do differently?" (read every parameter, not skim —
-  the picture is the instruction)</li>
+<li>"Each picture shows only the blocks you're adding right now. What does
+  that mean when your program suddenly has two toruses?" (you built one you
+  were supposed to copy — or copied one you were supposed to build; find the
+  step where yours stopped matching)</li>
 <li>"Why build the axle once and copy it, instead of building it twice?"
   (half the work, and a fix to one is a fix to both — until you copy it
   again, so fix first, copy second)</li>
@@ -5598,19 +5607,19 @@ build-plan slide opens Day 2. Questions worth asking:</p>
 <td>On the board: "Label a skateboard: deck, truck, axle, wheelbase. Guess if you don't know." Cheap vocabulary pre-check.</td>
 </tr>
 <tr>
-<td style="text-align: center;">4–18</td>
+<td style="text-align: center;">4–16</td>
 <td>Slides</td>
-<td>Slides 1–6; spend the time on the anatomy and Copy-block slides — those two carry the day.</td>
+<td>Anatomy and Copy-block slides — those two carry the day.</td>
 </tr>
 <tr>
-<td style="text-align: center;">18–46</td>
+<td style="text-align: center;">16–46</td>
 <td>Lab</td>
-<td>Steps 1–9: variables, then both axle-and-truck assemblies. Reading the torus and hole-box screenshots carefully is the work; resist reading them aloud for students.</td>
+<td>Steps 1–30: project, variables, then the whole axle assembly in small clusters — rings, slits, other end, axle and truck, group, front and rear positions. The rhythm is add-a-few-blocks, run, match the picture; students who match every picture never fall far behind.</td>
 </tr>
 <tr>
 <td style="text-align: center;">46–51</td>
 <td>Wrap</td>
-<td>Compare screens to the axles preview. Cold-close: "How many times did you build a wheel-end? How many exist?" (once; four). Preview: tomorrow the deck and wheels.</td>
+<td>Compare screens to the rear-axle check image. Cold-close: "How many wheel-ends are on your screen? How many did you build?" (four; one). Preview: tomorrow the deck and wheels.</td>
 </tr>
 </tbody>
 </table>
@@ -5632,22 +5641,22 @@ build-plan slide opens Day 2. Questions worth asking:</p>
 <tr>
 <td style="text-align: center;">4–10</td>
 <td>Slides</td>
-<td>Slide 7: deck, kicks, wheels, export — the day in one picture.</td>
+<td>The Day-2 build-plan slide: deck, kicks, wheels, export — the day in one picture.</td>
 </tr>
 <tr>
 <td style="text-align: center;">10–40</td>
 <td>Lab</td>
-<td>Steps 10–13: deck, both kicks, four wheels. Kick rotation direction is the sticking point — the preview screenshot settles arguments.</td>
+<td>Steps 31–48: deck, both kicks, the wheel loop. The kick tilt (step 38) is the fiddly one — the check image right after it settles arguments.</td>
 </tr>
 <tr>
 <td style="text-align: center;">40–46</td>
 <td>Export + submit</td>
-<td>Steps 14–16: <em>Share</em> → <code>.STL</code> → Google Classroom.</td>
+<td>Steps 49–51: <em>Share</em> → <code>.STL</code> → Google Classroom.</td>
 </tr>
 <tr>
 <td style="text-align: center;">46–51</td>
 <td>Wrap</td>
-<td>Cold-close: "You built maybe half the shapes on your screen. Where did the rest come from?" Preview: "Next lab there are no screenshots at all. Your design, your rules, one battle."</td>
+<td>Cold-close: "You built maybe half the shapes on your screen. Where did the rest come from?" Preview: "Next lab there are no pictures at all. Your design, your rules, one battle."</td>
 </tr>
 </tbody>
 </table>
@@ -5662,15 +5671,15 @@ build-plan slide opens Day 2. Questions worth asking:</p>
 <tbody>
 <tr>
 <td style="text-align: center;">B.1</td>
-<td>The overview names the bar out loud — "the training wheels are off" — and students can restate what that demands of them.</td>
+<td>The overview names the working rhythm out loud — add a few blocks, run, match the picture — and students can restate what that demands of them.</td>
 </tr>
 <tr>
 <td style="text-align: center;">B.2</td>
-<td>Screenshot-reading is a deliberate step up from numbered steps, with preview images every few steps so the challenge stays attainable.</td>
+<td>Each step adds two to four blocks with a model check right after, so the challenge stays small enough to recover from and frequent enough to stay honest.</td>
 </tr>
 <tr>
 <td style="text-align: center;">B.4</td>
-<td>Reproducing a program from its picture is analysis — students must decode what each parameter does rather than follow a sentence.</td>
+<td>Matching a model against an expected preview is analysis — students must decide <em>whether</em> it matches and, when it doesn't, find which block disagrees.</td>
 </tr>
 <tr>
 <td style="text-align: center;">B.5</td>
@@ -5678,7 +5687,7 @@ build-plan slide opens Day 2. Questions worth asking:</p>
 </tr>
 <tr>
 <td style="text-align: center;">C.3</td>
-<td>Preview screenshots at each assembly boundary are the built-in rescue; neighbors second, teacher third.</td>
+<td>A check image after every cluster is the built-in rescue; neighbors second, teacher third.</td>
 </tr>
 <tr>
 <td style="text-align: center;">D.2</td>
@@ -5704,14 +5713,19 @@ build-plan slide opens Day 2. Questions worth asking:</p>
 </table>
 <h2 id="common-student-errors">Common Student Errors</h2>
 <ul>
-<li>Skimming a screenshot and missing one parameter (a radius, a rotation
-  axis) — the model looks almost right, which is worse than wrong. Teach
-  "diff your blocks against the picture" as the first debugging move.</li>
+<li><strong>Duplicated blocks</strong> — rebuilding a shape the step meant them to <em>Copy</em>,
+  or re-adding a block that was already placed. The tell is a program longer
+  than the figures and a model with doubled parts. The lab's warning box
+  names this; the fix is "find the last step where your screen matched."</li>
+<li>Missing one parameter in a step (a radius, a rotation axis) — the model
+  looks almost right, which is worse than wrong. Teach "diff your blocks
+  against the picture" as the first debugging move.</li>
 <li>Copying <em>before</em> the sub-assembly is finished — the copy doesn't inherit
   later fixes, and the two halves drift apart.</li>
 <li>Wheel inner diameter changed without matching the axle — the wheel won't
   snap on. The 5.5 mm isn't decoration; it's a fit.</li>
-<li>Kicks rotated the wrong direction, curving down like a scoop instead of up.</li>
+<li>Skipping a "Your model should look like this." check to go faster —
+  errors then surface three sections later, where they're expensive to find.</li>
 <li>Forgetting <em>Group Selection</em> before moving an assembly, so the move grabs
   half the parts and leaves the rest behind.</li>
 </ul>
