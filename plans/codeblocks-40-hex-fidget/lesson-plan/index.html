@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://willis.npa.school/plans/codeblocks-40-spinning-top/lesson-plan/">
+        <link rel="canonical" href="https://willis.npa.school/plans/codeblocks-40-hex-fidget/lesson-plan/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Lesson Plan — Spinning Top Battle - Willis Wiki</title>
+        <title>Lesson Plan — Mesmerizing Hex Fidget - Willis Wiki</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lesson-plan-spinning-top-battle" class="md-skip">
+        <a href="#lesson-plan-mesmerizing-hex-fidget" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lesson Plan — Spinning Top Battle
+              Lesson Plan — Mesmerizing Hex Fidget
             
           </span>
         </div>
@@ -4567,7 +4567,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../labs/codeblocks-40-spinning-top/" class="md-nav__link">
+      <a href="../../../labs/codeblocks-40-hex-fidget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mesmerizing Hex Fidget
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--published"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labs/codeblocks-50-spinning-top/" class="md-nav__link">
         
   
   
@@ -5525,36 +5560,39 @@
 
 
 
-<h1 id="lesson-plan-spinning-top-battle">Lesson Plan — Spinning Top Battle</h1>
+<h1 id="lesson-plan-mesmerizing-hex-fidget">Lesson Plan — Mesmerizing Hex Fidget</h1>
 <!--
 Teacher plan; published on the wiki but kept out of the nav and the search
 index (search: exclude in the front matter). Linked from Planbook.
-Planbook needs two fields: the lesson description and the standards. Both are
-isolated in "Planbook Fields" below — copy-paste them, or attach a PDF export
-of this whole file. Do not renumber or rename this file; the assignment's front
-matter points at it.
+No deck for this lab — the direct instruction is a live demo, described
+below. Planbook needs two fields: the lesson description and the standards.
+Both are isolated in "Planbook Fields" below.
 -->
 
 <h2 id="planbook-fields">Planbook Fields</h2>
 <p><strong>Lesson:</strong></p>
 <blockquote>
-<p>Design challenge closing the Codeblocks unit: no step-by-step instructions.
-Brief direct instruction on what makes a top spin long and hit hard (weight
-placement, height, edge behavior) and the printer's size limits. Students
-research existing spinning-top designs, sketch a plan with dimensions in
-their notebooks, build the top in Tinkercad Codeblocks using any
-skills from the unit, and submit an <code>.STL</code> for printing. Tops battle after
-printing; the design is scored 0–4 on the rubric printed in the assignment.</p>
+<p>Live demo: a printed hex fidget doing its thing, then the clearance story —
+why a 2 mm gap lets a printer make moving parts in one job
+(print-in-place). Students build the ring program in Tinkercad Codeblocks,
+meeting the unit's first conditional (an if/then inside a Repeat loop
+decides when the rings stop) and the Change-by block (counting <code>diameter</code>
+down 8 mm per ring). They customize from a documented variable table —
+predict, change, Play — and export an <code>.STL</code> submitted in Google
+Classroom. Early finishers personalize the center piece with initials or
+a logo. Scored 0–4 on the rubric printed in the assignment.</p>
 </blockquote>
-<p><strong>Standards:</strong> AZ CS 6.AP.A.1, 6.AP.PD.3</p>
+<p><strong>Standards:</strong> AZ CS 6.AP.C.1, 6.AP.V.1, 6.AP.PD.3</p>
 <h2 id="learning-objectives">Learning Objectives</h2>
 <p>Students will be able to:</p>
 <ul>
-<li>Plan a design before programming it: a labeled sketch with dimensions.</li>
-<li>Apply unit skills (shapes, variables, loops, copy, group) to an original
-  design of their own.</li>
-<li>Design within hard constraints (40 mm diameter, 50 mm height).</li>
-<li>Justify a design choice in terms of what it does in the battle.</li>
+<li>Explain how a conditional inside a loop controls how many times the
+  loop's work actually happens.</li>
+<li>Use a <em>Change by</em> block to count a variable down as a program runs.</li>
+<li>Explain why print-in-place parts need clearance, and point to the
+  clearance in their own program.</li>
+<li>Test a program against a documented range of inputs, predicting the
+  output before running it.</li>
 </ul>
 <h2 id="standards-alignment">Standards Alignment</h2>
 <table>
@@ -5567,40 +5605,43 @@ printing; the design is scored 0–4 on the rubric printed in the assignment.</p
 </thead>
 <tbody>
 <tr>
-<td>6.AP.A.1</td>
-<td>Identify planning strategies, such as flowcharts or pseudocode, to simulate algorithms that solve problems.</td>
-<td>The do-now requires a labeled notebook sketch with dimensions before any blocks are placed — a planning artifact for a program, per the standard's "plan even if the build differs" intent. Flag: the planning step lives in this lesson plan, not the lab document — prune if you want standards grounded in the lab alone.</td>
+<td>6.AP.C.1</td>
+<td>Design programs that combine control structures, including nested loops and compound conditionals.</td>
+<td>The toy is drawn by an <strong>if/then nested inside a Repeat loop</strong> — the loop offers 25 trips and the conditional decides which ones build a ring. Partial: one conditional, not compound; this is still the unit's first and strongest combined-control-structure claim.</td>
+</tr>
+<tr>
+<td>6.AP.V.1</td>
+<td>Identify variables that represent different data types and perform operations on their values.</td>
+<td>Four named variables drive every dimension; students build expressions on them (<code>diameter / 2 - tightness</code>) and mutate one as the program runs (<em>Change diameter by -8</em>) — the first time a variable's value changes mid-program in this unit.</td>
 </tr>
 <tr>
 <td>6.AP.PD.3</td>
 <td>Test programs using a range of inputs and identify expected outputs.</td>
-<td>Partial: students iterate Play–check–adjust against two expected outputs they can verify on screen — the size limits and their own sketch — before export. The physical battle test comes after printing.</td>
+<td>The Make It Yours table documents each variable's range; students predict, set, and Play across inputs (<code>number sides</code> 24, <code>diameter</code> 100), and the warning box frames out-of-range inputs as testable failure cases.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="materials-setup">Materials &amp; Setup</h2>
 <ul>
-<li><code>slides.pptx</code> (this folder) loaded and tested.</li>
-<li>Tinkercad accounts; internet access for design research.</li>
-<li>Notebooks — the sketch is the ticket into Tinkercad today.</li>
-<li>Submission point open for <code>.STL</code> files.</li>
-<li>Know your print bed: if your slicer or printer imposes anything beyond the
-  lab's 40 mm × 50 mm limits, say so during the slides.</li>
+<li><strong>A printed hex fidget</strong> for the demo — this lesson's whole hook is
+  thirty seconds of it clicking and spinning in your hand. Print one ahead
+  at the defaults.</li>
+<li>Tinkercad accounts working; this is a new project, not a continuation.</li>
+<li>Google Classroom assignment open for the <code>.STL</code>.</li>
+<li>Notebooks.</li>
 </ul>
 <h2 id="slides-direct-instruction">Slides &amp; Direct Instruction</h2>
-<p>The deck (8 slides, speaker notes on each) runs: title → no instructions this
-time (what the unit already taught them) → the physics of a good top (weight
-low and out wide, edges) → a dark size-limits beat (40 mm × 50 mm, "a top too
-big for the printer battles no one") → research then sketch (plan before
-blocks) → prediction pair (which top wins?) → design moves in Codeblocks →
-mission slide. Questions worth asking:</p>
+<p>No deck. The direct instruction is a five-minute live arc:</p>
 <ul>
-<li>"Where should a top carry its weight to spin longest?" (out at the rim —
-  a flywheel; let them reason toward it, don't hand it over)</li>
-<li>"Tall and skinny or short and wide — who survives a hit?" (short and wide;
-  lower center, harder to tip)</li>
-<li>"Your top is 41 millimeters across and gorgeous. What happens?" (nothing —
-  it never gets printed; constraints aren't suggestions)</li>
+<li>Hand the printed fidget to the front row and let it travel while you
+  talk. It came off the printer <strong>exactly like this</strong> — nobody assembled
+  it.</li>
+<li>The one idea: the printer can't make two parts touch without welding
+  them, so the program leaves a 2 mm gap everywhere parts meet.
+  <strong>Print-in-place = moving parts + clearance.</strong></li>
+<li>The one question to plant: "The program says <em>Repeat 25 Times</em>. Your toy
+  will have four rings. Where did the other twenty-one go?" Don't answer
+  it — the if/then block answers it at step 19, and the wrap collects it.</li>
 </ul>
 <h2 id="pacing-one-51-minute-period">Pacing — One 51-Minute Period</h2>
 <table>
@@ -5615,32 +5656,42 @@ mission slide. Questions worth asking:</p>
 <tr>
 <td style="text-align: center;">0–4</td>
 <td>Settle + do-now</td>
-<td>On the board: "Sketch a spinning top. Arrow where the weight should go." No wrong answers yet — it primes the physics talk.</td>
+<td>On the board: "A 3D printer builds in one solid job. How could it possibly print pieces that <em>move</em>? Write your theory."</td>
 </tr>
 <tr>
-<td style="text-align: center;">4–16</td>
-<td>Slides</td>
-<td>Slides 1–7; keep the physics Socratic — they can reason out the flywheel themselves.</td>
+<td style="text-align: center;">4–9</td>
+<td>Demo</td>
+<td>The printed fidget travels the room; clearance story; plant the 25-trips question.</td>
 </tr>
 <tr>
-<td style="text-align: center;">16–24</td>
-<td>Research + sketch</td>
-<td>Search "3D printed spinning top"; then the notebook sketch with dimensions written on it. Sketch approved at the desk = start building.</td>
+<td style="text-align: center;">9–16</td>
+<td>Setup + variables</td>
+<td>Steps 1–4: project, four variables. Fast — don't let sign-in eat the period.</td>
 </tr>
 <tr>
-<td style="text-align: center;">24–44</td>
-<td>Lab</td>
-<td>Build in Codeblocks. Circulate for size-limit checks — measure early, not at export time.</td>
+<td style="text-align: center;">16–30</td>
+<td>One ring</td>
+<td>Steps 5–15: cone, hole cone (<em>Duplicate</em> saves the nested equations), group, mirror. The order-of-operations warning at step 7 is the same beat as sk8board's wheelbase — call the connection.</td>
+</tr>
+<tr>
+<td style="text-align: center;">30–38</td>
+<td>Loop + conditional</td>
+<td>Steps 16–20: Repeat, if/then, <code>diameter &gt; 28</code>, Change by -8. The 25-trips question gets answered here; make a student say it.</td>
+</tr>
+<tr>
+<td style="text-align: center;">38–44</td>
+<td>Center + customize</td>
+<td>Steps 21–26: second stack, then the table — predict before every Play.</td>
 </tr>
 <tr>
 <td style="text-align: center;">44–49</td>
 <td>Export + submit</td>
-<td><em>Play</em> one last time, <em>Share</em> → <code>.STL</code>, submit for printing.</td>
+<td>Steps 27–29: <em>Share</em> → <code>.STL</code> → Classroom. Early finishers start Go Further (initials on the center).</td>
 </tr>
 <tr>
 <td style="text-align: center;">49–51</td>
 <td>Wrap</td>
-<td>Cold-close: "Name your battle feature and what it does." Preview: "The tops meet after printing. Then, a new unit — new hardware."</td>
+<td>Cold-close: "The loop ran 25 times. How many rings did you get, and who decided?" (the if/then did). Preview: "Next lab, no instructions at all — your design battles everyone else's."</td>
 </tr>
 </tbody>
 </table>
@@ -5654,75 +5705,82 @@ mission slide. Questions worth asking:</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">A.1</td>
-<td>Open design means everyone works at their own level — a simple cone with a good rim and a loop-generated spiral top are both legal answers.</td>
+<td style="text-align: center;">1</td>
+<td>The do-now theory and the planted 25-trips question have students committing to answers before the program proves them right or wrong.</td>
 </tr>
 <tr>
-<td style="text-align: center;">B.2</td>
-<td>Constraints (size limits, one deliberate feature) keep the open challenge rigorous instead of a free-for-all.</td>
+<td style="text-align: center;">5</td>
+<td>The lab's block figures, range table, and "your screen should look like this" previews are the self-check at every rung.</td>
 </tr>
 <tr>
-<td style="text-align: center;">B.4</td>
-<td>Students evaluate designs against physics — weight placement, stability — and defend a choice; that's analysis and evaluation, not following steps.</td>
+<td style="text-align: center;">6</td>
+<td>The Make It Yours section is sanctioned experimentation — change a knob, predict, Play, explain what happened.</td>
 </tr>
 <tr>
-<td style="text-align: center;">B.5</td>
-<td>The whole period is self-directed: research, plan, build, export, with the teacher as a checkpoint rather than a guide.</td>
+<td style="text-align: center;">7</td>
+<td>Students program a printable toy with moving parts in a browser CAD tool — beyond basic task completion by any measure.</td>
 </tr>
 <tr>
-<td style="text-align: center;">C.2</td>
-<td>Battle results are public but ungraded — the rubric scores the design work, so a top that loses gloriously still earns its 4. Say this out loud; it licenses risk-taking.</td>
+<td style="text-align: center;">9</td>
+<td>Explaining why 25 loop trips produce four rings requires analyzing two control structures working together, not recalling either one.</td>
 </tr>
 <tr>
-<td style="text-align: center;">D.2</td>
-<td>Real physics, real printer, real tournament — the connection to the world isn't a poster, it's Thursday.</td>
+<td style="text-align: center;">11</td>
+<td>An inside-out cone (subtraction built backwards) or a welded print (tightness below range) are bounded, named failure cases with stated fixes.</td>
 </tr>
 <tr>
-<td style="text-align: center;">E.1</td>
-<td>Sketch approval at the desk plus rotating notebook check-ins — two progress gates in one period.</td>
+<td style="text-align: center;">12</td>
+<td>From step 5 on, students drive the lab doc themselves; the teacher demos once, with a toy instead of slides.</td>
 </tr>
 <tr>
-<td style="text-align: center;">E.4</td>
-<td>Rubric printed in the assignment; the 4-row's "you can point at it and explain" phrasing is the wrap-up question, verbatim.</td>
+<td style="text-align: center;">16</td>
+<td>Neighbors are the stated second resort; the previews let stuck students self-rescue before a hand goes up.</td>
 </tr>
 <tr>
-<td style="text-align: center;">F.4</td>
-<td>Research is clocked to eight minutes with the sketch as its exit ticket — browsing doesn't become the period.</td>
+<td style="text-align: center;">18</td>
+<td>Transitions are on the clock table; export is inside the period, not homework.</td>
 </tr>
 <tr>
-<td style="text-align: center;">G.1</td>
-<td>Students gather and evaluate design ideas from the internet before building.</td>
-</tr>
-<tr>
-<td style="text-align: center;">G.2</td>
-<td>The build itself: an original artifact, in code, under constraints.</td>
+<td style="text-align: center;">24</td>
+<td>The wrap cold-close has a learner articulating how the loop and conditional divided the work, in their own words.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="common-student-errors">Common Student Errors</h2>
+<p>Predicted, not yet observed. Revise after the first teach.</p>
 <ul>
-<li>Building at the size limit exactly, then adding a feature that pokes past
-  it — measure the final grouped model, not the first shape.</li>
-<li>All the weight up high or in the middle — spins pretty, dies early. Ask
-  where the flywheel is.</li>
-<li>No tip, or a broad flat bottom — friction wins instantly. A small rounded
-  or pointed contact is the difference between spinning and sitting.</li>
-<li>Skipping the sketch and improvising in blocks — fifteen minutes in, they're
-  redesigning from zero. The sketch gate exists for them, not for you.</li>
-<li>Submitting the <code>.STL</code> without a final <em>Play</em> — the export is the last drawn
-  model, not the current blocks.</li>
+<li><strong>The subtraction built backwards</strong> at step 7 — <code>2 - tightness</code> nested
+  wrong gives a negative top radius and an inside-out cone. Same bug
+  family as sk8board's wheelbase equation; the warning box names it.</li>
+<li><strong>Forgetting the hole click</strong> on the duplicated cone — <em>Create Group</em>
+  then fuses instead of cutting, and the ring comes out solid. The ghost
+  preview at step 11 is the tell.</li>
+<li><strong>The ring stack dropped into the Repeat block's mouth instead of the
+  if block's</strong> — rings build on all 25 trips, shrinking past zero into
+  garbage. The figure at step 19 shows the double indent.</li>
+<li><strong><code>&gt;</code> flipped to <code>&lt;</code></strong> in the condition — the if says no on trip one and
+  <em>Play</em> draws nothing but the center. Ask "when should the answer be
+  yes?" rather than fixing it for them.</li>
+<li><strong>Change by <code>8</code> instead of <code>-8</code></strong> — rings grow outward forever (well,
+  25 times). Entertaining, instructive, easy to fix.</li>
+<li><strong>The Change block left out entirely</strong> — 25 identical rings in one spot.
+  "What's different about each trip through the loop?" is the prompt.</li>
+<li><strong>Personalization hanging past the center's edge</strong> — welds the first
+  ring to the center. The Go Further's one rule covers it; check it at the
+  desk before export.</li>
+<li><strong>Forgetting to press <em>Play</em></strong> after a change. Still. Always.</li>
 </ul>
 <h2 id="assessment-evidence">Assessment &amp; Evidence</h2>
 <ul>
-<li><strong>Deliverable:</strong> the spinning top's <code>.STL</code> file, submitted for printing
+<li><strong>Deliverable:</strong> the fidget's <code>.STL</code> submitted in Google Classroom
   (mirrors Turn It In).</li>
-<li><strong>Score:</strong> 0–4 holistic rubric printed in the assignment. A 4 fits the
-  limits and has at least one battle feature the student chose on purpose and
-  can explain.</li>
-<li><strong>Look-fors during check-ins:</strong> dimensions on the sketch match the blocks;
-  a deliberate feature visible in the model and named by the student;
-  evidence of unit skills reused (variables, copy, loops) where they earn
-  their keep.</li>
+<li><strong>Score:</strong> 0–4 holistic rubric printed in the assignment. A 4 requires
+  the loop-plus-conditional doing the building, the center present, and
+  variables deliberately chosen within the documented ranges.</li>
+<li><strong>Look-fors during check-ins:</strong> the if/then nested inside the Repeat;
+  <code>diameter &gt; 28</code> with the comparison the right way around; the student
+  can answer "where did the other 21 loop trips go?" and point at the
+  clearance in their own equations.</li>
 </ul>
 
 
