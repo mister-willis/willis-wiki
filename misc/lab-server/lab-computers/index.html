@@ -5935,7 +5935,7 @@ commands.</p>
 <p>Copy the command below (hover over it and click the copy icon at its right
     edge), click in the Terminal window, paste with <span class="keys"><kbd class="key-command">Cmd</kbd><span>+</span><kbd class="key-v">V</kbd></span>, and press
     <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>defaults<span class="w"> </span>write<span class="w"> </span>/Library/Preferences/ManagedInstalls<span class="w"> </span>SoftwareRepoURL<span class="w"> </span><span class="s2">&quot;http://engineering.local&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>defaults<span class="w"> </span>write<span class="w"> </span>/Library/Preferences/ManagedInstalls<span class="w"> </span>SoftwareRepoURL<span class="w"> </span><span class="s2">&quot;http://engineering.local/munki&quot;</span>
 </code></pre></div>
 <p>Terminal asks for a password. Type the <strong>administrator</strong> password and press
 <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
@@ -5953,7 +5953,7 @@ again</code> and lets you retry.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>defaults<span class="w"> </span><span class="nb">read</span><span class="w"> </span>/Library/Preferences/ManagedInstalls<span class="w"> </span>SoftwareRepoURL
 </code></pre></div>
 <p>Your screen should look like this: it prints exactly
-<code>http://engineering.local</code> on its own line. If it prints anything else, or
+<code>http://engineering.local/munki</code> on its own line. If it prints anything else, or
 an error, repeat step 6.</p>
 </li>
 </ol>
@@ -5963,10 +5963,13 @@ an error, repeat step 6.</p>
 <p>Paste this and press <span class="keys"><kbd class="key-enter">Enter</kbd></span>. It may ask for the password again.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>managedsoftwareupdate<span class="w"> </span>--checkonly
 </code></pre></div>
-<p>A few lines scroll by as the Mac talks to the server. The two acceptable
-endings are a list of items under <em>The following items will be installed
-or upgraded</em>, or the line <em>No changes to managed software</em>. Either one
-means the Mac reached the server.</p>
+<p>A few lines scroll by as the Mac talks to the server. The last three are
+always <code>Allowing idle sleep</code>, <code>Finishing...</code>, and <code>Done</code>; the verdict is
+just above them. You want to see one of two things there: a list of items
+under <em>The following items will be installed or upgraded</em>, or the line <em>No
+changes to managed software</em>. Either one means the Mac reached the server
+and you're fine. The line to worry about is <em>Could not retrieve manifest</em>;
+see the table at the bottom of this page.</p>
 </li>
 <li>
 <p>If step 8 listed anything to install, paste this and press <span class="keys"><kbd class="key-enter">Enter</kbd></span>, then

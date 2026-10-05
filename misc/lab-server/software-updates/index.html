@@ -6077,7 +6077,7 @@ trailing <code>chmod</code> over SSH are what make the files readable by nginx.
 <li>
 <p>Publish once to prove the pipeline.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>~/munki_repo/publish.sh
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>curl<span class="w"> </span>-sI<span class="w"> </span>http://engineering.local/catalogs/production<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>curl<span class="w"> </span>-sI<span class="w"> </span>http://engineering.local/munki/catalogs/production<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </code></pre></div>
 <p>Your terminal should look like this: the <code>rsync</code> file list, then
 <code>HTTP/1.1 200 OK</code>.</p>
@@ -6314,7 +6314,7 @@ student has it open; it waits and retries next cycle.</p>
 <li>
 <p>Publish, and confirm the server has the whole file.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>./publish.sh
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>curl<span class="w"> </span>-sI<span class="w"> </span><span class="s2">&quot;http://engineering.local/pkgs/</span><span class="nv">$NAME</span><span class="s2">-</span><span class="nv">$VER</span><span class="s2">.pkg&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;HTTP|content-length&#39;</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>curl<span class="w"> </span>-sI<span class="w"> </span><span class="s2">&quot;http://engineering.local/munki/pkgs/</span><span class="nv">$NAME</span><span class="s2">-</span><span class="nv">$VER</span><span class="s2">.pkg&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;HTTP|content-length&#39;</span>
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="s2">&quot;pkgs/</span><span class="nv">$NAME</span><span class="s2">-</span><span class="nv">$VER</span><span class="s2">.pkg&quot;</span>
 </code></pre></div>
 <p>Your terminal should look like this: <code>200 OK</code>, and the two byte counts
@@ -6326,8 +6326,9 @@ match. A 3.8 GB publish over Wi-Fi takes a while; that's the one slow leg.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>managedsoftwareupdate<span class="w"> </span>-vv<span class="w"> </span>--checkonly<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NAME</span><span class="s2">|install&quot;</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sudo<span class="w"> </span>managedsoftwareupdate<span class="w"> </span>--installonly
 </code></pre></div>
-<p>The check should list <code>+ &lt;name&gt;-&lt;version&gt;</code>. The install runs quietly; Fusion
-takes several minutes. Afterward the app's <em>About</em> box, or
+<p>The check should list <code>+ &lt;name&gt;-&lt;version&gt;</code> a few lines above the closing
+<code>Allowing idle sleep</code> / <code>Finishing...</code> / <code>Done</code>. The install runs quietly;
+Fusion takes several minutes. Afterward the app's <em>About</em> box, or
 <code>defaults read "/Applications/$APP.app/Contents/Info.plist" CFBundleShortVersionString</code>,
 shows the new version.</p>
 </li>
@@ -6401,8 +6402,8 @@ instead of removing it. That only works for titles imported with
 <td>See the warning in step 11</td>
 </tr>
 <tr>
-<td><code>-vv --checkonly</code> shows 404s for <code>manifests/&lt;serial&gt;</code> and <code>manifests/&lt;hostname&gt;</code></td>
-<td>Normal: Munki tries those before <code>site_default</code></td>
+<td><code>-vv --checkonly</code> shows 404s for <code>manifests/&lt;serial&gt;</code>, <code>manifests/&lt;hostname&gt;</code>, or <code>client_resources/site_default.zip</code></td>
+<td>Normal: Munki tries per-machine manifests before <code>site_default</code>, and the zip is optional branding we don't use</td>
 <td>Nothing. A 404 on <code>site_default</code> or <code>catalogs/production</code> is the one that matters</td>
 </tr>
 <tr>

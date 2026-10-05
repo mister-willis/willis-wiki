@@ -5929,7 +5929,7 @@
 
 <h1 id="lab-server-setup">Lab Server Setup</h1>
 <p>The lab server is a Raspberry Pi named <code>engineering</code> that serves a Munki
-software repository to the lab Macs at <code>http://engineering.local</code>. Each lab Mac
+software repository to the lab Macs at <code>http://engineering.local/munki</code>. Each lab Mac
 checks that address about once an hour and installs whatever is listed for it.
 This page rebuilds the server from a blank SD card to that working state.</p>
 <p>The repository contents (installers, catalogs, and manifests) are <strong>not</strong> kept
@@ -5963,8 +5963,8 @@ back. A dead Pi loses nothing but an afternoon.</p>
 </tr>
 <tr>
 <td>Pi (<code>engineering</code>)</td>
-<td>nginx serving <code>/srv/munki_repo</code></td>
-<td>Hands files to the lab Macs over plain HTTP</td>
+<td>nginx serving <code>/srv/munki_repo</code> at <code>/munki/</code></td>
+<td>Hands files to the lab Macs over plain HTTP; the server root stays free for other uses</td>
 </tr>
 <tr>
 <td>Pi</td>
@@ -5974,12 +5974,12 @@ back. A dead Pi loses nothing but an afternoon.</p>
 <tr>
 <td>Lab Macs</td>
 <td>Munki client</td>
-<td>Fetch <code>http://engineering.local</code>, install what's listed</td>
+<td>Fetch <code>http://engineering.local/munki</code>, install what's listed</td>
 </tr>
 </tbody>
 </table>
 <p>Munki needs nothing from a web server beyond answering <code>GET</code> requests for files,
-so nginx with a one-line <code>root</code> directive is the whole server.</p>
+so nginx with a one-line <code>alias</code> directive is the whole server.</p>
 <h2 id="image-the-sd-card">Image the SD Card</h2>
 <p>Steps are numbered continuously through this page so any step can be referred to
 by its number.</p>
@@ -6074,44 +6074,58 @@ Wi-Fi will not see it, which is correct behavior, not a fault.</p>
 </code></pre></div>
 </li>
 <li>
-<p>Write the nginx site definition.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/nginx/sites-available/munki<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="s">&lt;&lt;&#39;NGINX&#39;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="s">server {</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s">    listen 80 default_server;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="s">    listen [::]:80 default_server;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="s">    server_name engineering.local engineering;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s">    root /srv/munki_repo;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="s">    access_log /var/log/nginx/munki.access.log;</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s">    error_log  /var/log/nginx/munki.error.log;</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="s">    # Directory listings make the repo browsable while troubleshooting.</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s">    autoindex on;</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="s">    # Large installers: let the kernel stream them rather than buffering.</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="s">    sendfile on;</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="s">    tcp_nopush on;</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="s">    location / {</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="s">        try_files $uri $uri/ =404;</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="s">    }</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="s">}</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="s">NGINX</span>
+<p>Give the server root a placeholder page. The root is deliberately left
+    free for other services; the Munki repository lives one level down.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/www/html
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&lt;h1&gt;engineering.local&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;/munki/&quot;&gt;Munki repository&lt;/a&gt;&lt;/p&gt;&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/var/www/html/index.html<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
 </code></pre></div>
-<p>Catalogs, manifests, and pkginfo files have no file extension. nginx serves
-them as <code>application/octet-stream</code>, which Munki is happy with; no MIME
-configuration is needed.</p>
+</li>
+<li>
+<p>Write the nginx site definition.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/nginx/sites-available/munki<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="s">&lt;&lt;&#39;NGINX&#39;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="s">server {</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s">    listen 80 default_server;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s">    listen [::]:80 default_server;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="s">    server_name engineering.local engineering;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="s">    access_log /var/log/nginx/munki.access.log;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="s">    error_log  /var/log/nginx/munki.error.log;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="s">    # Server root: free for other services.</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="s">    root /var/www/html;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="s">    index index.html;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="s">    # Munki repository, one level down.</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="s">    location /munki/ {</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="s">        alias /srv/munki_repo/;</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="s">        # Directory listings make the repo browsable while troubleshooting.</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="s">        autoindex on;</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="s">        # Large installers: let the kernel stream them rather than buffering.</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="s">        sendfile on;</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="s">        tcp_nopush on;</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="s">    }</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="s">}</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="s">NGINX</span>
+</code></pre></div>
+<p><code>alias</code> (not <code>root</code>) is what maps <code>/munki/catalogs/all</code> to
+<code>/srv/munki_repo/catalogs/all</code>. The trailing slashes on the <code>location</code> and
+the <code>alias</code> go together; keep both. Catalogs, manifests, and pkginfo files
+have no file extension; nginx serves them as <code>application/octet-stream</code>,
+which Munki is happy with, so no MIME configuration is needed.</p>
 </li>
 <li>
 <p>Enable the site in place of nginx's default page and start it.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/nginx/sites-enabled/default
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/etc/nginx/sites-available/munki<span class="w"> </span>/etc/nginx/sites-enabled/munki
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://localhost/catalogs/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/nginx/sites-enabled/default
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/etc/nginx/sites-available/munki<span class="w"> </span>/etc/nginx/sites-enabled/munki
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>curl<span class="w"> </span>-sI<span class="w"> </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>curl<span class="w"> </span>-sI<span class="w"> </span>http://localhost/munki/catalogs/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </code></pre></div>
 <p>Your terminal should look like this: <code>nginx -t</code> reports <code>syntax is ok</code> and
-<code>test is successful</code>, and <code>curl</code> returns <code>HTTP/1.1 200 OK</code>.</p>
+<code>test is successful</code>, and both <code>curl</code> lines return <code>HTTP/1.1 200 OK</code>.</p>
 </li>
 <li>
 <p><em>Optional, recommended.</em> If you have a USB SSD, use it for the repository
@@ -6124,18 +6138,18 @@ configuration is needed.</p>
 <h2 id="give-it-a-fixed-address">Give It a Fixed Address</h2>
 <p><code>engineering.local</code> works whatever IP address the Pi gets, so this section is
 insurance against a DHCP change stranding the clients, not a requirement.</p>
-<ol start="11">
+<ol start="12">
 <li>
 <p>Record both hardware addresses and send them to IT with a request for a
     DHCP reservation. Asking for both now means the Pi can be moved from Wi-Fi
     to Ethernet later without a second request.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ip<span class="w"> </span>-br<span class="w"> </span>link<span class="w"> </span>show<span class="w"> </span>wlan0<span class="w"> </span>eth0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ip<span class="w"> </span>-br<span class="w"> </span>link<span class="w"> </span>show<span class="w"> </span>wlan0<span class="w"> </span>eth0
 </code></pre></div>
 </li>
 <li>
 <p>Make sure the Wi-Fi address isn't being randomized, or the reservation will
     never match.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>nmcli<span class="w"> </span>-g<span class="w"> </span><span class="m">802</span>-11-wireless.cloned-mac-address<span class="w"> </span>connection<span class="w"> </span>show<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>nmcli<span class="w"> </span>-g<span class="w"> </span>NAME<span class="w"> </span>connection<span class="w"> </span>show<span class="w"> </span>--active<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="k">)</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>nmcli<span class="w"> </span>-g<span class="w"> </span><span class="m">802</span>-11-wireless.cloned-mac-address<span class="w"> </span>connection<span class="w"> </span>show<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>nmcli<span class="w"> </span>-g<span class="w"> </span>NAME<span class="w"> </span>connection<span class="w"> </span>show<span class="w"> </span>--active<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
 <p>Blank or <code>permanent</code> is correct. If it prints <code>random</code> or <code>stable</code>, run
 <code>sudo nmcli con mod "&lt;connection name&gt;" 802-11-wireless.cloned-mac-address permanent</code>
@@ -6151,26 +6165,26 @@ and reconnect.</p>
 <p>These steps run on the <strong>admin Mac</strong>. They assume it is already set up per
 <a href="../software-updates/">Lab Software Update</a>; if both machines died at
 once, set up the admin Mac first and come back here.</p>
-<ol start="14">
+<ol start="15">
 <li>
 <p>Give the admin Mac passwordless SSH to the Pi, so publishing never prompts.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ssh-copy-id<span class="w"> </span>pi@engineering.local
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>ssh<span class="w"> </span>pi@engineering.local<span class="w"> </span><span class="s1">&#39;echo ok&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ssh-copy-id<span class="w"> </span>pi@engineering.local
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ssh<span class="w"> </span>pi@engineering.local<span class="w"> </span><span class="s1">&#39;echo ok&#39;</span>
 </code></pre></div>
 <p>The second command should print <code>ok</code> with no password prompt.</p>
 </li>
 <li>
 <p>Publish the repository. This copies everything in <code>~/munki_repo</code> to the Pi
     and sets permissions nginx can read.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>~/munki_repo/publish.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>~/munki_repo/publish.sh
 </code></pre></div>
 <p>Expect the first publish to take a while if it includes Fusion; the pkg is
 3.8 GB.</p>
 </li>
 <li>
 <p>Verify from the outside, on any Mac on the lab VLAN.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://engineering.local/manifests/site_default
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>curl<span class="w"> </span>-sI<span class="w"> </span>http://engineering.local/catalogs/production<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://engineering.local/munki/manifests/site_default
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>curl<span class="w"> </span>-sI<span class="w"> </span>http://engineering.local/munki/catalogs/production<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </code></pre></div>
 <p>Your terminal should look like this: the manifest prints as a plist, and the
 catalog returns <code>200 OK</code>. On any enrolled lab Mac,
