@@ -7442,10 +7442,10 @@ game cleanly.</p>
 <div class="admonition abstract">
 <p class="admonition-title">You've got it when…</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The game opens on a costume screen where <span class="keys"><kbd class="key-space">Space</kbd></span> changes characters and <span class="keys"><kbd class="key-enter">Enter</kbd></span> starts the game.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The game opens on a costume screen where <span class="keys"><kbd class="key-space">Space</kbd></span> changes characters and <span class="keys"><kbd>return</kbd></span> starts the game.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The runner animates, jumps with <span class="keys"><kbd class="key-space">Space</kbd></span>, and dodges cacti that arrive on a timer.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Hitting an obstacle shows Game Over with the final score still visible.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Pressing <span class="keys"><kbd class="key-enter">Enter</kbd></span> from Game Over resets everything and returns to the costume screen.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Pressing <span class="keys"><kbd>return</kbd></span> from Game Over resets everything and returns to the costume screen.</li>
 </ul>
 </div>
 <div class="admonition info">
@@ -7865,7 +7865,7 @@ back" to the way it should be when a new game starts. This function will:</p>
 </code></pre></div>
 </li>
 <li>
-<p>Next, let's call this helper function when <span class="keys"><kbd class="key-enter">Enter</kbd></span> is pressed, but only
+<p>Next, let's call this helper function when <span class="keys"><kbd>return</kbd></span> is pressed, but only
     if we're in the <em>game over</em> mode. Add the highlighted lines.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">on_key_down</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
 <a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
@@ -7876,7 +7876,7 @@ back" to the way it should be when a new game starts. This function will:</p>
 </span><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="hll">            <span class="n">reset</span><span class="p">()</span>
 </span></code></pre></div>
 <p>Try your program. You should be able to start a new game from the Game
-Over screen by pressing <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
+Over screen by pressing <span class="keys"><kbd>return</kbd></span>.</p>
 </li>
 </ol>
 <hr />
@@ -7957,7 +7957,7 @@ picking a costume for our Actor!</p>
 <li>
 <p>Finally, we'll handle the keyboard keys for the new <em>costume</em> mode. We'll
     call the helper function if <span class="keys"><kbd class="key-space">Space</kbd></span> is pressed, or start the game by
-    changing to <em>play</em> mode if <span class="keys"><kbd class="key-enter">Enter</kbd></span> is pressed. Add the highlighted
+    changing to <em>play</em> mode if <span class="keys"><kbd>return</kbd></span> is pressed. Add the highlighted
     lines.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">on_key_down</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
 <a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;play&quot;</span><span class="p">:</span>
@@ -8055,7 +8055,7 @@ need to update it in one place.</p>
 <tbody>
 <tr>
 <td style="text-align: center;"><strong>4 — Excellent</strong></td>
-<td>All three modes work end to end: the costume screen cycles ninja, dino, and knight with <span class="keys"><kbd class="key-space">Space</kbd></span> and starts on <span class="keys"><kbd class="key-enter">Enter</kbd></span>; the runner animates, jumps, and dodges timed cacti while the score climbs; Game Over keeps the final score on screen; and <code>reset()</code> puts <em>everything</em> back for the next round. Meanwhile <code>update()</code> and <code>draw()</code> stay short lists of helper calls — the actual point of the lab.</td>
+<td>All three modes work end to end: the costume screen cycles ninja, dino, and knight with <span class="keys"><kbd class="key-space">Space</kbd></span> and starts on <span class="keys"><kbd>return</kbd></span>; the runner animates, jumps, and dodges timed cacti while the score climbs; Game Over keeps the final score on screen; and <code>reset()</code> puts <em>everything</em> back for the next round. Meanwhile <code>update()</code> and <code>draw()</code> stay short lists of helper calls — the actual point of the lab.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>3 — Above Average</strong></td>
