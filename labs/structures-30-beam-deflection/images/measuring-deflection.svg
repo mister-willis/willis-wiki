@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 295" role="img" aria-labelledby="title desc">
+<title id="title">Measuring deflection at midspan</title>
+<desc id="desc">A ruler stands on the floor beside the center of the beam. A brace spans the vertical distance between the bottom of the straight beam and the bottom of the sagging beam.</desc>
+<rect width="760" height="295" rx="10" fill="#faf9f4"/>
+<g font-family="sans-serif" font-size="17" fill="#223549">
+<text x="55" y="35">Side view</text>
+<path d="M70 260V85h54v175z M636 260V85h54v175z" fill="#c0c7ca"/>
+<path d="M42 260H718" stroke="#65727b" stroke-width="3"/>
+<rect x="60" y="65" width="640" height="20" fill="#e5ba83" stroke="#644626" stroke-width="2"/>
+<path d="M60 65H97 C192 93 286 133 380 133 S568 93 663 65 H700 V85 H663 C568 113 474 153 380 153 S192 113 97 85 H60Z" fill="#2582a2" fill-opacity=".42" stroke="#19627a" stroke-width="2"/>
+<rect x="367" y="53" width="17" height="207" fill="#fff5ce" stroke="#635632"/>
+<defs><pattern id="ticks" width="16" height="12" patternUnits="userSpaceOnUse"><path d="M0 0h10 M0 6h5" stroke="#635632"/></pattern></defs>
+<rect x="368" y="55" width="15" height="202" fill="url(#ticks)"/>
+<path d="M372 85h75 M372 153h75" stroke="#223549" stroke-width="1.5" stroke-dasharray="4 3"/>
+<path d="M449 85q8 0 8 9v16q0 9 8 9q-8 0-8 9v16q0 9-8 9" fill="none" stroke="#223549" stroke-width="2.5"/>
+<path d="M465 119L506 181h20" fill="none" stroke="#223549" stroke-width="1.5"/>
+<text x="532" y="187" text-anchor="start" style="text-anchor:start" font-weight="bold">Deflection</text>
+<text x="138" y="50">Unloaded beam</text><path d="M211 54v10" stroke="#644626"/>
+<text x="169" y="190">Loaded beam</text><path d="M249 174l23-34" stroke="#19627a"/>
+<text x="396" y="230">Ruler at midspan</text><path d="M392 224h-8" stroke="#635632"/>
+<text x="55" y="281">Floor</text>
+</g></svg>

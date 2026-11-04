@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 270" role="img">
+<title>The same 2x4 in two orientations</title>
+<style>text{font:16px sans-serif;fill:#192e40;text-anchor:middle} .head{font-weight:bold;font-size:20px} .section{fill:#f0bd76;stroke:#754c20;stroke-width:2} .axis{stroke:#165883;stroke-width:2;stroke-dasharray:6 4}</style>
+<rect width="680" height="270" rx="12" fill="#faf8f3"/>
+<text class="head" x="170" y="30">Lying flat</text><text class="head" x="510" y="30">Standing on edge</text>
+<rect class="section" x="100" y="90" width="140" height="60"/><rect class="section" x="480" y="50" width="60" height="140"/>
+<path class="axis" d="M76 120h188 M449 120h122"/>
+<text x="170" y="211">3.5 in wide × 1.5 in tall</text><text x="510" y="211">1.5 in wide × 3.5 in tall</text>
+<text x="340" y="252" fill="#165883">Dashed line = horizontal bending axis</text>
+</svg>

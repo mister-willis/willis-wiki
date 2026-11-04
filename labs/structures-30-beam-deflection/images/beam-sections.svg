@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 270" role="img">
+<title>Equal area and height, different distribution of material</title>
+<style>text{font:16px sans-serif;fill:#192e40;text-anchor:middle} .head{font-weight:bold;font-size:20px} .section{fill:#f0bd76;stroke:#754c20;stroke-width:2} .axis{stroke:#165883;stroke-width:2;stroke-dasharray:6 4}</style>
+<rect width="680" height="270" rx="12" fill="#faf8f3"/>
+<text class="head" x="340" y="30">Same height and cross-sectional area</text>
+<rect class="section" x="140" y="50" width="60" height="140"/>
+<path class="section" d="M400 50h140v20h-56v100h56v20H400v-20h56V70h-56z"/>
+<path class="axis" d="M110 120h120 M378 120h185"/>
+<text x="170" y="216">Solid rectangle</text><text x="470" y="216">I-section</text>
+<path d="M535 60h42 M487 105h90" stroke="#754c20" fill="none"/><text x="612" y="65">Flange</text><text x="612" y="110">Web</text>
+<text x="340" y="252" fill="#165883">Dashed line = horizontal bending axis</text>
+</svg>
