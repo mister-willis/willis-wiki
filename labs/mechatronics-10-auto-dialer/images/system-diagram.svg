@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 670" role="img" aria-label="Auto dialer functional interfaces">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#39556c"/></marker></defs>
+<rect width="1020" height="670" fill="#fff"/>
+<style>text{font-family:Arial,sans-serif;fill:#17324d}.title{font-size:22px;font-weight:bold}.body{font-size:17px}.note{font-size:16px} .link{fill:none;stroke:#39556c;stroke-width:2.5;marker-end:url(#arrow)}</style>
+<text x="30" y="35" class="title">Functional Interfaces • Choose Your Own Mechanical Layout</text>
+<rect x="30" y="65" width="290" height="110" rx="12" fill="#eef4fa" stroke="#58748c" stroke-width="2"/>
+<text x="46" y="95" class="title">Inputs</text>
+<text x="46" y="125" class="body">Start / stop controls</text>
+<text x="46" y="148" class="body">Open-state sensor</text>
+<rect x="380" y="65" width="260" height="110" rx="12" fill="#eef4fa" stroke="#58748c" stroke-width="2"/>
+<text x="396" y="95" class="title">Arduino</text>
+<text x="396" y="125" class="body">Sequence and timing</text>
+<text x="396" y="148" class="body">Success / fault logic</text>
+<rect x="700" y="65" width="290" height="110" rx="12" fill="#eef4fa" stroke="#58748c" stroke-width="2"/>
+<text x="716" y="95" class="title">Outputs</text>
+<text x="716" y="125" class="body">Status indicator</text>
+<text x="716" y="148" class="body">Trial log</text>
+<rect x="30" y="240" width="450" height="110" rx="12" fill="#eef4fa" stroke="#58748c" stroke-width="2"/>
+<text x="46" y="270" class="title">Stepper + compatible driver</text>
+<text x="46" y="300" class="body">Dial positioning through a coupling</text>
+<text x="46" y="323" class="body">Motor power from an approved supply</text>
+<rect x="540" y="240" width="450" height="110" rx="12" fill="#eef4fa" stroke="#58748c" stroke-width="2"/>
+<text x="556" y="270" class="title">Servo + approved supply</text>
+<text x="556" y="300" class="body">Normal opening / checking motion</text>
+<text x="556" y="323" class="body">Bounded travel; no forcing the lock</text>
+<rect x="30" y="425" width="450" height="110" rx="12" fill="#eef4fa" stroke="#58748c" stroke-width="2"/>
+<text x="46" y="455" class="title">Supported 6 mm shaft</text>
+<text x="46" y="485" class="body">Two bearings, shaft retention, printed parts</text>
+<text x="46" y="508" class="body">Contact with the dial; alignment matters</text>
+<rect x="540" y="425" width="450" height="110" rx="12" fill="#eef4fa" stroke="#58748c" stroke-width="2"/>
+<text x="556" y="455" class="title">Opening mechanism</text>
+<text x="556" y="485" class="body">Acts on the normal opening interface</text>
+<text x="556" y="508" class="body">Sensor reports open or still locked</text>
+<path d="M320 120 H380" class="link"/>
+<path d="M640 120 H700" class="link"/>
+<path d="M450 175 V205 H255 V240" class="link"/>
+<path d="M570 175 V205 H765 V240" class="link"/>
+<path d="M255 350 V425" class="link"/>
+<path d="M765 350 V425" class="link"/>
+<text x="30" y="585" class="body">All mechanisms share a stable, removable support. Protect the lock and locker surfaces.</text>
+<text x="30" y="615" class="body">Show sensor feedback, power connections, and disconnects in your actual wiring diagram.</text>
+<text x="30" y="645" class="note">This diagram shows functions, not pin assignments, physical geometry, or an electrical schematic.</text>
+</svg>
