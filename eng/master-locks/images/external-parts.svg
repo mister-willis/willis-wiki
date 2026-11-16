@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="560" viewBox="0 0 840 560" role="img" aria-labelledby="title desc">
+<title id="title">1530-series Master Combination Padlock: external parts</title>
+<desc id="desc">Front view of a closed combination padlock. Four leader lines identify the U-shaped shackle, the outer case, the numbered combination dial, and the triangular index mark. Simplified illustration, not to scale.</desc>
+<rect width="840" height="560" fill="white"/>
+<g stroke="#222" stroke-width="3" stroke-linejoin="round">
+<!-- Closed shackle, drawn behind the case. -->
+<path d="M268 249 V149 A92 92 0 0 1 452 149 V249" fill="none" stroke-width="27"/>
+<path d="M268 249 V149 A92 92 0 0 1 452 149 V249" fill="none" stroke="#dedede" stroke-width="21"/>
+<circle cx="360" cy="352" r="154" fill="#dedede"/>
+<circle cx="360" cy="365" r="127" fill="#333"/>
+<path d="M352 213 L368 213 L360 226 Z" fill="#222" stroke="none"/>
+
+<path d="M360.00 255.00 L360.00 242.00" stroke="white" stroke-width="2"/>
+<text x="360.00" y="270.00" fill="white" stroke="none" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" dominant-baseline="central">0</text>
+<path d="M378.30 249.44 L379.24 243.51" stroke="white" stroke-width="2"/>
+<path d="M396.15 253.73 L398.01 248.02" stroke="white" stroke-width="2"/>
+<path d="M413.12 260.75 L415.84 255.41" stroke="white" stroke-width="2"/>
+<path d="M428.77 270.35 L432.30 265.49" stroke="white" stroke-width="2"/>
+<path d="M437.78 287.22 L446.97 278.03" stroke="white" stroke-width="2"/>
+<text x="427.18" y="297.82" fill="white" stroke="none" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" dominant-baseline="central">5</text>
+<path d="M454.65 296.23 L459.51 292.70" stroke="white" stroke-width="2"/>
+<path d="M464.25 311.88 L469.59 309.16" stroke="white" stroke-width="2"/>
+<path d="M471.27 328.85 L476.98 326.99" stroke="white" stroke-width="2"/>
+<path d="M475.56 346.70 L481.49 345.76" stroke="white" stroke-width="2"/>
+<path d="M470.00 365.00 L483.00 365.00" stroke="white" stroke-width="2"/>
+<text x="455.00" y="365.00" fill="white" stroke="none" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" dominant-baseline="central">10</text>
+<path d="M475.56 383.30 L481.49 384.24" stroke="white" stroke-width="2"/>
+<path d="M471.27 401.15 L476.98 403.01" stroke="white" stroke-width="2"/>
+<path d="M464.25 418.12 L469.59 420.84" stroke="white" stroke-width="2"/>
+<path d="M454.65 433.77 L459.51 437.30" stroke="white" stroke-width="2"/>
+<path d="M437.78 442.78 L446.97 451.97" stroke="white" stroke-width="2"/>
+<text x="427.18" y="432.18" fill="white" stroke="none" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" dominant-baseline="central">15</text>
+<path d="M428.77 459.65 L432.30 464.51" stroke="white" stroke-width="2"/>
+<path d="M413.12 469.25 L415.84 474.59" stroke="white" stroke-width="2"/>
+<path d="M396.15 476.27 L398.01 481.98" stroke="white" stroke-width="2"/>
+<path d="M378.30 480.56 L379.24 486.49" stroke="white" stroke-width="2"/>
+<path d="M360.00 475.00 L360.00 488.00" stroke="white" stroke-width="2"/>
+<text x="360.00" y="460.00" fill="white" stroke="none" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" dominant-baseline="central">20</text>
+<path d="M341.70 480.56 L340.76 486.49" stroke="white" stroke-width="2"/>
+<path d="M323.85 476.27 L321.99 481.98" stroke="white" stroke-width="2"/>
+<path d="M306.88 469.25 L304.16 474.59" stroke="white" stroke-width="2"/>
+<path d="M291.23 459.65 L287.70 464.51" stroke="white" stroke-width="2"/>
+<path d="M282.22 442.78 L273.03 451.97" stroke="white" stroke-width="2"/>
+<text x="292.82" y="432.18" fill="white" stroke="none" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" dominant-baseline="central">25</text>
+<path d="M265.35 433.77 L260.49 437.30" stroke="white" stroke-width="2"/>
+<path d="M255.75 418.12 L250.41 420.84" stroke="white" stroke-width="2"/>
+<path d="M248.73 401.15 L243.02 403.01" stroke="white" stroke-width="2"/>
+<path d="M244.44 383.30 L238.51 384.24" stroke="white" stroke-width="2"/>
+<path d="M250.00 365.00 L237.00 365.00" stroke="white" stroke-width="2"/>
+<text x="265.00" y="365.00" fill="white" stroke="none" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" dominant-baseline="central">30</text>
+<path d="M244.44 346.70 L238.51 345.76" stroke="white" stroke-width="2"/>
+<path d="M248.73 328.85 L243.02 326.99" stroke="white" stroke-width="2"/>
+<path d="M255.75 311.88 L250.41 309.16" stroke="white" stroke-width="2"/>
+<path d="M265.35 296.23 L260.49 292.70" stroke="white" stroke-width="2"/>
+<path d="M282.22 287.22 L273.03 278.03" stroke="white" stroke-width="2"/>
+<text x="292.82" y="297.82" fill="white" stroke="none" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" dominant-baseline="central">35</text>
+<path d="M291.23 270.35 L287.70 265.49" stroke="white" stroke-width="2"/>
+<path d="M306.88 260.75 L304.16 255.41" stroke="white" stroke-width="2"/>
+<path d="M323.85 253.73 L321.99 248.02" stroke="white" stroke-width="2"/>
+<path d="M341.70 249.44 L340.76 243.51" stroke="white" stroke-width="2"/>
+<circle cx="360" cy="365" r="64" fill="#444" stroke="#ccc" stroke-width="2"/>
+<circle cx="360" cy="365" r="55" fill="none" stroke="#888" stroke-width="2"/>
+</g>
+<g fill="none" stroke="#333" stroke-width="2">
+<path d="M272 126 H155"/>
+<path d="M368 216 L500 180 H565"/>
+<path d="M496 280 H565"/>
+<path d="M464 425 H565"/>
+</g>
+<g fill="#333"><circle cx="272" cy="126" r="4"/><circle cx="496" cy="280" r="4"/><circle cx="464" cy="425" r="4"/></g>
+<g fill="#222" font-family="Arial, sans-serif" font-size="24">
+<text x="140" y="134" text-anchor="end">Shackle</text>
+<text x="581" y="188">Index mark</text>
+<text x="581" y="288">Case</text>
+<text x="581" y="433">Combination dial</text>
+</g>
+<text x="360" y="541" text-anchor="middle" fill="#666" font-family="Arial, sans-serif" font-size="15">Simplified front view · not to scale</text>
+</svg>
