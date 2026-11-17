@@ -1,7 +1,6 @@
 const byte STEP_PIN = 2;
 const byte DIR_PIN = 3;
-const int MICROSTEPS = 1;  // Must match the MS jumper setting
-const long PULSES_PER_REV = 200L * MICROSTEPS;
+const long PULSES_PER_REV = 200L;  // Full stepping: 1.8 degrees per pulse
 const unsigned int HALF_PERIOD_US = 5000;
 
 void moveSteps(long pulses, bool direction) {

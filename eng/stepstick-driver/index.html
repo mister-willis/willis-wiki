@@ -8109,17 +8109,17 @@
 <tr>
 <td>GND beside VMOT</td>
 <td>Motor-supply return</td>
-<td>Supply negative and common ground</td>
+<td>12 V supply negative</td>
 </tr>
 <tr>
 <td>2B, 2A</td>
-<td>The two ends of winding B</td>
-<td>Blue, red respectively</td>
+<td>One motor winding</td>
+<td>Black, green respectively</td>
 </tr>
 <tr>
 <td>1A, 1B</td>
-<td>The two ends of winding A</td>
-<td>Black, green respectively</td>
+<td>The other motor winding</td>
+<td>Red, blue respectively</td>
 </tr>
 <tr>
 <td>VDD</td>
@@ -8129,27 +8129,27 @@
 <tr>
 <td>GND beside VDD</td>
 <td>Logic reference</td>
-<td>Arduino GND, joined to supply negative</td>
+<td>Arduino GND; joined internally to motor-supply GND</td>
 </tr>
 <tr>
 <td>ENABLE</td>
 <td>Active LOW: LOW energizes outputs; HIGH releases them</td>
-<td>GND; the motor holds while powered</td>
+<td>Leave unconnected; HiLetgo’s onboard pull-down enables the outputs</td>
 </tr>
 <tr>
 <td>MS1, MS2, MS3</td>
 <td>Select microstep resolution</td>
-<td>All GND initially; see table below</td>
+<td>Leave unconnected initially (full stepping); see table below</td>
 </tr>
 <tr>
 <td>RESET</td>
 <td>Active LOW: resets translator and disables outputs</td>
-<td>Tie to SLEEP and VDD (5V)</td>
+<td>Jumper to SLEEP; its onboard pull-up holds both HIGH</td>
 </tr>
 <tr>
 <td>SLEEP</td>
 <td>Active LOW: low-power sleep</td>
-<td>Tie to RESET and VDD; allow at least 1 ms after waking</td>
+<td>Jumper to RESET; HiLetgo’s onboard pull-up holds SLEEP HIGH. Allow at least 1 ms after waking</td>
 </tr>
 <tr>
 <td>STEP</td>
@@ -8164,8 +8164,9 @@
 </tbody>
 </table>
 <p><code>1A</code> and <code>1B</code> belong to one winding; <code>2A</code> and <code>2B</code> belong to the other. These board labels differ from the motor datasheet’s <code>A+</code>, <code>A−</code>, <code>B+</code>, <code>B−</code> labels. See the <a href="../stepper-motors/#motor-connection">motor connection table</a>.</p>
+<p>The lab uses the ENABLE pull-down and SLEEP pull-up shown in HiLetgo’s documentation. RESET has no documented internal pull resistor; the RESET–SLEEP jumper supplies its HIGH level through the board’s SLEEP pull-up, so no separate 5V wire is needed for these two pins. These carrier-board defaults should not be assumed for other StepStick variants.</p>
 <h2 id="microstepping">Microstepping</h2>
-<p><strong>Microstepping</strong> uses intermediate winding-current levels to subdivide a full step. HIGH means VDD; LOW means GND. For predictable wiring, connect all three selection inputs explicitly. Change jumpers only with all power removed.</p>
+<p><strong>Microstepping</strong> uses intermediate winding-current levels to subdivide a full step. HIGH means VDD; LOW means GND. MS1 and MS3 have internal 100 kΩ pull-downs; MS2 has an internal 50 kΩ pull-down. Unconnected selection pins therefore read LOW, selecting full stepping when all three are unconnected. Change jumpers only with all power removed.</p>
 <table>
 <thead>
 <tr>
@@ -8222,7 +8223,7 @@
 </table>
 <p>Use only the listed combinations. At the same pulse rate, increasing the microstep subdivision reduces shaft speed. To keep the same RPM, increase pulse rate by the same factor. Smaller commanded increments do not guarantee equally accurate physical positions under load.</p>
 <h2 id="power-and-current-limit">Power and Current Limit</h2>
-<p>Place a <strong>100 µF electrolytic capacitor rated at least 25 V</strong> directly across VMOT and motor GND for the lab’s 12 V supply, with <code>+</code> toward VMOT and the striped negative terminal toward GND. Short leads matter: wiring inductance can produce voltage spikes. Use an appropriately higher capacitor voltage rating if using a higher supply voltage. Keep motor current out of the Arduino and use a secure carrier socket or terminal adapter.</p>
+<p>Keep motor current out of the Arduino and use a secure carrier socket or terminal adapter.</p>
 <p>The motor’s <strong>2 A/phase rating is not a recommended setting for this small carrier</strong>. Its usable continuous current depends on the actual board, cooling, and temperature. For an unloaded introductory test, start with a teacher-set <strong>0.5 A peak current limit</strong> and a fitted heat sink. This reduces available torque; it does not establish a guaranteed thermal rating.</p>
 <p>The A4988 relationship is:</p>
 <div class="arithmatex">\[
@@ -8238,7 +8239,7 @@ I_{\text{limit}}=\frac{V_{\text{REF}}}{8R_S},\qquad V_{\text{REF}}=8R_S I_{\text
 <ul>
 <li><a href="https://hiletgo.com/ProductDetail/1952643.html" target="_blank" rel="noopener">HiLetgo A4988 product page</a></li>
 <li><a href="https://www.allegromicro.com/~/media/files/datasheets/a4988-datasheet.pdf" target="_blank" rel="noopener">Allegro A4988 datasheet</a>: pin behavior, timing, current regulation, and microstep table.</li>
-<li><a href="https://www.pololu.com/product/1182" target="_blank" rel="noopener">Pololu A4988 carrier documentation</a>: practical wiring, capacitor, and current-limit guidance. Its board-specific resistor values are not specifications for the HiLetgo carrier.</li>
+<li><a href="https://www.pololu.com/product/1182" target="_blank" rel="noopener">Pololu A4988 carrier documentation</a>: practical wiring and current-limit guidance. Its board-specific resistor values are not specifications for the HiLetgo carrier.</li>
 <li><a href="../stepper-motors/">Stepper motor reference</a> · <a href="../../labs/robotics-arduino-70-stepper-motors/">Stepper motor lab</a></li>
 </ul>
 

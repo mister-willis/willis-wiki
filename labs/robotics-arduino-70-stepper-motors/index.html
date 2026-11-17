@@ -7459,17 +7459,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#understand-the-motor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Understand the Motor
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#build-the-circuit" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7492,10 +7481,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pulse-count-and-speed" class="md-nav__link">
+  <a href="#pulse-timing-and-speed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pulse Count and Speed
+        Pulse Timing and Speed
       
     </span>
   </a>
@@ -7503,10 +7492,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#try-half-stepping" class="md-nav__link">
+  <a href="#move-by-dial-numbers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Try Half Stepping
+        Move by Dial Numbers
       
     </span>
   </a>
@@ -7514,10 +7503,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#program-a-motion-sequence" class="md-nav__link">
+  <a href="#track-the-current-position" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Program a Motion Sequence
+        Track the Current Position
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go-to-a-specific-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Go to a Specific Number
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-the-paper-lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open the Paper Lock
       
     </span>
   </a>
@@ -8183,17 +8194,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#understand-the-motor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Understand the Motor
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#build-the-circuit" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -8216,10 +8216,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pulse-count-and-speed" class="md-nav__link">
+  <a href="#pulse-timing-and-speed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pulse Count and Speed
+        Pulse Timing and Speed
       
     </span>
   </a>
@@ -8227,10 +8227,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#try-half-stepping" class="md-nav__link">
+  <a href="#move-by-dial-numbers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Try Half Stepping
+        Move by Dial Numbers
       
     </span>
   </a>
@@ -8238,10 +8238,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#program-a-motion-sequence" class="md-nav__link">
+  <a href="#track-the-current-position" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Program a Motion Sequence
+        Track the Current Position
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go-to-a-specific-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Go to a Specific Number
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-the-paper-lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open the Paper Lock
       
     </span>
   </a>
@@ -8289,60 +8311,53 @@
 
 <h1 id="stepper-motors">Stepper Motors</h1>
 <h2 id="overview">Overview</h2>
-<p>Control the angle, direction, and speed of a NEMA 17 stepper motor using an Arduino Uno R3 and an A4988 StepStick driver. Compare full stepping with half stepping, then program a repeatable motion sequence.</p>
+<p>Program a stepper motor to enter a combination on a paper dial. Build relative moves, track position, then move to specific dial numbers.</p>
 <h2 id="builds-on">Builds on</h2>
 <ul>
 <li><a href="../robotics-arduino-10-first-program/">Analog Input and Digital Output - Your First Program</a></li>
 </ul>
 <h2 id="before-you-start">Before You Start</h2>
-<p>Read the <a href="../../eng/stepper-motors/">stepper motor reference</a> and <a href="../../eng/stepstick-driver/">A4988 StepStick reference</a>. This is a separate circuit from the DC motor and servo labs. Have Mr. Willis identify the driver and set its current limit before attaching the motor.</p>
+<p>Read the <a href="../../eng/stepper-motors/">motor reference</a> and <a href="../../eng/stepstick-driver/">StepStick pin and current-limit guidance</a>. Have Mr. Willis set the driver’s current limit before attaching the motor. Use full stepping throughout this lab.</p>
 <h2 id="materials">Materials</h2>
 <ul>
 <li>Arduino Uno R3, USB cable, and Arduino IDE</li>
 <li>StepperOnline 17HS19-2004S1 four-wire motor and HiLetgo A4988 StepStick with heat sink</li>
-<li>Secure driver socket/terminal adapter, jumper wires, and suitable motor-power leads</li>
+<li>12 V barrel jack screw-terminal adapter</li>
+<li><strong>6 male-to-female jumper wires</strong> and <strong>1 female-to-female jumper wire</strong></li>
+<li><strong>One 10 kΩ resistor</strong> (four-band color code: brown–black–orange–gold)</li>
 <li>Teacher-approved regulated 12 V DC supply (at least 1 A capacity for this unloaded trial)</li>
-<li>100 µF electrolytic capacitor rated at least 25 V</li>
-<li>Multimeter, insulated adjustment tool for teacher use, tape pointer, and printed protractor</li>
+<li><a href="images/stepper-motor-dials-letter.pdf">Paper combination-lock dial sheet (PDF)</a>: print on US Letter at <strong>100% / Actual Size</strong>; cut out one 40 mm dial per motor</li>
+<li>Tape, scissors, and a tool for making the center hole</li>
+<li>Multimeter and insulated adjustment tool for teacher use</li>
 </ul>
 <h2 id="safety">Safety</h2>
 <div class="admonition warning">
 <p class="admonition-title">Disconnect both power sources before rewiring</p>
-<p>Unplug USB and switch off/disconnect motor power before moving jumpers or connecting/disconnecting the motor. Wait for the supply capacitor to discharge. Never send 12 V into Arduino 5V or driver VDD. Check capacitor polarity. Secure the motor and keep fingers, hair, and loose objects away from its shaft. Stop if the motor stalls or the driver becomes excessively hot; disconnect power before investigating.</p>
+<p>Disconnect USB and 12 V power before changing connections. Never connect 12 V to Arduino 5V or driver VDD. Secure the motor and keep clear of its moving shaft. If it stalls or the driver becomes excessively hot, disconnect power before investigating.</p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">You've got it when…</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your wiring and teacher-checked current limit match the documented hardware.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your motor moves through measured angles in both directions and returns near its starting mark.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your notebook compares full and half stepping, includes speed calculations and observations, and explains open-loop limitations.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your final sketch and demonstration show the requested motion sequence.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> You calculate the full-step pulses needed to move one number on the dial.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your <code>moveDial</code> function accepts a distance in dial numbers and a direction.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your <code>currentPosition</code> variable tracks the expected dial position from 0–39.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your <code>goToDial</code> function uses <code>moveDial</code> to reach a target number in the requested direction.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your sketch enters the combination with the required turns and pauses.</li>
 </ul>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Collaboration &amp; AI</p>
-<p>Build and troubleshoot with a partner. Each student must explain the circuit and submit their own notebook entry and code.</p>
+<p>Build and troubleshoot with a partner. Each student must explain the circuit and paste their own completed code into their notebook.</p>
 <p><strong>AI — AIAS Level 1, No AI:</strong> Complete the code changes and explanations yourself without AI assistance. <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a></p>
 </div>
 <hr />
-<h2 id="understand-the-motor">Understand the Motor</h2>
+<h2 id="build-the-circuit">Build the Circuit</h2>
 <ol>
 <li>
-<p>Start a notebook entry titled <strong>Stepper Motors</strong>. Explain how a stepper motor differs from the DC gearmotor used in the robot. Calculate the full steps required for 90°, 180°, and 360° using the motor’s 1.8° step angle.</p>
-</li>
-<li>
-<p>With all power disconnected, identify the black/green and red/blue winding pairs. Check each pair with the multimeter: each should have low resistance; different windings should have no continuity. Record the pairs. Meter-lead resistance affects such a small measurement, so use this primarily to identify pairs.</p>
-</li>
-</ol>
-<h2 id="build-the-circuit">Build the Circuit</h2>
-<ol start="3">
-<li>
-<p>Have Mr. Willis identify the driver’s sense resistors and set a <strong>0.5 A peak current limit</strong> for the initial unloaded test, following the <a href="../../eng/stepstick-driver/#power-and-current-limit">current-limit procedure</a>. Record the resistor value, calculated VREF, measured VREF, and supply voltage. Do not assume the motor’s 2 A rating is a suitable carrier setting.</p>
-</li>
-<li>
-<p>Disconnect all power again. Wire the circuit using the diagram and table. Locate the Uno pins on the <a href="../../eng/arduino-pinout/">Arduino Pinout</a>. The diagram shows the driver component side, with its potentiometer at the bottom. Match the actual silkscreen.</p>
+<p>Disconnect all power. Wire the circuit below; use the <a href="../../eng/arduino-pinout/">Arduino Pinout</a> to locate pins. Match the driver’s printed pin labels; its potentiometer faces the bottom in the diagram.</p>
 <p><a href="images/stepper-wiring.svg"><img alt="Uno R3, A4988 StepStick, and NEMA 17 wiring" src="images/stepper-wiring.svg" /></a></p>
-<p><em>Open the image for a larger view. Wire ends with the same label are electrically joined. The motor illustration represents this model’s physical form; the table specifies the exact electrical connections.</em></p>
+<p><em>Click to enlarge. Wire crossings without dots are not connections.</em></p>
 <table>
 <thead>
 <tr>
@@ -8356,186 +8371,342 @@
 <td>STEP</td>
 </tr>
 <tr>
+<td>Uno D2 / STEP line</td>
+<td>Unused Uno GND in the top digital header <strong>through a 10 kΩ resistor</strong></td>
+</tr>
+<tr>
 <td>Uno D3</td>
 <td>DIR</td>
 </tr>
 <tr>
 <td>Uno 5V</td>
-<td>VDD, RESET, and SLEEP</td>
+<td>VDD</td>
+</tr>
+<tr>
+<td>RESET</td>
+<td>SLEEP (jumper between the two pins)</td>
 </tr>
 <tr>
 <td>Uno GND</td>
-<td>Both driver GND pins and external supply negative (common ground)</td>
+<td>Driver GND beside VDD</td>
 </tr>
 <tr>
 <td>ENABLE</td>
-<td>Common ground (outputs enabled)</td>
+<td>Leave unconnected; the HiLetgo board pulls it LOW (outputs enabled)</td>
 </tr>
 <tr>
 <td>MS1, MS2, MS3</td>
-<td>Common ground (full stepping)</td>
+<td>Leave unconnected; internal pull-downs select full stepping</td>
 </tr>
 <tr>
-<td>External regulated 12 V positive</td>
+<td>12 V barrel adapter positive (+)</td>
 <td>VMOT only</td>
 </tr>
 <tr>
-<td>Capacitor positive / negative</td>
-<td>VMOT / motor GND, close to the driver</td>
+<td>12 V barrel adapter negative (−)</td>
+<td>Driver GND beside VMOT</td>
 </tr>
 <tr>
 <td>Motor black (A+) / green (A−)</td>
-<td>1A / 1B</td>
+<td>2B / 2A</td>
 </tr>
 <tr>
 <td>Motor red (B+) / blue (B−)</td>
-<td>2A / 2B</td>
+<td>1A / 1B</td>
 </tr>
 </tbody>
 </table>
+<p>Fit the motor connector directly over <code>2B</code>, <code>2A</code>, <code>1A</code>, <code>1B</code>, with <strong>black, green, red, blue</strong> wires from top to bottom. The driver’s GND pins connect internally; no jumper between them is needed.</p>
+<p>Connect the <strong>10 kΩ resistor</strong> between the STEP pin and a GND pin on the Arduino. The resistor can go either direction.</p>
+<div class="admonition info">
+<p class="admonition-title">Why the pull-down resistor?</p>
+<p>During startup, reset, and uploading, STEP can float and pick up noise that causes unwanted steps. The resistor holds STEP LOW until the Arduino takes control. Only STEP needs this resistor in our tested circuit.</p>
+</div>
 </li>
 <li>
-<p>Secure the unloaded motor and add a light tape pointer to the shaft. Place a protractor behind the pointer, without touching it. Have the wiring, polarity, heat sink, and current-limit record checked before applying power.</p>
+<p>Cut out the paper dial, make a center hole, slide it over the shaft, and tape it to the motor face. Add a small tape pointer to the shaft; keep it free to rotate.</p>
 </li>
 </ol>
 <h2 id="make-a-quarter-turn">Make a Quarter Turn</h2>
-<p>A <strong>STEP pulse</strong> requests one full step or microstep. <strong>DIR</strong> chooses direction; it does not request an angle. This sketch uses no additional library. It moves only once after startup or reset, so the pointer is easy to measure.</p>
-<ol start="6">
+<p>There are <strong>200 pulses per motor revolution</strong>, and each <strong>STEP pulse</strong> moves the motor 1.8°. <strong>DIR</strong> selects the rotational direction (clockwise or counter clockwise). The starter sketch moves once after startup or reset.</p>
+<ol start="3">
 <li>
-<p>With motor power off, connect USB and upload this sketch as <code>stepper_motor.ino</code>. Keep motor power off while uploading. Then turn on motor power, wait a moment, mark the pointer’s current position, and press the Uno’s <em>Reset</em> button to run the move. Every reset runs the move again; reset does not return the shaft to a known position.</p>
+<p>With motor power off, upload the sketch below as <code>stepper_motor.ino</code> and wait for it to finish running. Turn on motor power, let the shaft settle, note the pointer’s position, and press the  <em>Reset</em> button on the Arduino once.</p>
 <div class="highlight"><span class="filename">stepper_motor.ino</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">const</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">STEP_PIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">const</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">DIR_PIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MICROSTEPS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="c1">// Must match the MS jumper setting</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">const</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">PULSES_PER_REV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200L</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">MICROSTEPS</span><span class="p">;</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">HALF_PERIOD_US</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kt">void</span><span class="w"> </span><span class="nf">moveSteps</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">pulses</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">direction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">DIR_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">HIGH</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="n">delayMicroseconds</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w">  </span><span class="c1">// Direction settles before the first pulse</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pulses</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">delayMicroseconds</span><span class="p">(</span><span class="n">HALF_PERIOD_US</span><span class="p">);</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="n">delayMicroseconds</span><span class="p">(</span><span class="n">HALF_PERIOD_US</span><span class="p">);</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">}</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">STEP_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">DIR_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">  </span><span class="c1">// Pause before motion</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="n">moveSteps</span><span class="p">(</span><span class="n">PULSES_PER_REV</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="p">}</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="c1">// Remain stopped. The energized driver continues to hold position.</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="p">}</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">const</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">PULSES_PER_REV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200L</span><span class="p">;</span><span class="w">  </span><span class="c1">// Full stepping: 1.8 degrees per pulse</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">HALF_PERIOD_US</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kt">void</span><span class="w"> </span><span class="nf">moveSteps</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">pulses</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">direction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">DIR_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">HIGH</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="n">delayMicroseconds</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w">  </span><span class="c1">// Direction settles before the first pulse</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pulses</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="n">delayMicroseconds</span><span class="p">(</span><span class="n">HALF_PERIOD_US</span><span class="p">);</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">delayMicroseconds</span><span class="p">(</span><span class="n">HALF_PERIOD_US</span><span class="p">);</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">}</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">STEP_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">DIR_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">  </span><span class="c1">// Pause before motion</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="n">moveSteps</span><span class="p">(</span><span class="n">PULSES_PER_REV</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="p">}</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="c1">// Remain stopped. The energized driver continues to hold position.</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="p">}</span>
 </code></pre></div>
 </li>
 </ol>
 <p><a href="stepper_motor.ino">Download the starter sketch</a>.</p>
-<ol start="7">
-<li>Measure the angle traveled. Change the direction argument from <code>true</code> to <code>false</code>, upload with motor power off, then repeat the power/reset procedure. Record which direction each value produces when viewed from the shaft end. Do not assume HIGH always means clockwise.</li>
-</ol>
-<h2 id="pulse-count-and-speed">Pulse Count and Speed</h2>
-<ol start="8">
+<ol start="4">
 <li>
-<p>Test quarter, half, and full turns by changing the pulse-count expression in <code>setup()</code>. Record the command and measured angle for each. Use a fresh starting mark for every run.</p>
+<p>Check for a quarter turn (10 dial numbers). Change the direction from <code>true</code> to <code>false</code> and repeat step 3. Record which value produces CW and CCW when viewed from the shaft end.</p>
+</li>
+<li>
+<p>With the motor stopped but powered, gently grip the shaft and try to turn it. Feel the <strong>holding torque</strong>: the energized windings resist movement. Release the shaft before continuing.</p>
+<div class="admonition warning">
+<p class="admonition-title">Do not force the shaft</p>
+<p>Do not press <em>Reset</em> while gripping it or disturb the tape pointer.</p>
+</div>
+</li>
+</ol>
+<h2 id="pulse-timing-and-speed">Pulse Timing and Speed</h2>
+<ol start="6">
+<li>
+<p>Calculate pulse frequency and RPM for <code>HALF_PERIOD_US = 5000</code>. Change the move to a full revolution and test <code>2500</code>. Compare speeds, then restore <code>5000</code>. Each pulse includes a HIGH and a LOW interval:</p>
+<div class="arithmatex">\[
+f\approx\frac{1{,}000{,}000}{2\times\text{HALF\_PERIOD\_US}},\qquad
+\mathrm{RPM}\approx\frac{60f}{\text{PULSES\_PER\_REV}}
+\]</div>
+<p>Actual speed is slightly lower because of code overhead.</p>
+<div class="admonition warning">
+<p class="admonition-title">Stop if steps are missed</p>
+<p>If the motor buzzes or misses steps, disconnect power and check wiring and load. Do not increase current or keep shortening the delay.</p>
+</div>
+</li>
+</ol>
+<h2 id="move-by-dial-numbers">Move by Dial Numbers</h2>
+<ol start="7">
+<li>
+<p>Calculate pulses per dial number using <strong>200 pulses per revolution</strong> and <strong>40 positions (0–39)</strong>:</p>
+<div class="arithmatex">\[
+\text{Pulses per dial number} = \frac{200}{40} = 5
+\]</div>
+<p>Ten number intervals require 50 pulses. A full turn has 40 intervals, including 39 to 0.</p>
+</li>
+<li>
+<p>Rename <code>moveSteps</code> to <strong><code>moveDial(long numbers, bool direction)</code></strong>. Multiply <code>numbers</code> by 5 to get the pulse count. Keep the direction control and pulse timing.</p>
+<p>Define <code>CW</code> and <code>CCW</code> constants from step 4. Update the calls in <code>setup()</code> and test both directions and a full turn.</p>
+<div class="admonition info">
+<p class="admonition-title">Distance, not destination</p>
+<p><code>moveDial(10, CW)</code> moves 10 number intervals clockwise from the current position. Use a nonnegative distance; the direction argument controls which way to turn.</p>
+</div>
+</li>
+</ol>
+<h2 id="track-the-current-position">Track the Current Position</h2>
+<ol start="9">
+<li>
+<p>Add this <strong>global variable</strong> above the functions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">currentPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Expected position</p>
+<p>This variable records the <strong>expected position</strong>, not a sensor measurement. Before running a positioning test, align the paper dial’s 0 with the pointer as described in the trial procedure below. Resetting the Arduino sets the variable to 0; it does not physically move the pointer to 0.</p>
+</div>
+<p>Add this code at the end of <code>moveDial</code>. CW increases position; CCW decreases it. The <strong>remainder operator <code>%</code></strong> wraps the result to 0–39:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">direction</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CW</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="n">currentPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">currentPosition</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">change</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="n">currentPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">currentPosition</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">change</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Preserve full revolutions</p>
+<p>Use the original <code>numbers</code> value for motor pulses. Use <code>% 40</code> only for position tracking. Adding 40 in the CCW expression prevents a negative remainder.</p>
+</div>
+</li>
+<li>
+<p>Start at 0 and test these calls in order. Pause between moves and check the pointer against the expected position.</p>
 <table>
 <thead>
 <tr>
-<th>Mode</th>
-<th style="text-align: right;">Pulses commanded</th>
-<th style="text-align: right;">Predicted angle</th>
-<th style="text-align: right;">Measured angle</th>
-<th>Direction / observations</th>
+<th>Call</th>
+<th style="text-align: right;">Expected position afterward</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Full</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">90°</td>
-<td style="text-align: right;"></td>
-<td></td>
+<td><code>moveDial(5, CCW)</code></td>
+<td style="text-align: right;">35</td>
 </tr>
 <tr>
-<td>Full</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">180°</td>
-<td style="text-align: right;"></td>
-<td></td>
+<td><code>moveDial(10, CW)</code></td>
+<td style="text-align: right;">5</td>
 </tr>
 <tr>
-<td>Full</td>
-<td style="text-align: right;">200</td>
-<td style="text-align: right;">360°</td>
-<td style="text-align: right;"></td>
-<td></td>
+<td><code>moveDial(40, CW)</code></td>
+<td style="text-align: right;">5</td>
 </tr>
 <tr>
-<td>Half</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td></td>
+<td><code>moveDial(5, CCW)</code></td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<h2 id="go-to-a-specific-number">Go to a Specific Number</h2>
+<ol start="11">
+<li>
+<p>Write a new function named <strong><code>goToDial(int target, bool direction)</code></strong> for targets <strong>0–39</strong>. Calculate the distance below, then call <code>moveDial(distance, direction)</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Direction</th>
+<th>Distance in number intervals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CW</td>
+<td><code>(target - currentPosition + 40) % 40</code></td>
 </tr>
 <tr>
-<td>Half</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td></td>
+<td>CCW</td>
+<td><code>(currentPosition - target + 40) % 40</code></td>
+</tr>
+</tbody>
+</table>
+<p>At the target already? Move zero intervals. For a full turn, use <code>moveDial(40, direction)</code>. Keep the requested direction even when the other route is shorter.</p>
+<div class="admonition info">
+<p class="admonition-title">Update position once</p>
+<p>Only <code>moveDial</code> updates <code>currentPosition</code> and sends pulses. <code>goToDial</code> calls it; do not duplicate either job.</p>
+</div>
+</li>
+<li>
+<p>Starting at 0, test these calls with pauses. Check both the pointer and <code>currentPosition</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Call</th>
+<th>Expected movement</th>
+<th style="text-align: right;">Final position</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>goToDial(35, CCW)</code></td>
+<td>5 intervals CCW</td>
+<td style="text-align: right;">35</td>
+</tr>
+<tr>
+<td><code>goToDial(5, CW)</code></td>
+<td>10 intervals CW</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td><code>goToDial(5, CCW)</code></td>
+<td>None</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td><code>goToDial(0, CCW)</code></td>
+<td>5 intervals CCW</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<h2 id="open-the-paper-lock">Open the Paper Lock</h2>
+<ol start="13">
+<li>
+<p>Plan the sequence for the combination <strong>10–30–20</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Paper-pointer algorithm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Establish the start</td>
+<td>Align the paper dial’s <strong>0</strong> with the pointer before the run; initialize <code>currentPosition</code> to <strong>0</strong>.</td>
+</tr>
+<tr>
+<td>Clear and reach the first number</td>
+<td>Turn <strong>CCW three complete revolutions</strong> (120 number intervals), then <strong>continue CCW</strong> until the pointer reaches the first combination number. Do not reverse after the clearing turns.</td>
+</tr>
+<tr>
+<td>Reach the second number</td>
+<td>Reverse to <strong>CW</strong>, make <strong>one complete revolution</strong> back to the first number, then continue CW to the second number.</td>
+</tr>
+<tr>
+<td>Reach the third number</td>
+<td>Reverse to <strong>CCW</strong> and stop the first time the pointer reaches the third number. Do not add a full revolution.</td>
+</tr>
+<tr>
+<td>Finish</td>
+<td>Leave the pointer stopped at the third number. A real lock would now be ready to open.</td>
 </tr>
 </tbody>
 </table>
 </li>
 <li>
-<p>Calculate the approximate pulse frequency and RPM for <code>HALF_PERIOD_US = 5000</code>, then test <code>2500</code> using a full revolution. The pulse includes both a HIGH and LOW interval:</p>
-<div class="arithmatex">\[
-f\approx\frac{1{,}000{,}000}{2\times\text{HALF\_PERIOD\_US}},\qquad
-\mathrm{RPM}\approx\frac{60f}{\text{PULSES\_PER\_REV}}
-\]</div>
-<p>Code overhead makes the actual speed slightly lower. Record predicted RPM and observed change in speed. Restore <code>5000</code> after this test. If the motor buzzes or misses steps, stop and check wiring, load, and settings; do not increase current or keep shortening the delay.</p>
-</li>
-</ol>
-<h2 id="try-half-stepping">Try Half Stepping</h2>
-<ol start="10">
-<li>
-<p>Disconnect USB and motor power. Move <strong>MS1 from GND to 5V</strong>; leave MS2 and MS3 grounded. Change <code>MICROSTEPS</code> to <code>2</code>. This code constant does not change the driver’s hardware mode: the jumper and code must agree.</p>
+<p>In <code>setup()</code>, use <code>moveDial()</code> for full revolutions and <code>goToDial()</code> for the three combination numbers. Pause one second at each number. Keep <code>loop()</code> empty and comment the combination, direction convention, and purpose of each move.</p>
 </li>
 <li>
-<p>Test <code>moveSteps(50, true);</code> and then <code>moveSteps(100, true);</code>, using the same upload/power/reset procedure. Predict and measure each angle in the table. Then restore <code>moveSteps(PULSES_PER_REV / 4, true);</code> and verify a quarter turn. Explain why the same pulse count now turns half as far and why the same pulse frequency produces half the RPM.</p>
-</li>
-</ol>
-<h2 id="program-a-motion-sequence">Program a Motion Sequence</h2>
-<ol start="12">
-<li>
-<p>Keep half stepping selected. Modify <code>setup()</code> to turn 90° in one direction, pause one second, turn another 90° in that direction, pause, then turn 180° in the opposite direction. Use expressions based on <code>PULSES_PER_REV</code>. Keep <code>loop()</code> empty. Demonstrate the sequence and compare the final position with the starting mark over three separate runs.</p>
-</li>
-<li>
-<p>Complete your notebook entry with your wiring photo, current-limit record, measurement table, speed calculations, final code, and answers to these questions:</p>
-<ul>
-<li>What changes angle: pulse count, pulse timing, or both? What changes speed?</li>
-<li>Why might the shaft fail to return to its mark even though the code sends the expected pulses? How could a home switch help?</li>
-<li>From the <a href="../../eng/stepper-motors/#torque-and-power-curve">supplied torque curve</a>, compare pull-out torque at 200 and 1,000 RPM. Why should you not expect this classroom circuit to reproduce that curve?</li>
-<li>How is energized holding different from having a known absolute position?</li>
-</ul>
+<p>Run each positioning test and the final sequence using this procedure. Repeat the final sequence to verify all three stops.</p>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Upload</td>
+<td>Leave motor power off. Upload and wait for the sketch to finish running.</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>Apply motor power and let the shaft settle.</td>
+</tr>
+<tr>
+<td>Align</td>
+<td>Adjust the paper dial so 0 aligns with the pointer; secure it again.</td>
+</tr>
+<tr>
+<td>Run</td>
+<td>Press <em>Reset</em> once. Check the stops and directions.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Establish zero before every trial</p>
+<p>Adjust the paper, not the energized shaft. If steps are missed or the pointer slips, fix the problem and realign zero before rerunning.</p>
+</div>
 </li>
 </ol>
 <h2 id="turn-it-in">Turn It In</h2>
-<ol start="14">
-<li>Disconnect motor power and USB. Submit your notebook entry and final <code>stepper_motor.ino</code> file, and show the motion sequence to Mr. Willis.</li>
+<ol start="16">
+<li>Disconnect motor power and USB. In a notebook entry titled <strong>Stepper Motors</strong>, paste your complete Arduino code that unlocks the paper lock using <code>moveDial</code>, <code>currentPosition</code>, and <code>goToDial</code>.</li>
 </ol>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Notebook entry: wiring photo, current-limit/supply record, completed measurement table, speed calculations, final code, and explanations</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Final <code>stepper_motor.ino</code> file</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Demonstration of the motion sequence and three return-position checks</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Complete sketch, including <code>moveDial</code>, <code>currentPosition</code>, <code>goToDial</code>, and the combination sequence in <code>setup()</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Code comments identifying the combination, direction convention, position tracking, and required full revolutions</li>
 </ul>
 <hr />
 <h2 id="how-its-graded">How It's Graded</h2>
-<p>One score from <strong>0–4</strong> covers the work and evidence.</p>
+<p>One score from <strong>0–4</strong> covers the submitted code.</p>
 <table>
 <thead>
 <tr>
@@ -8546,19 +8717,19 @@ f\approx\frac{1{,}000{,}000}{2\times\text{HALF\_PERIOD\_US}},\qquad
 <tbody>
 <tr>
 <td><strong>4 Excellent</strong></td>
-<td>Safe, checked circuit and complete current-limit record; full/half-step measurements and speed calculations are correct; code and demonstration perform the sequence with three return checks; explanations connect results to open-loop control and the torque curve’s limits.</td>
+<td>Complete sketch correctly converts relative moves to pulses, tracks position with wraparound, and uses <code>goToDial</code> through <code>moveDial</code> for absolute moves. The combination sequence includes the required revolutions, directions, and pauses; comments explain the position tracking and sequence.</td>
 </tr>
 <tr>
 <td><strong>3 Above Average</strong></td>
-<td>Circuit, motion sequence, final sketch, and notebook are complete and working, with minor errors or omissions in calculations, explanations, or verification.</td>
+<td>Complete, working relative and absolute movement functions, position tracking, and combination sequence, with minor omissions in comments or pauses.</td>
 </tr>
 <tr>
 <td><strong>2 Average</strong></td>
-<td>Some controlled motion is demonstrated, but significant gaps remain in the sequence, code, measurements, current-limit record, or explanations.</td>
+<td>Some controlled dial motion is implemented, but significant errors remain in pulse conversion, position tracking, absolute moves, directions, or clearing revolutions.</td>
 </tr>
 <tr>
 <td><strong>1 Below Average</strong></td>
-<td>Work is largely incomplete or nonfunctional, with little evidence of controlled motion or understanding.</td>
+<td>Code is largely incomplete or nonfunctional, with little evidence of the required function or combination sequence.</td>
 </tr>
 <tr>
 <td><strong>0 Failing</strong></td>

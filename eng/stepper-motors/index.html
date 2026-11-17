@@ -806,6 +806,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-a-stepper-motor-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How a Stepper Motor Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stepper-motor-or-dc-motor" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -8077,6 +8088,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-a-stepper-motor-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How a Stepper Motor Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stepper-motor-or-dc-motor" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -8190,6 +8212,16 @@
 <h1 id="nema-17-stepper-motor">NEMA 17 Stepper Motor</h1>
 <p>A <strong>stepper motor</strong> rotates in small increments as a driver energizes its windings in sequence. Its toothed magnetic rotor aligns with the magnetic field produced by the stator. Changing the winding currents moves that field—and the shaft—to the next position. Holding the winding currents steady produces <strong>holding torque</strong>, which resists movement while the motor is stopped.</p>
 <p>The classroom <strong>StepperOnline 17HS19-2004S1</strong> is a two-phase, four-wire <strong>bipolar</strong> motor: its driver reverses current through each winding. It takes 200 full steps of 1.8° to turn once. <strong>NEMA 17</strong> identifies the mounting-frame size, not the motor’s torque, length, current, or wiring.</p>
+<h2 id="how-a-stepper-motor-works">How a Stepper Motor Works</h2>
+<video controls preload="metadata" width="100%">
+  <source src="assets/how-does-a-stepper-motor-work.mp4" type="video/mp4">
+
+  Your browser does not support the video tag. [Download the video](assets/how-does-a-stepper-motor-work.mp4).
+</video>
+
+<p><em>How does a Stepper Motor work?</em><sup id="fnref:stepper-video"><a class="footnote-ref" href="#fn:stepper-video">1</a></sup></p>
+<p><img alt="Disassembled NEMA 17 stepper motor showing the stator windings, toothed rotor and shaft, end covers, and assembly screws" src="assets/stepper-motor-disassembled.jpg" width="800" /></p>
+<p><em>Inside a NEMA 17 stepper motor: the stator windings surround the toothed rotor when assembled.</em><sup id="fnref:stepper-photo"><a class="footnote-ref" href="#fn:stepper-photo">2</a></sup></p>
 <h2 id="stepper-motor-or-dc-motor">Stepper Motor or DC Motor?</h2>
 <table>
 <thead>
@@ -8322,6 +8354,7 @@
 </table>
 <p><img alt="Winding diagram: black and green form winding A; red and blue form winding B" src="assets/windings.svg" /></p>
 <p><em>Recreated winding column of the datasheet. The two windings are electrically separate; “+” and “−” identify winding ends, not permanent supply connections.</em></p>
+<p>The lab plugs the four-position connector directly onto the driver, with black, green, red, and blue aligned to <code>2B</code>, <code>2A</code>, <code>1A</code>, and <code>1B</code> respectively. Each coil remains on one output pair.</p>
 <table>
 <thead>
 <tr>
@@ -8332,19 +8365,19 @@
 <tbody>
 <tr>
 <td>Black, A+</td>
-<td>1A</td>
+<td>2B</td>
 </tr>
 <tr>
 <td>Green, A−</td>
-<td>1B</td>
-</tr>
-<tr>
-<td>Red, B+</td>
 <td>2A</td>
 </tr>
 <tr>
+<td>Red, B+</td>
+<td>1A</td>
+</tr>
+<tr>
 <td>Blue, B−</td>
-<td>2B</td>
+<td>1B</td>
 </tr>
 </tbody>
 </table>
@@ -8444,6 +8477,17 @@
 <li><a href="https://www.omc-stepperonline.com/nema-17-bipolar-59ncm-84oz-in-2a-42x48mm-4-wires-w-1m-cable-connector-17hs19-2004s1" target="_blank" rel="noopener">Manufacturer’s motor listing</a></li>
 </ul>
 <p><em>Motor drawing, specifications, and connection information: supplied StepperOnline datasheet, drawing A0842, revision 0. STEP model and CSV supplied with the classroom component documents.</em></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:stepper-video">
+<p><a href="https://www.youtube.com/watch?v=eyqwLiowZiU" target="_blank" rel="noopener"><em>How does a Stepper Motor work?</em> — original video on YouTube</a>.&#160;<a class="footnote-backref" href="#fnref:stepper-video" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:stepper-photo">
+<p>Photo: “Nema 17_01.jpg,” from <a href="https://fritzing.org/projects/arduino-driver-a4988-stepper-motor-nema17" target="_blank" rel="noopener"><em>Arduino + Driver A4988 + Stepper Motor NEMA17</em></a>, posted by jgustavoam on Fritzing.&#160;<a class="footnote-backref" href="#fnref:stepper-photo" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 

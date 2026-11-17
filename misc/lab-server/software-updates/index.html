@@ -8545,31 +8545,206 @@ shows the new version.</p>
 running there at that moment.</p>
 </div>
 <h2 id="update-an-existing-title">Update an Existing Title</h2>
-<p>Same as adding, with two differences.</p>
+<p>Run these steps on the <strong>admin Mac</strong>, in one Terminal window. The existing
+Munki tools and repository are already installed. Use the lab network for
+publishing and client checks. Stop if a command fails.</p>
 <ol start="15">
 <li>
-<p>Run steps 9 through 11 with the <strong>same Item name</strong> as before (<code>fusion</code>
-    stays <code>fusion</code>). The higher version is what makes it an upgrade.</p>
-</li>
-<li>
-<p>Skip step 12; the manifest already lists the title. Do steps 13 and 14.</p>
-</li>
-<li>
-<p>Every few updates, prune superseded versions so the server doesn't fill
-    up. <code>repoclean</code> keeps the two newest versions of each title and shows you
-    what it intends to delete before doing it.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>repoclean<span class="w"> </span>~/munki_repo
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>./publish.sh
+<p><strong>Locate and save the existing definition.</strong> These are the actual Fusion
+    paths checked on November 16, 2026. On later updates, set <code>OLD</code> to the
+    newest Fusion definition printed by <code>find</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">cd</span><span class="w"> </span>/Users/stevewillis/munki_repo
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>find<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">/pkgsinfo&quot;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;fusion-*&#39;</span><span class="w"> </span>-print
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nv">OLD</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">/pkgsinfo/fusion-2705.1.15&quot;</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>plutil<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OLD</span><span class="s2">&quot;</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>plutil<span class="w"> </span>-p<span class="w"> </span>manifests/site_default
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nv">WORK</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="w"> </span>-d<span class="w"> </span>/tmp/munki-fusion-update.XXXXXX<span class="k">)</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>cp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OLD</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORK</span><span class="s2">/previous.plist&quot;</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>cp<span class="w"> </span>manifests/site_default<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORK</span><span class="s2">/site_default&quot;</span>
 </code></pre></div>
+<p>Keep the existing <code>name</code>: <strong><code>fusion</code></strong>. <code>site_default</code> already lists
+<code>fusion</code> without a version and uses <strong><code>production</code></strong>; leave it unchanged.
+The current definition uses <code>/Applications/Autodesk Fusion.app</code>, blocks
+<code>Autodesk Fusion</code> while running, enables unattended installation, and
+disables unattended uninstallation. It has no custom scripts or installer
+environment settings; the preservation command below retains any added later.</p>
+</li>
+<li>
+<p><strong>Download the Mac lab/admin installer</strong> from
+    <a href="https://www.autodesk.com/fusion360lab" target="_blank" rel="noopener">Autodesk's Fusion lab download page</a>.
+    Save it as <code>Autodesk Fusion Admin Install.pkg</code> in <em>Downloads</em>.
+    Use the all-users lab <code>.pkg</code>, not the personal-use downloader <code>.dmg</code>.
+    Autodesk supports deploying this package through Munki; no separate
+    streamer command is needed for this package workflow
+    (<a href="https://damassets.autodesk.net/content/dam/autodesk/www/fusion-360/Fusion%20Lab%20Install%20Instructions.pdf" target="_blank" rel="noopener">lab installation guide</a>).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">INSTALLER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/Downloads/Autodesk Fusion Admin Install.pkg&quot;</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>/usr/local/munki/makepkginfo<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INSTALLER</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORK</span><span class="s2">/installer.plist&quot;</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nv">VER</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/PlistBuddy<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;Print :version&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORK</span><span class="s2">/installer.plist&quot;</span><span class="k">)</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;Replacement version: %s\n&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VER</span><span class="s2">&quot;</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>/usr/libexec/PlistBuddy<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;Print :receipts&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORK</span><span class="s2">/installer.plist&quot;</span>
+</code></pre></div>
+<p>Confirm the receipt is <code>com.autodesk.edu.fusion360</code> and the version is
+newer than the existing definition's <code>2705.1.15</code>. Do not reuse that old
+version or substitute Fusion's differently formatted marketing version.
+If Autodesk supplies a different deployment format or receipt, stop and
+review its installation requirements before using this package procedure.</p>
+</li>
+<li>
+<p><strong>Import under the existing name.</strong> Copy to a versioned filename first;
+    this leaves older installers intact and avoids spaces in the served URL.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>cp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INSTALLER</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORK</span><span class="s2">/fusion-</span><span class="nv">$VER</span><span class="s2">.pkg&quot;</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>/usr/local/munki/munkiimport<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span>--repo-url<span class="w"> </span>file:///Users/stevewillis/munki_repo<span class="w"> </span>--plugin<span class="w"> </span>FileRepo<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">  </span>--name<span class="w"> </span>fusion<span class="w"> </span>--catalog<span class="w"> </span>production<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORK</span><span class="s2">/fusion-</span><span class="nv">$VER</span><span class="s2">.pkg&quot;</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Prompt, if shown</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Use existing item as a template?</td>
+<td><code>y</code>, only if it is <code>fusion</code></td>
+</tr>
+<tr>
+<td>Item name / display name</td>
+<td><code>fusion</code> / <code>Autodesk Fusion</code></td>
+</tr>
+<tr>
+<td>Version</td>
+<td>The replacement version printed above</td>
+</tr>
+<tr>
+<td>Catalogs</td>
+<td><code>production</code></td>
+</tr>
+<tr>
+<td>Import this item?</td>
+<td><code>y</code></td>
+</tr>
+<tr>
+<td>Upload item to subdirectory</td>
+<td>Leave blank</td>
+</tr>
+<tr>
+<td>Create an icon?</td>
+<td><code>n</code> (keep the existing icon)</td>
+</tr>
+<tr>
+<td>Edit pkginfo?</td>
+<td><code>n</code> (next step preserves the settings)</td>
+</tr>
+<tr>
+<td>Rebuild catalogs?</td>
+<td><code>n</code> (do this after the next step)</td>
+</tr>
+</tbody>
+</table>
+<p>Accept the other existing values. If Munki reports an identical installer
+already in the repository, stop: this is not a new update. Do not overwrite
+an existing version's pkginfo or installer.</p>
+</li>
+<li>
+<p><strong>Preserve settings and update detection.</strong> This copies the old definition,
+    replaces only the new package's version, receipts, sizes, hash, location,
+    and import metadata, and advances Fusion's app-version check. It also
+    removes the duplicate identical <code>installs</code> entry in the current definition.
+    Wait until the interactive import has finished and the Terminal prompt
+    returns before pasting this block.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>:<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORK</span><span class="p">:?Run step 15 in this Terminal window first</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nv">VER</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/PlistBuddy<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;Print :version&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORK</span><span class="s2">/installer.plist&quot;</span><span class="k">)</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nv">NEW</span><span class="o">=</span><span class="s2">&quot;/Users/stevewillis/munki_repo/pkgsinfo/fusion-</span><span class="nv">$VER</span><span class="s2">&quot;</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>/usr/bin/python3<span class="w"> </span>-<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORK</span><span class="s2">/previous.plist&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORK</span><span class="s2">/installer.plist&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NEW</span><span class="s2">&quot;</span><span class="w"> </span><span class="s">&lt;&lt;&#39;PY&#39;</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="s">import copy, pathlib, plistlib, sys</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="s">old_path, fresh_path, new_path = map(pathlib.Path, sys.argv[1:])</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="s">old = plistlib.loads(old_path.read_bytes())</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="s">fresh = plistlib.loads(fresh_path.read_bytes())</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="s">imported = plistlib.loads(new_path.read_bytes())</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="s">assert old[&#39;name&#39;] == imported[&#39;name&#39;] == &#39;fusion&#39;, &#39;Wrong item name&#39;</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="s">version = fresh[&#39;version&#39;]</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="s">assert tuple(map(int, version.split(&#39;.&#39;))) &gt; tuple(map(int, old[&#39;version&#39;].split(&#39;.&#39;))), &#39;Not a newer version&#39;</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="s">assert {r[&#39;packageid&#39;] for r in fresh[&#39;receipts&#39;]} == {&#39;com.autodesk.edu.fusion360&#39;}, &#39;Unexpected package&#39;</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="s">result = copy.deepcopy(old)</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="s">for key in (&#39;version&#39;, &#39;receipts&#39;, &#39;installed_size&#39;, &#39;installer_item_size&#39;,</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="s">            &#39;installer_item_hash&#39;, &#39;_metadata&#39;):</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="s">    result.pop(key, None)</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="s">    if key in fresh:</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="s">        result[key] = fresh[key]</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="s">result[&#39;installer_item_location&#39;] = imported[&#39;installer_item_location&#39;]</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="s">installs = []</span>
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="s">for item in result.get(&#39;installs&#39;, []):</span>
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="s">    if item.get(&#39;path&#39;) == &#39;/Applications/Autodesk Fusion.app&#39;:</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="s">        key = item.get(&#39;version_comparison_key&#39;, &#39;CFBundleShortVersionString&#39;)</span>
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="s">        item[key] = version</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="s">    if item not in installs:</span>
+<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a><span class="s">        installs.append(item)</span>
+<a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="s">result[&#39;installs&#39;] = installs</span>
+<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="s">new_path.write_bytes(plistlib.dumps(result))</span>
+<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a><span class="s">print(&#39;Updated:&#39;, new_path)</span>
+<a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="s">PY</span>
+<a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a>plutil<span class="w"> </span>-lint<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NEW</span><span class="s2">&quot;</span>
+<a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a>diff<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORK</span><span class="s2">/previous.plist&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NEW</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p><code>diff</code> normally returns status <code>1</code> because the files differ. Check that
+only the package metadata, detection version, and duplicate entry changed.
+If the replacement specifies new OS/architecture limits or restart
+requirements, reconcile those with the old definition before publishing.
+Preserve custom scripts and installer options; revise any embedded version
+checks to match the replacement. For another title, use its existing name,
+paths, receipt IDs, and detection rules instead of this Fusion-specific block.</p>
+</li>
+<li>
+<p><strong>Rebuild catalogs and publish.</strong> The existing <code>publish.sh</code> runs
+    <code>/usr/local/munki/makecatalogs ~/munki_repo</code>, mirrors the repository to
+    <code>pi@engineering.local:/srv/munki_repo/</code>, and makes files readable by nginx.
+    Publishing makes the update available to all lab Macs immediately.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>cmp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORK</span><span class="s2">/site_default&quot;</span><span class="w"> </span>manifests/site_default
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>/Users/stevewillis/munki_repo/publish.sh
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>curl<span class="w"> </span>-fI<span class="w"> </span>http://engineering.local/munki/catalogs/production
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>curl<span class="w"> </span>-fI<span class="w"> </span><span class="s2">&quot;http://engineering.local/munki/pkgs/fusion-</span><span class="nv">$VER</span><span class="s2">.pkg&quot;</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>stat<span class="w"> </span>-f<span class="w"> </span><span class="s1">&#39;%z bytes&#39;</span><span class="w"> </span><span class="s2">&quot;pkgs/fusion-</span><span class="nv">$VER</span><span class="s2">.pkg&quot;</span>
+</code></pre></div>
+<p><code>cmp</code> should print nothing. Stop if catalog generation or transfer fails.
+Both HTTP requests must return <code>200 OK</code>; the package's <code>Content-Length</code>
+must match the byte count. Keep the old pkginfo and installer for now.</p>
+</li>
+<li>
+<p><strong>Verify on one lab Mac.</strong> Quit Fusion in every logged-in session. Open
+    Terminal on that Mac and run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>defaults<span class="w"> </span><span class="nb">read</span><span class="w"> </span>/Library/Preferences/ManagedInstalls<span class="w"> </span>SoftwareRepoURL
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>sudo<span class="w"> </span>/usr/local/munki/managedsoftwareupdate<span class="w"> </span>-vv<span class="w"> </span>--checkonly
+</code></pre></div>
+<p>The URL must be <code>http://engineering.local/munki</code>. Confirm the pending
+installs include <code>fusion</code> at the replacement version, then run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>/usr/local/munki/managedsoftwareupdate<span class="w"> </span>--installonly
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>/usr/libexec/PlistBuddy<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;Print :CFBundleShortVersionString&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">  </span><span class="s1">&#39;/Applications/Autodesk Fusion.app/Contents/Info.plist&#39;</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>sudo<span class="w"> </span>/usr/local/munki/managedsoftwareupdate<span class="w"> </span>-vv<span class="w"> </span>--checkonly
+</code></pre></div>
+<p><code>--installonly</code> installs <strong>all pending items</strong>, not just Fusion. Allow
+several minutes. The app version must equal the replacement version, and
+the second check must no longer offer that Fusion update. Launch Fusion
+as a student and confirm it opens and signs in. If installation fails, read
+<code>/Library/Managed Installs/Logs/ManagedSoftwareUpdate.log</code> before continuing.</p>
+<div class="admonition note">
+<p class="admonition-title">Values still checked during the update</p>
+<p>The commands use the verified admin-Mac configuration. The downloaded
+package determines the new version; a lab Mac confirms the installed
+version key. The live Pi still needs to pass the transfer and HTTP
+checks above. Do not prune old versions until the client test succeeds.</p>
+</div>
 </li>
 </ol>
 <h2 id="remove-a-title">Remove a Title</h2>
-<ol start="18">
+<ol start="21">
 <li>
 <p>Take it out of the manifest and publish. Existing installs stay on the
     Macs; Munki simply stops managing them.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>manifestutil<span class="w"> </span>remove-pkg<span class="w"> </span><span class="nv">$NAME</span><span class="w"> </span>--manifest<span class="w"> </span>site_default
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>./publish.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>manifestutil<span class="w"> </span>remove-pkg<span class="w"> </span><span class="nv">$NAME</span><span class="w"> </span>--manifest<span class="w"> </span>site_default
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>./publish.sh
 </code></pre></div>
 <p>To actively uninstall it from the lab as well, use
 <code>manifestutil add-pkg $NAME --section managed_uninstalls --manifest site_default</code>
