@@ -7470,10 +7470,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#make-a-quarter-turn" class="md-nav__link">
+  <a href="#make-a-full-turn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Make a Quarter Turn
+        Make a Full Turn
       
     </span>
   </a>
@@ -7481,43 +7481,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pulse-timing-and-speed" class="md-nav__link">
+  <a href="#add-position-tracking-and-absolute-moves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pulse Timing and Speed
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#move-by-dial-numbers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Move by Dial Numbers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#track-the-current-position" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Track the Current Position
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#go-to-a-specific-number" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Go to a Specific Number
+        Add Position Tracking and Absolute Moves
       
     </span>
   </a>
@@ -8205,10 +8172,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#make-a-quarter-turn" class="md-nav__link">
+  <a href="#make-a-full-turn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Make a Quarter Turn
+        Make a Full Turn
       
     </span>
   </a>
@@ -8216,43 +8183,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pulse-timing-and-speed" class="md-nav__link">
+  <a href="#add-position-tracking-and-absolute-moves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pulse Timing and Speed
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#move-by-dial-numbers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Move by Dial Numbers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#track-the-current-position" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Track the Current Position
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#go-to-a-specific-number" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Go to a Specific Number
+        Add Position Tracking and Absolute Moves
       
     </span>
   </a>
@@ -8339,7 +8273,7 @@
 <p class="admonition-title">You've got it when…</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your wiring and teacher-checked current limit match the documented hardware.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> You calculate the full-step pulses needed to move one number on the dial.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> You explain why each dial-number interval takes five pulses.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your <code>moveDial</code> function accepts a distance in dial numbers and a direction.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your <code>currentPosition</code> variable tracks the expected dial position from 0–39.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Your <code>goToDial</code> function uses <code>moveDial</code> to reach a target number in the requested direction.</li>
@@ -8427,20 +8361,21 @@
 <p>Cut out the paper dial, make a center hole, slide it over the shaft, and tape it to the motor face. Add a small tape pointer to the shaft; keep it free to rotate.</p>
 </li>
 </ol>
-<h2 id="make-a-quarter-turn">Make a Quarter Turn</h2>
-<p>There are <strong>200 pulses per motor revolution</strong>, and each <strong>STEP pulse</strong> moves the motor 1.8°. <strong>DIR</strong> selects the rotational direction (clockwise or counter clockwise). The starter sketch moves once after startup or reset.</p>
+<h2 id="make-a-full-turn">Make a Full Turn</h2>
+<p>The motor needs <strong>200 pulses per revolution</strong>; the dial has <strong>40 positions (0–39)</strong>. Each number interval therefore takes <strong>200 ÷ 40 = 5 pulses</strong>, which is why the loop uses <code>count * 5</code>.</p>
+<p><code>moveDial(count, dir)</code> moves a <strong>distance</strong> from the current position: 40 intervals make a full turn; 10 make a quarter turn. Use a nonnegative count. <code>dir</code> selects the direction, and <code>HALF_PERIOD_US</code> controls speed.</p>
 <ol start="3">
 <li>
 <p>With motor power off, upload the sketch below as <code>stepper_motor.ino</code> and wait for it to finish running. Turn on motor power, let the shaft settle, note the pointer’s position, and press the  <em>Reset</em> button on the Arduino once.</p>
-<div class="highlight"><span class="filename">stepper_motor.ino</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">const</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">STEP_PIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">const</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">DIR_PIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">const</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">PULSES_PER_REV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200L</span><span class="p">;</span><span class="w">  </span><span class="c1">// Full stepping: 1.8 degrees per pulse</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">HALF_PERIOD_US</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kt">void</span><span class="w"> </span><span class="nf">moveSteps</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">pulses</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">direction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">DIR_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">HIGH</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="n">delayMicroseconds</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w">  </span><span class="c1">// Direction settles before the first pulse</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pulses</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">stepper_motor.ino</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">STEP_PIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DIR_PIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">HALF_PERIOD_US</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kt">void</span><span class="w"> </span><span class="nf">moveDial</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">dir</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">DIR_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">dir</span><span class="p">);</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="n">delayMicroseconds</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="n">delayMicroseconds</span><span class="p">(</span><span class="n">HALF_PERIOD_US</span><span class="p">);</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
@@ -8451,13 +8386,13 @@
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">STEP_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
 <a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">DIR_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w">  </span><span class="c1">// Pause before motion</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="n">moveSteps</span><span class="p">(</span><span class="n">PULSES_PER_REV</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="p">}</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="c1">// Remain stopped. The energized driver continues to hold position.</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="n">moveDial</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="p">}</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="c1">// put your main code here, to run repeatedly:</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
 <a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="p">}</span>
 </code></pre></div>
 </li>
@@ -8465,7 +8400,7 @@
 <p><a href="stepper_motor.ino">Download the starter sketch</a>.</p>
 <ol start="4">
 <li>
-<p>Check for a quarter turn (10 dial numbers). Change the direction from <code>true</code> to <code>false</code> and repeat step 3. Record which value produces CW and CCW when viewed from the shaft end.</p>
+<p>Check for a full turn (40 dial numbers). Change the direction from <code>true</code> to <code>false</code> and repeat step 3. Record which value produces CW and CCW when viewed from the shaft end.</p>
 </li>
 <li>
 <p>With the motor stopped but powered, gently grip the shaft and try to turn it. Feel the <strong>holding torque</strong>: the energized windings resist movement. Release the shaft before continuing.</p>
@@ -8475,159 +8410,50 @@
 </div>
 </li>
 </ol>
-<h2 id="pulse-timing-and-speed">Pulse Timing and Speed</h2>
+<h2 id="add-position-tracking-and-absolute-moves">Add Position Tracking and Absolute Moves</h2>
 <ol start="6">
 <li>
-<p>Calculate pulse frequency and RPM for <code>HALF_PERIOD_US = 5000</code>. Change the move to a full revolution and test <code>2500</code>. Compare speeds, then restore <code>5000</code>. Each pulse includes a HIGH and a LOW interval:</p>
-<div class="arithmatex">\[
-f\approx\frac{1{,}000{,}000}{2\times\text{HALF\_PERIOD\_US}},\qquad
-\mathrm{RPM}\approx\frac{60f}{\text{PULSES\_PER\_REV}}
-\]</div>
-<p>Actual speed is slightly lower because of code overhead.</p>
-<div class="admonition warning">
-<p class="admonition-title">Stop if steps are missed</p>
-<p>If the motor buzzes or misses steps, disconnect power and check wiring and load. Do not increase current or keep shortening the delay.</p>
-</div>
-</li>
-</ol>
-<h2 id="move-by-dial-numbers">Move by Dial Numbers</h2>
-<ol start="7">
-<li>
-<p>Calculate pulses per dial number using <strong>200 pulses per revolution</strong> and <strong>40 positions (0–39)</strong>:</p>
-<div class="arithmatex">\[
-\text{Pulses per dial number} = \frac{200}{40} = 5
-\]</div>
-<p>Ten number intervals require 50 pulses. A full turn has 40 intervals, including 39 to 0.</p>
-</li>
-<li>
-<p>Rename <code>moveSteps</code> to <strong><code>moveDial(long numbers, bool direction)</code></strong>. Multiply <code>numbers</code> by 5 to get the pulse count. Keep the direction control and pulse timing.</p>
-<p>Define <code>CW</code> and <code>CCW</code> constants from step 4. Update the calls in <code>setup()</code> and test both directions and a full turn.</p>
-<div class="admonition info">
-<p class="admonition-title">Distance, not destination</p>
-<p><code>moveDial(10, CW)</code> moves 10 number intervals clockwise from the current position. Use a nonnegative distance; the direction argument controls which way to turn.</p>
-</div>
-</li>
-</ol>
-<h2 id="track-the-current-position">Track the Current Position</h2>
-<ol start="9">
-<li>
-<p>Add this <strong>global variable</strong> above the functions:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">currentPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<p>Add these global variables above the functions. Set <code>CW</code> to the value you identified in step 4; <code>CCW</code> is its opposite.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">CW</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w">  </span><span class="c1">// Change to false if needed</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">CCW</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">CW</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">currentPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Expected position</p>
-<p>This variable records the <strong>expected position</strong>, not a sensor measurement. Before running a positioning test, align the paper dial’s 0 with the pointer as described in the trial procedure below. Resetting the Arduino sets the variable to 0; it does not physically move the pointer to 0.</p>
-</div>
-<p>Add this code at the end of <code>moveDial</code>. CW increases position; CCW decreases it. The <strong>remainder operator <code>%</code></strong> wraps the result to 0–39:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">direction</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CW</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<p>Add this code <strong>after the pulse loop, inside <code>moveDial</code></strong>. The remainder operator <code>%</code> keeps the position within 0–39, even after full revolutions.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dir</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CW</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="n">currentPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">currentPosition</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">change</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="n">currentPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">currentPosition</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">change</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
 </code></pre></div>
 <div class="admonition info">
-<p class="admonition-title">Preserve full revolutions</p>
-<p>Use the original <code>numbers</code> value for motor pulses. Use <code>% 40</code> only for position tracking. Adding 40 in the CCW expression prevents a negative remainder.</p>
+<p class="admonition-title">Expected position</p>
+<p>This variable records the <strong>expected position</strong>, not a sensor measurement. Before running a positioning test, align the paper dial’s 0 with the pointer as described in the trial procedure below. Resetting the Arduino sets the variable to 0; it does not physically move the pointer to 0.</p>
 </div>
 </li>
 <li>
-<p>Start at 0 and test these calls in order. Pause between moves and check the pointer against the expected position.</p>
-<table>
-<thead>
-<tr>
-<th>Call</th>
-<th style="text-align: right;">Expected position afterward</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>moveDial(5, CCW)</code></td>
-<td style="text-align: right;">35</td>
-</tr>
-<tr>
-<td><code>moveDial(10, CW)</code></td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr>
-<td><code>moveDial(40, CW)</code></td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr>
-<td><code>moveDial(5, CCW)</code></td>
-<td style="text-align: right;">0</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-<h2 id="go-to-a-specific-number">Go to a Specific Number</h2>
-<ol start="11">
-<li>
-<p>Write a new function named <strong><code>goToDial(int target, bool direction)</code></strong> for targets <strong>0–39</strong>. Calculate the distance below, then call <code>moveDial(distance, direction)</code>.</p>
-<table>
-<thead>
-<tr>
-<th>Direction</th>
-<th>Distance in number intervals</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CW</td>
-<td><code>(target - currentPosition + 40) % 40</code></td>
-</tr>
-<tr>
-<td>CCW</td>
-<td><code>(currentPosition - target + 40) % 40</code></td>
-</tr>
-</tbody>
-</table>
-<p>At the target already? Move zero intervals. For a full turn, use <code>moveDial(40, direction)</code>. Keep the requested direction even when the other route is shorter.</p>
+<p>Add this <code>goToDial</code> starter below <code>moveDial</code>. Complete the two TODOs: use <code>(currentPosition - target + 40) % 40</code> for CCW distance, then call <code>moveDial(count, dir)</code> after the <code>if/else</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">goToDial</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">dir</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dir</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CW</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">currentPosition</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// TODO: Replace 0 with the CCW distance calculation</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="c1">// TODO: Call moveDial with count and dir</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
+</code></pre></div>
+<p>From 0, test <code>goToDial(35, CCW)</code>, then <code>goToDial(5, CW)</code>, with a one-second pause between calls. Expect 5 intervals CCW followed by 10 CW. Use the trial procedure below.</p>
 <div class="admonition info">
-<p class="admonition-title">Update position once</p>
-<p>Only <code>moveDial</code> updates <code>currentPosition</code> and sends pulses. <code>goToDial</code> calls it; do not duplicate either job.</p>
+<p class="admonition-title">Distance or destination?</p>
+<p><code>moveDial(40, CW)</code> makes a full turn. <code>goToDial(5, CW)</code> stops at 5, moving zero intervals if already there. Only <code>moveDial</code> sends pulses and updates <code>currentPosition</code>; do not update it again in <code>goToDial</code>.</p>
 </div>
-</li>
-<li>
-<p>Starting at 0, test these calls with pauses. Check both the pointer and <code>currentPosition</code>.</p>
-<table>
-<thead>
-<tr>
-<th>Call</th>
-<th>Expected movement</th>
-<th style="text-align: right;">Final position</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>goToDial(35, CCW)</code></td>
-<td>5 intervals CCW</td>
-<td style="text-align: right;">35</td>
-</tr>
-<tr>
-<td><code>goToDial(5, CW)</code></td>
-<td>10 intervals CW</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr>
-<td><code>goToDial(5, CCW)</code></td>
-<td>None</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr>
-<td><code>goToDial(0, CCW)</code></td>
-<td>5 intervals CCW</td>
-<td style="text-align: right;">0</td>
-</tr>
-</tbody>
-</table>
 </li>
 </ol>
 <h2 id="open-the-paper-lock">Open the Paper Lock</h2>
-<ol start="13">
+<ol start="8">
 <li>
-<p>Plan the sequence for the combination <strong>10–30–20</strong>:</p>
+<p>Program <strong>10–30–20</strong> in <code>setup()</code>. Use <code>moveDial</code> for full revolutions and <code>goToDial</code> for combination numbers. Pause one second at each number, keep <code>loop()</code> empty, and comment the purpose of each move.</p>
 <table>
 <thead>
 <tr>
@@ -8642,15 +8468,15 @@ f\approx\frac{1{,}000{,}000}{2\times\text{HALF\_PERIOD\_US}},\qquad
 </tr>
 <tr>
 <td>Clear and reach the first number</td>
-<td>Turn <strong>CCW three complete revolutions</strong> (120 number intervals), then <strong>continue CCW</strong> until the pointer reaches the first combination number. Do not reverse after the clearing turns.</td>
+<td>Turn <strong>CCW three full revolutions</strong> (120 intervals), then continue CCW to <strong>10</strong>.</td>
 </tr>
 <tr>
 <td>Reach the second number</td>
-<td>Reverse to <strong>CW</strong>, make <strong>one complete revolution</strong> back to the first number, then continue CW to the second number.</td>
+<td>Turn <strong>CW one full revolution</strong>, then continue CW to <strong>30</strong>.</td>
 </tr>
 <tr>
 <td>Reach the third number</td>
-<td>Reverse to <strong>CCW</strong> and stop the first time the pointer reaches the third number. Do not add a full revolution.</td>
+<td>Turn <strong>CCW directly to 20</strong>, with no extra revolution.</td>
 </tr>
 <tr>
 <td>Finish</td>
@@ -8658,9 +8484,6 @@ f\approx\frac{1{,}000{,}000}{2\times\text{HALF\_PERIOD\_US}},\qquad
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p>In <code>setup()</code>, use <code>moveDial()</code> for full revolutions and <code>goToDial()</code> for the three combination numbers. Pause one second at each number. Keep <code>loop()</code> empty and comment the combination, direction convention, and purpose of each move.</p>
 </li>
 <li>
 <p>Run each positioning test and the final sequence using this procedure. Repeat the final sequence to verify all three stops.</p>
@@ -8697,7 +8520,7 @@ f\approx\frac{1{,}000{,}000}{2\times\text{HALF\_PERIOD\_US}},\qquad
 </li>
 </ol>
 <h2 id="turn-it-in">Turn It In</h2>
-<ol start="16">
+<ol start="10">
 <li>Disconnect motor power and USB. In a notebook entry titled <strong>Stepper Motors</strong>, paste your complete Arduino code that unlocks the paper lock using <code>moveDial</code>, <code>currentPosition</code>, and <code>goToDial</code>.</li>
 </ol>
 <ul class="task-list">
